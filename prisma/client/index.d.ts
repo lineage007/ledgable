@@ -78,6 +78,26 @@ export type AppData = $Result.DefaultSelection<Prisma.$AppDataPayload>
  * 
  */
 export type Progress = $Result.DefaultSelection<Prisma.$ProgressPayload>
+/**
+ * Model BankConnection
+ * 
+ */
+export type BankConnection = $Result.DefaultSelection<Prisma.$BankConnectionPayload>
+/**
+ * Model BankTransaction
+ * 
+ */
+export type BankTransaction = $Result.DefaultSelection<Prisma.$BankTransactionPayload>
+/**
+ * Model GSTReturn
+ * 
+ */
+export type GSTReturn = $Result.DefaultSelection<Prisma.$GSTReturnPayload>
+/**
+ * Model MoneyRule
+ * 
+ */
+export type MoneyRule = $Result.DefaultSelection<Prisma.$MoneyRulePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -333,6 +353,46 @@ export class PrismaClient<
     * ```
     */
   get progress(): Prisma.ProgressDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bankConnection`: Exposes CRUD operations for the **BankConnection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BankConnections
+    * const bankConnections = await prisma.bankConnection.findMany()
+    * ```
+    */
+  get bankConnection(): Prisma.BankConnectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bankTransaction`: Exposes CRUD operations for the **BankTransaction** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BankTransactions
+    * const bankTransactions = await prisma.bankTransaction.findMany()
+    * ```
+    */
+  get bankTransaction(): Prisma.BankTransactionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.gSTReturn`: Exposes CRUD operations for the **GSTReturn** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GSTReturns
+    * const gSTReturns = await prisma.gSTReturn.findMany()
+    * ```
+    */
+  get gSTReturn(): Prisma.GSTReturnDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.moneyRule`: Exposes CRUD operations for the **MoneyRule** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MoneyRules
+    * const moneyRules = await prisma.moneyRule.findMany()
+    * ```
+    */
+  get moneyRule(): Prisma.MoneyRuleDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -785,7 +845,11 @@ export namespace Prisma {
     Transaction: 'Transaction',
     Currency: 'Currency',
     AppData: 'AppData',
-    Progress: 'Progress'
+    Progress: 'Progress',
+    BankConnection: 'BankConnection',
+    BankTransaction: 'BankTransaction',
+    GSTReturn: 'GSTReturn',
+    MoneyRule: 'MoneyRule'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -804,7 +868,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "setting" | "category" | "project" | "field" | "file" | "transaction" | "currency" | "appData" | "progress"
+      modelProps: "user" | "session" | "account" | "verification" | "setting" | "category" | "project" | "field" | "file" | "transaction" | "currency" | "appData" | "progress" | "bankConnection" | "bankTransaction" | "gSTReturn" | "moneyRule"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1770,6 +1834,302 @@ export namespace Prisma {
           }
         }
       }
+      BankConnection: {
+        payload: Prisma.$BankConnectionPayload<ExtArgs>
+        fields: Prisma.BankConnectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BankConnectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BankConnectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>
+          }
+          findFirst: {
+            args: Prisma.BankConnectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BankConnectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>
+          }
+          findMany: {
+            args: Prisma.BankConnectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>[]
+          }
+          create: {
+            args: Prisma.BankConnectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>
+          }
+          createMany: {
+            args: Prisma.BankConnectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BankConnectionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>[]
+          }
+          delete: {
+            args: Prisma.BankConnectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>
+          }
+          update: {
+            args: Prisma.BankConnectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.BankConnectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BankConnectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BankConnectionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>[]
+          }
+          upsert: {
+            args: Prisma.BankConnectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankConnectionPayload>
+          }
+          aggregate: {
+            args: Prisma.BankConnectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBankConnection>
+          }
+          groupBy: {
+            args: Prisma.BankConnectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BankConnectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BankConnectionCountArgs<ExtArgs>
+            result: $Utils.Optional<BankConnectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      BankTransaction: {
+        payload: Prisma.$BankTransactionPayload<ExtArgs>
+        fields: Prisma.BankTransactionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BankTransactionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BankTransactionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>
+          }
+          findFirst: {
+            args: Prisma.BankTransactionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BankTransactionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>
+          }
+          findMany: {
+            args: Prisma.BankTransactionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>[]
+          }
+          create: {
+            args: Prisma.BankTransactionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>
+          }
+          createMany: {
+            args: Prisma.BankTransactionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BankTransactionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>[]
+          }
+          delete: {
+            args: Prisma.BankTransactionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>
+          }
+          update: {
+            args: Prisma.BankTransactionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>
+          }
+          deleteMany: {
+            args: Prisma.BankTransactionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BankTransactionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BankTransactionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>[]
+          }
+          upsert: {
+            args: Prisma.BankTransactionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankTransactionPayload>
+          }
+          aggregate: {
+            args: Prisma.BankTransactionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBankTransaction>
+          }
+          groupBy: {
+            args: Prisma.BankTransactionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BankTransactionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BankTransactionCountArgs<ExtArgs>
+            result: $Utils.Optional<BankTransactionCountAggregateOutputType> | number
+          }
+        }
+      }
+      GSTReturn: {
+        payload: Prisma.$GSTReturnPayload<ExtArgs>
+        fields: Prisma.GSTReturnFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GSTReturnFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GSTReturnFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>
+          }
+          findFirst: {
+            args: Prisma.GSTReturnFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GSTReturnFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>
+          }
+          findMany: {
+            args: Prisma.GSTReturnFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>[]
+          }
+          create: {
+            args: Prisma.GSTReturnCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>
+          }
+          createMany: {
+            args: Prisma.GSTReturnCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GSTReturnCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>[]
+          }
+          delete: {
+            args: Prisma.GSTReturnDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>
+          }
+          update: {
+            args: Prisma.GSTReturnUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>
+          }
+          deleteMany: {
+            args: Prisma.GSTReturnDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GSTReturnUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GSTReturnUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>[]
+          }
+          upsert: {
+            args: Prisma.GSTReturnUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GSTReturnPayload>
+          }
+          aggregate: {
+            args: Prisma.GSTReturnAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGSTReturn>
+          }
+          groupBy: {
+            args: Prisma.GSTReturnGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GSTReturnGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GSTReturnCountArgs<ExtArgs>
+            result: $Utils.Optional<GSTReturnCountAggregateOutputType> | number
+          }
+        }
+      }
+      MoneyRule: {
+        payload: Prisma.$MoneyRulePayload<ExtArgs>
+        fields: Prisma.MoneyRuleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MoneyRuleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MoneyRuleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>
+          }
+          findFirst: {
+            args: Prisma.MoneyRuleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MoneyRuleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>
+          }
+          findMany: {
+            args: Prisma.MoneyRuleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>[]
+          }
+          create: {
+            args: Prisma.MoneyRuleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>
+          }
+          createMany: {
+            args: Prisma.MoneyRuleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MoneyRuleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>[]
+          }
+          delete: {
+            args: Prisma.MoneyRuleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>
+          }
+          update: {
+            args: Prisma.MoneyRuleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>
+          }
+          deleteMany: {
+            args: Prisma.MoneyRuleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MoneyRuleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MoneyRuleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>[]
+          }
+          upsert: {
+            args: Prisma.MoneyRuleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MoneyRulePayload>
+          }
+          aggregate: {
+            args: Prisma.MoneyRuleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMoneyRule>
+          }
+          groupBy: {
+            args: Prisma.MoneyRuleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MoneyRuleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MoneyRuleCountArgs<ExtArgs>
+            result: $Utils.Optional<MoneyRuleCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1867,6 +2227,10 @@ export namespace Prisma {
     currency?: CurrencyOmit
     appData?: AppDataOmit
     progress?: ProgressOmit
+    bankConnection?: BankConnectionOmit
+    bankTransaction?: BankTransactionOmit
+    gSTReturn?: GSTReturnOmit
+    moneyRule?: MoneyRuleOmit
   }
 
   /* Types for Logging */
@@ -1972,6 +2336,9 @@ export namespace Prisma {
     sessions: number
     appData: number
     progress: number
+    bankConnections: number
+    gstReturns: number
+    moneyRules: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1986,6 +2353,9 @@ export namespace Prisma {
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     appData?: boolean | UserCountOutputTypeCountAppDataArgs
     progress?: boolean | UserCountOutputTypeCountProgressArgs
+    bankConnections?: boolean | UserCountOutputTypeCountBankConnectionsArgs
+    gstReturns?: boolean | UserCountOutputTypeCountGstReturnsArgs
+    moneyRules?: boolean | UserCountOutputTypeCountMoneyRulesArgs
   }
 
   // Custom InputTypes
@@ -2076,6 +2446,27 @@ export namespace Prisma {
     where?: ProgressWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBankConnectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BankConnectionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountGstReturnsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GSTReturnWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMoneyRulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MoneyRuleWhereInput
+  }
+
 
   /**
    * Count Type CategoryCountOutputType
@@ -2136,6 +2527,68 @@ export namespace Prisma {
    */
   export type ProjectCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransactionWhereInput
+  }
+
+
+  /**
+   * Count Type BankConnectionCountOutputType
+   */
+
+  export type BankConnectionCountOutputType = {
+    transactions: number
+  }
+
+  export type BankConnectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transactions?: boolean | BankConnectionCountOutputTypeCountTransactionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BankConnectionCountOutputType without action
+   */
+  export type BankConnectionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnectionCountOutputType
+     */
+    select?: BankConnectionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BankConnectionCountOutputType without action
+   */
+  export type BankConnectionCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BankTransactionWhereInput
+  }
+
+
+  /**
+   * Count Type MoneyRuleCountOutputType
+   */
+
+  export type MoneyRuleCountOutputType = {
+    transactions: number
+  }
+
+  export type MoneyRuleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transactions?: boolean | MoneyRuleCountOutputTypeCountTransactionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MoneyRuleCountOutputType without action
+   */
+  export type MoneyRuleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRuleCountOutputType
+     */
+    select?: MoneyRuleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MoneyRuleCountOutputType without action
+   */
+  export type MoneyRuleCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BankTransactionWhereInput
   }
 
 
@@ -2456,6 +2909,9 @@ export namespace Prisma {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     appData?: boolean | User$appDataArgs<ExtArgs>
     progress?: boolean | User$progressArgs<ExtArgs>
+    bankConnections?: boolean | User$bankConnectionsArgs<ExtArgs>
+    gstReturns?: boolean | User$gstReturnsArgs<ExtArgs>
+    moneyRules?: boolean | User$moneyRulesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2532,6 +2988,9 @@ export namespace Prisma {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     appData?: boolean | User$appDataArgs<ExtArgs>
     progress?: boolean | User$progressArgs<ExtArgs>
+    bankConnections?: boolean | User$bankConnectionsArgs<ExtArgs>
+    gstReturns?: boolean | User$gstReturnsArgs<ExtArgs>
+    moneyRules?: boolean | User$moneyRulesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2551,6 +3010,9 @@ export namespace Prisma {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       appData: Prisma.$AppDataPayload<ExtArgs>[]
       progress: Prisma.$ProgressPayload<ExtArgs>[]
+      bankConnections: Prisma.$BankConnectionPayload<ExtArgs>[]
+      gstReturns: Prisma.$GSTReturnPayload<ExtArgs>[]
+      moneyRules: Prisma.$MoneyRulePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2975,6 +3437,9 @@ export namespace Prisma {
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     appData<T extends User$appDataArgs<ExtArgs> = {}>(args?: Subset<T, User$appDataArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AppDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     progress<T extends User$progressArgs<ExtArgs> = {}>(args?: Subset<T, User$progressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bankConnections<T extends User$bankConnectionsArgs<ExtArgs> = {}>(args?: Subset<T, User$bankConnectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    gstReturns<T extends User$gstReturnsArgs<ExtArgs> = {}>(args?: Subset<T, User$gstReturnsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    moneyRules<T extends User$moneyRulesArgs<ExtArgs> = {}>(args?: Subset<T, User$moneyRulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3670,6 +4135,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProgressScalarFieldEnum | ProgressScalarFieldEnum[]
+  }
+
+  /**
+   * User.bankConnections
+   */
+  export type User$bankConnectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    where?: BankConnectionWhereInput
+    orderBy?: BankConnectionOrderByWithRelationInput | BankConnectionOrderByWithRelationInput[]
+    cursor?: BankConnectionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BankConnectionScalarFieldEnum | BankConnectionScalarFieldEnum[]
+  }
+
+  /**
+   * User.gstReturns
+   */
+  export type User$gstReturnsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    where?: GSTReturnWhereInput
+    orderBy?: GSTReturnOrderByWithRelationInput | GSTReturnOrderByWithRelationInput[]
+    cursor?: GSTReturnWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GSTReturnScalarFieldEnum | GSTReturnScalarFieldEnum[]
+  }
+
+  /**
+   * User.moneyRules
+   */
+  export type User$moneyRulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    where?: MoneyRuleWhereInput
+    orderBy?: MoneyRuleOrderByWithRelationInput | MoneyRuleOrderByWithRelationInput[]
+    cursor?: MoneyRuleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MoneyRuleScalarFieldEnum | MoneyRuleScalarFieldEnum[]
   }
 
   /**
@@ -17093,6 +17630,4905 @@ export namespace Prisma {
 
 
   /**
+   * Model BankConnection
+   */
+
+  export type AggregateBankConnection = {
+    _count: BankConnectionCountAggregateOutputType | null
+    _avg: BankConnectionAvgAggregateOutputType | null
+    _sum: BankConnectionSumAggregateOutputType | null
+    _min: BankConnectionMinAggregateOutputType | null
+    _max: BankConnectionMaxAggregateOutputType | null
+  }
+
+  export type BankConnectionAvgAggregateOutputType = {
+    balance: Decimal | null
+  }
+
+  export type BankConnectionSumAggregateOutputType = {
+    balance: Decimal | null
+  }
+
+  export type BankConnectionMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    institution: string | null
+    accountName: string | null
+    accountBSB: string | null
+    accountNumber: string | null
+    balance: Decimal | null
+    currency: string | null
+    provider: string | null
+    providerRef: string | null
+    lastSynced: Date | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BankConnectionMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    institution: string | null
+    accountName: string | null
+    accountBSB: string | null
+    accountNumber: string | null
+    balance: Decimal | null
+    currency: string | null
+    provider: string | null
+    providerRef: string | null
+    lastSynced: Date | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BankConnectionCountAggregateOutputType = {
+    id: number
+    userId: number
+    institution: number
+    accountName: number
+    accountBSB: number
+    accountNumber: number
+    balance: number
+    currency: number
+    provider: number
+    providerRef: number
+    lastSynced: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BankConnectionAvgAggregateInputType = {
+    balance?: true
+  }
+
+  export type BankConnectionSumAggregateInputType = {
+    balance?: true
+  }
+
+  export type BankConnectionMinAggregateInputType = {
+    id?: true
+    userId?: true
+    institution?: true
+    accountName?: true
+    accountBSB?: true
+    accountNumber?: true
+    balance?: true
+    currency?: true
+    provider?: true
+    providerRef?: true
+    lastSynced?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BankConnectionMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    institution?: true
+    accountName?: true
+    accountBSB?: true
+    accountNumber?: true
+    balance?: true
+    currency?: true
+    provider?: true
+    providerRef?: true
+    lastSynced?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BankConnectionCountAggregateInputType = {
+    id?: true
+    userId?: true
+    institution?: true
+    accountName?: true
+    accountBSB?: true
+    accountNumber?: true
+    balance?: true
+    currency?: true
+    provider?: true
+    providerRef?: true
+    lastSynced?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BankConnectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BankConnection to aggregate.
+     */
+    where?: BankConnectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankConnections to fetch.
+     */
+    orderBy?: BankConnectionOrderByWithRelationInput | BankConnectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BankConnectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankConnections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankConnections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BankConnections
+    **/
+    _count?: true | BankConnectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BankConnectionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BankConnectionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BankConnectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BankConnectionMaxAggregateInputType
+  }
+
+  export type GetBankConnectionAggregateType<T extends BankConnectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateBankConnection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBankConnection[P]>
+      : GetScalarType<T[P], AggregateBankConnection[P]>
+  }
+
+
+
+
+  export type BankConnectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BankConnectionWhereInput
+    orderBy?: BankConnectionOrderByWithAggregationInput | BankConnectionOrderByWithAggregationInput[]
+    by: BankConnectionScalarFieldEnum[] | BankConnectionScalarFieldEnum
+    having?: BankConnectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BankConnectionCountAggregateInputType | true
+    _avg?: BankConnectionAvgAggregateInputType
+    _sum?: BankConnectionSumAggregateInputType
+    _min?: BankConnectionMinAggregateInputType
+    _max?: BankConnectionMaxAggregateInputType
+  }
+
+  export type BankConnectionGroupByOutputType = {
+    id: string
+    userId: string
+    institution: string
+    accountName: string
+    accountBSB: string | null
+    accountNumber: string | null
+    balance: Decimal | null
+    currency: string
+    provider: string
+    providerRef: string | null
+    lastSynced: Date | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: BankConnectionCountAggregateOutputType | null
+    _avg: BankConnectionAvgAggregateOutputType | null
+    _sum: BankConnectionSumAggregateOutputType | null
+    _min: BankConnectionMinAggregateOutputType | null
+    _max: BankConnectionMaxAggregateOutputType | null
+  }
+
+  type GetBankConnectionGroupByPayload<T extends BankConnectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BankConnectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BankConnectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BankConnectionGroupByOutputType[P]>
+            : GetScalarType<T[P], BankConnectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BankConnectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    institution?: boolean
+    accountName?: boolean
+    accountBSB?: boolean
+    accountNumber?: boolean
+    balance?: boolean
+    currency?: boolean
+    provider?: boolean
+    providerRef?: boolean
+    lastSynced?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transactions?: boolean | BankConnection$transactionsArgs<ExtArgs>
+    _count?: boolean | BankConnectionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bankConnection"]>
+
+  export type BankConnectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    institution?: boolean
+    accountName?: boolean
+    accountBSB?: boolean
+    accountNumber?: boolean
+    balance?: boolean
+    currency?: boolean
+    provider?: boolean
+    providerRef?: boolean
+    lastSynced?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bankConnection"]>
+
+  export type BankConnectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    institution?: boolean
+    accountName?: boolean
+    accountBSB?: boolean
+    accountNumber?: boolean
+    balance?: boolean
+    currency?: boolean
+    provider?: boolean
+    providerRef?: boolean
+    lastSynced?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bankConnection"]>
+
+  export type BankConnectionSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    institution?: boolean
+    accountName?: boolean
+    accountBSB?: boolean
+    accountNumber?: boolean
+    balance?: boolean
+    currency?: boolean
+    provider?: boolean
+    providerRef?: boolean
+    lastSynced?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BankConnectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "institution" | "accountName" | "accountBSB" | "accountNumber" | "balance" | "currency" | "provider" | "providerRef" | "lastSynced" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["bankConnection"]>
+  export type BankConnectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transactions?: boolean | BankConnection$transactionsArgs<ExtArgs>
+    _count?: boolean | BankConnectionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BankConnectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BankConnectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $BankConnectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BankConnection"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      transactions: Prisma.$BankTransactionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      institution: string
+      accountName: string
+      accountBSB: string | null
+      accountNumber: string | null
+      balance: Prisma.Decimal | null
+      currency: string
+      provider: string
+      providerRef: string | null
+      lastSynced: Date | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["bankConnection"]>
+    composites: {}
+  }
+
+  type BankConnectionGetPayload<S extends boolean | null | undefined | BankConnectionDefaultArgs> = $Result.GetResult<Prisma.$BankConnectionPayload, S>
+
+  type BankConnectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BankConnectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BankConnectionCountAggregateInputType | true
+    }
+
+  export interface BankConnectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BankConnection'], meta: { name: 'BankConnection' } }
+    /**
+     * Find zero or one BankConnection that matches the filter.
+     * @param {BankConnectionFindUniqueArgs} args - Arguments to find a BankConnection
+     * @example
+     * // Get one BankConnection
+     * const bankConnection = await prisma.bankConnection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BankConnectionFindUniqueArgs>(args: SelectSubset<T, BankConnectionFindUniqueArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BankConnection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BankConnectionFindUniqueOrThrowArgs} args - Arguments to find a BankConnection
+     * @example
+     * // Get one BankConnection
+     * const bankConnection = await prisma.bankConnection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BankConnectionFindUniqueOrThrowArgs>(args: SelectSubset<T, BankConnectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BankConnection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankConnectionFindFirstArgs} args - Arguments to find a BankConnection
+     * @example
+     * // Get one BankConnection
+     * const bankConnection = await prisma.bankConnection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BankConnectionFindFirstArgs>(args?: SelectSubset<T, BankConnectionFindFirstArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BankConnection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankConnectionFindFirstOrThrowArgs} args - Arguments to find a BankConnection
+     * @example
+     * // Get one BankConnection
+     * const bankConnection = await prisma.bankConnection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BankConnectionFindFirstOrThrowArgs>(args?: SelectSubset<T, BankConnectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BankConnections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankConnectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BankConnections
+     * const bankConnections = await prisma.bankConnection.findMany()
+     * 
+     * // Get first 10 BankConnections
+     * const bankConnections = await prisma.bankConnection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bankConnectionWithIdOnly = await prisma.bankConnection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BankConnectionFindManyArgs>(args?: SelectSubset<T, BankConnectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BankConnection.
+     * @param {BankConnectionCreateArgs} args - Arguments to create a BankConnection.
+     * @example
+     * // Create one BankConnection
+     * const BankConnection = await prisma.bankConnection.create({
+     *   data: {
+     *     // ... data to create a BankConnection
+     *   }
+     * })
+     * 
+     */
+    create<T extends BankConnectionCreateArgs>(args: SelectSubset<T, BankConnectionCreateArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BankConnections.
+     * @param {BankConnectionCreateManyArgs} args - Arguments to create many BankConnections.
+     * @example
+     * // Create many BankConnections
+     * const bankConnection = await prisma.bankConnection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BankConnectionCreateManyArgs>(args?: SelectSubset<T, BankConnectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BankConnections and returns the data saved in the database.
+     * @param {BankConnectionCreateManyAndReturnArgs} args - Arguments to create many BankConnections.
+     * @example
+     * // Create many BankConnections
+     * const bankConnection = await prisma.bankConnection.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BankConnections and only return the `id`
+     * const bankConnectionWithIdOnly = await prisma.bankConnection.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BankConnectionCreateManyAndReturnArgs>(args?: SelectSubset<T, BankConnectionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BankConnection.
+     * @param {BankConnectionDeleteArgs} args - Arguments to delete one BankConnection.
+     * @example
+     * // Delete one BankConnection
+     * const BankConnection = await prisma.bankConnection.delete({
+     *   where: {
+     *     // ... filter to delete one BankConnection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BankConnectionDeleteArgs>(args: SelectSubset<T, BankConnectionDeleteArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BankConnection.
+     * @param {BankConnectionUpdateArgs} args - Arguments to update one BankConnection.
+     * @example
+     * // Update one BankConnection
+     * const bankConnection = await prisma.bankConnection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BankConnectionUpdateArgs>(args: SelectSubset<T, BankConnectionUpdateArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BankConnections.
+     * @param {BankConnectionDeleteManyArgs} args - Arguments to filter BankConnections to delete.
+     * @example
+     * // Delete a few BankConnections
+     * const { count } = await prisma.bankConnection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BankConnectionDeleteManyArgs>(args?: SelectSubset<T, BankConnectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BankConnections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankConnectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BankConnections
+     * const bankConnection = await prisma.bankConnection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BankConnectionUpdateManyArgs>(args: SelectSubset<T, BankConnectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BankConnections and returns the data updated in the database.
+     * @param {BankConnectionUpdateManyAndReturnArgs} args - Arguments to update many BankConnections.
+     * @example
+     * // Update many BankConnections
+     * const bankConnection = await prisma.bankConnection.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BankConnections and only return the `id`
+     * const bankConnectionWithIdOnly = await prisma.bankConnection.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BankConnectionUpdateManyAndReturnArgs>(args: SelectSubset<T, BankConnectionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BankConnection.
+     * @param {BankConnectionUpsertArgs} args - Arguments to update or create a BankConnection.
+     * @example
+     * // Update or create a BankConnection
+     * const bankConnection = await prisma.bankConnection.upsert({
+     *   create: {
+     *     // ... data to create a BankConnection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BankConnection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BankConnectionUpsertArgs>(args: SelectSubset<T, BankConnectionUpsertArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BankConnections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankConnectionCountArgs} args - Arguments to filter BankConnections to count.
+     * @example
+     * // Count the number of BankConnections
+     * const count = await prisma.bankConnection.count({
+     *   where: {
+     *     // ... the filter for the BankConnections we want to count
+     *   }
+     * })
+    **/
+    count<T extends BankConnectionCountArgs>(
+      args?: Subset<T, BankConnectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BankConnectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BankConnection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankConnectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BankConnectionAggregateArgs>(args: Subset<T, BankConnectionAggregateArgs>): Prisma.PrismaPromise<GetBankConnectionAggregateType<T>>
+
+    /**
+     * Group by BankConnection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankConnectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BankConnectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BankConnectionGroupByArgs['orderBy'] }
+        : { orderBy?: BankConnectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BankConnectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBankConnectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BankConnection model
+   */
+  readonly fields: BankConnectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BankConnection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BankConnectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transactions<T extends BankConnection$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, BankConnection$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BankConnection model
+   */
+  interface BankConnectionFieldRefs {
+    readonly id: FieldRef<"BankConnection", 'String'>
+    readonly userId: FieldRef<"BankConnection", 'String'>
+    readonly institution: FieldRef<"BankConnection", 'String'>
+    readonly accountName: FieldRef<"BankConnection", 'String'>
+    readonly accountBSB: FieldRef<"BankConnection", 'String'>
+    readonly accountNumber: FieldRef<"BankConnection", 'String'>
+    readonly balance: FieldRef<"BankConnection", 'Decimal'>
+    readonly currency: FieldRef<"BankConnection", 'String'>
+    readonly provider: FieldRef<"BankConnection", 'String'>
+    readonly providerRef: FieldRef<"BankConnection", 'String'>
+    readonly lastSynced: FieldRef<"BankConnection", 'DateTime'>
+    readonly status: FieldRef<"BankConnection", 'String'>
+    readonly createdAt: FieldRef<"BankConnection", 'DateTime'>
+    readonly updatedAt: FieldRef<"BankConnection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BankConnection findUnique
+   */
+  export type BankConnectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankConnection to fetch.
+     */
+    where: BankConnectionWhereUniqueInput
+  }
+
+  /**
+   * BankConnection findUniqueOrThrow
+   */
+  export type BankConnectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankConnection to fetch.
+     */
+    where: BankConnectionWhereUniqueInput
+  }
+
+  /**
+   * BankConnection findFirst
+   */
+  export type BankConnectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankConnection to fetch.
+     */
+    where?: BankConnectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankConnections to fetch.
+     */
+    orderBy?: BankConnectionOrderByWithRelationInput | BankConnectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BankConnections.
+     */
+    cursor?: BankConnectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankConnections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankConnections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BankConnections.
+     */
+    distinct?: BankConnectionScalarFieldEnum | BankConnectionScalarFieldEnum[]
+  }
+
+  /**
+   * BankConnection findFirstOrThrow
+   */
+  export type BankConnectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankConnection to fetch.
+     */
+    where?: BankConnectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankConnections to fetch.
+     */
+    orderBy?: BankConnectionOrderByWithRelationInput | BankConnectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BankConnections.
+     */
+    cursor?: BankConnectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankConnections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankConnections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BankConnections.
+     */
+    distinct?: BankConnectionScalarFieldEnum | BankConnectionScalarFieldEnum[]
+  }
+
+  /**
+   * BankConnection findMany
+   */
+  export type BankConnectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankConnections to fetch.
+     */
+    where?: BankConnectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankConnections to fetch.
+     */
+    orderBy?: BankConnectionOrderByWithRelationInput | BankConnectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BankConnections.
+     */
+    cursor?: BankConnectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankConnections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankConnections.
+     */
+    skip?: number
+    distinct?: BankConnectionScalarFieldEnum | BankConnectionScalarFieldEnum[]
+  }
+
+  /**
+   * BankConnection create
+   */
+  export type BankConnectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BankConnection.
+     */
+    data: XOR<BankConnectionCreateInput, BankConnectionUncheckedCreateInput>
+  }
+
+  /**
+   * BankConnection createMany
+   */
+  export type BankConnectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BankConnections.
+     */
+    data: BankConnectionCreateManyInput | BankConnectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BankConnection createManyAndReturn
+   */
+  export type BankConnectionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * The data used to create many BankConnections.
+     */
+    data: BankConnectionCreateManyInput | BankConnectionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BankConnection update
+   */
+  export type BankConnectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BankConnection.
+     */
+    data: XOR<BankConnectionUpdateInput, BankConnectionUncheckedUpdateInput>
+    /**
+     * Choose, which BankConnection to update.
+     */
+    where: BankConnectionWhereUniqueInput
+  }
+
+  /**
+   * BankConnection updateMany
+   */
+  export type BankConnectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BankConnections.
+     */
+    data: XOR<BankConnectionUpdateManyMutationInput, BankConnectionUncheckedUpdateManyInput>
+    /**
+     * Filter which BankConnections to update
+     */
+    where?: BankConnectionWhereInput
+    /**
+     * Limit how many BankConnections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BankConnection updateManyAndReturn
+   */
+  export type BankConnectionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * The data used to update BankConnections.
+     */
+    data: XOR<BankConnectionUpdateManyMutationInput, BankConnectionUncheckedUpdateManyInput>
+    /**
+     * Filter which BankConnections to update
+     */
+    where?: BankConnectionWhereInput
+    /**
+     * Limit how many BankConnections to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BankConnection upsert
+   */
+  export type BankConnectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BankConnection to update in case it exists.
+     */
+    where: BankConnectionWhereUniqueInput
+    /**
+     * In case the BankConnection found by the `where` argument doesn't exist, create a new BankConnection with this data.
+     */
+    create: XOR<BankConnectionCreateInput, BankConnectionUncheckedCreateInput>
+    /**
+     * In case the BankConnection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BankConnectionUpdateInput, BankConnectionUncheckedUpdateInput>
+  }
+
+  /**
+   * BankConnection delete
+   */
+  export type BankConnectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+    /**
+     * Filter which BankConnection to delete.
+     */
+    where: BankConnectionWhereUniqueInput
+  }
+
+  /**
+   * BankConnection deleteMany
+   */
+  export type BankConnectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BankConnections to delete
+     */
+    where?: BankConnectionWhereInput
+    /**
+     * Limit how many BankConnections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BankConnection.transactions
+   */
+  export type BankConnection$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    where?: BankTransactionWhereInput
+    orderBy?: BankTransactionOrderByWithRelationInput | BankTransactionOrderByWithRelationInput[]
+    cursor?: BankTransactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BankTransactionScalarFieldEnum | BankTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * BankConnection without action
+   */
+  export type BankConnectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankConnection
+     */
+    select?: BankConnectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankConnection
+     */
+    omit?: BankConnectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankConnectionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BankTransaction
+   */
+
+  export type AggregateBankTransaction = {
+    _count: BankTransactionCountAggregateOutputType | null
+    _avg: BankTransactionAvgAggregateOutputType | null
+    _sum: BankTransactionSumAggregateOutputType | null
+    _min: BankTransactionMinAggregateOutputType | null
+    _max: BankTransactionMaxAggregateOutputType | null
+  }
+
+  export type BankTransactionAvgAggregateOutputType = {
+    amount: Decimal | null
+    balance: Decimal | null
+    gstAmount: Decimal | null
+  }
+
+  export type BankTransactionSumAggregateOutputType = {
+    amount: Decimal | null
+    balance: Decimal | null
+    gstAmount: Decimal | null
+  }
+
+  export type BankTransactionMinAggregateOutputType = {
+    id: string | null
+    connectionId: string | null
+    date: Date | null
+    description: string | null
+    amount: Decimal | null
+    balance: Decimal | null
+    category: string | null
+    gstAmount: Decimal | null
+    gstInclusive: boolean | null
+    moneyRuleId: string | null
+    reference: string | null
+    reconciled: boolean | null
+    createdAt: Date | null
+  }
+
+  export type BankTransactionMaxAggregateOutputType = {
+    id: string | null
+    connectionId: string | null
+    date: Date | null
+    description: string | null
+    amount: Decimal | null
+    balance: Decimal | null
+    category: string | null
+    gstAmount: Decimal | null
+    gstInclusive: boolean | null
+    moneyRuleId: string | null
+    reference: string | null
+    reconciled: boolean | null
+    createdAt: Date | null
+  }
+
+  export type BankTransactionCountAggregateOutputType = {
+    id: number
+    connectionId: number
+    date: number
+    description: number
+    amount: number
+    balance: number
+    category: number
+    gstAmount: number
+    gstInclusive: number
+    moneyRuleId: number
+    reference: number
+    reconciled: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type BankTransactionAvgAggregateInputType = {
+    amount?: true
+    balance?: true
+    gstAmount?: true
+  }
+
+  export type BankTransactionSumAggregateInputType = {
+    amount?: true
+    balance?: true
+    gstAmount?: true
+  }
+
+  export type BankTransactionMinAggregateInputType = {
+    id?: true
+    connectionId?: true
+    date?: true
+    description?: true
+    amount?: true
+    balance?: true
+    category?: true
+    gstAmount?: true
+    gstInclusive?: true
+    moneyRuleId?: true
+    reference?: true
+    reconciled?: true
+    createdAt?: true
+  }
+
+  export type BankTransactionMaxAggregateInputType = {
+    id?: true
+    connectionId?: true
+    date?: true
+    description?: true
+    amount?: true
+    balance?: true
+    category?: true
+    gstAmount?: true
+    gstInclusive?: true
+    moneyRuleId?: true
+    reference?: true
+    reconciled?: true
+    createdAt?: true
+  }
+
+  export type BankTransactionCountAggregateInputType = {
+    id?: true
+    connectionId?: true
+    date?: true
+    description?: true
+    amount?: true
+    balance?: true
+    category?: true
+    gstAmount?: true
+    gstInclusive?: true
+    moneyRuleId?: true
+    reference?: true
+    reconciled?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type BankTransactionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BankTransaction to aggregate.
+     */
+    where?: BankTransactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankTransactions to fetch.
+     */
+    orderBy?: BankTransactionOrderByWithRelationInput | BankTransactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BankTransactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankTransactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankTransactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BankTransactions
+    **/
+    _count?: true | BankTransactionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BankTransactionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BankTransactionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BankTransactionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BankTransactionMaxAggregateInputType
+  }
+
+  export type GetBankTransactionAggregateType<T extends BankTransactionAggregateArgs> = {
+        [P in keyof T & keyof AggregateBankTransaction]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBankTransaction[P]>
+      : GetScalarType<T[P], AggregateBankTransaction[P]>
+  }
+
+
+
+
+  export type BankTransactionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BankTransactionWhereInput
+    orderBy?: BankTransactionOrderByWithAggregationInput | BankTransactionOrderByWithAggregationInput[]
+    by: BankTransactionScalarFieldEnum[] | BankTransactionScalarFieldEnum
+    having?: BankTransactionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BankTransactionCountAggregateInputType | true
+    _avg?: BankTransactionAvgAggregateInputType
+    _sum?: BankTransactionSumAggregateInputType
+    _min?: BankTransactionMinAggregateInputType
+    _max?: BankTransactionMaxAggregateInputType
+  }
+
+  export type BankTransactionGroupByOutputType = {
+    id: string
+    connectionId: string
+    date: Date
+    description: string
+    amount: Decimal
+    balance: Decimal | null
+    category: string | null
+    gstAmount: Decimal | null
+    gstInclusive: boolean
+    moneyRuleId: string | null
+    reference: string | null
+    reconciled: boolean
+    createdAt: Date
+    _count: BankTransactionCountAggregateOutputType | null
+    _avg: BankTransactionAvgAggregateOutputType | null
+    _sum: BankTransactionSumAggregateOutputType | null
+    _min: BankTransactionMinAggregateOutputType | null
+    _max: BankTransactionMaxAggregateOutputType | null
+  }
+
+  type GetBankTransactionGroupByPayload<T extends BankTransactionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BankTransactionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BankTransactionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BankTransactionGroupByOutputType[P]>
+            : GetScalarType<T[P], BankTransactionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BankTransactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    connectionId?: boolean
+    date?: boolean
+    description?: boolean
+    amount?: boolean
+    balance?: boolean
+    category?: boolean
+    gstAmount?: boolean
+    gstInclusive?: boolean
+    moneyRuleId?: boolean
+    reference?: boolean
+    reconciled?: boolean
+    createdAt?: boolean
+    connection?: boolean | BankConnectionDefaultArgs<ExtArgs>
+    moneyRule?: boolean | BankTransaction$moneyRuleArgs<ExtArgs>
+  }, ExtArgs["result"]["bankTransaction"]>
+
+  export type BankTransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    connectionId?: boolean
+    date?: boolean
+    description?: boolean
+    amount?: boolean
+    balance?: boolean
+    category?: boolean
+    gstAmount?: boolean
+    gstInclusive?: boolean
+    moneyRuleId?: boolean
+    reference?: boolean
+    reconciled?: boolean
+    createdAt?: boolean
+    connection?: boolean | BankConnectionDefaultArgs<ExtArgs>
+    moneyRule?: boolean | BankTransaction$moneyRuleArgs<ExtArgs>
+  }, ExtArgs["result"]["bankTransaction"]>
+
+  export type BankTransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    connectionId?: boolean
+    date?: boolean
+    description?: boolean
+    amount?: boolean
+    balance?: boolean
+    category?: boolean
+    gstAmount?: boolean
+    gstInclusive?: boolean
+    moneyRuleId?: boolean
+    reference?: boolean
+    reconciled?: boolean
+    createdAt?: boolean
+    connection?: boolean | BankConnectionDefaultArgs<ExtArgs>
+    moneyRule?: boolean | BankTransaction$moneyRuleArgs<ExtArgs>
+  }, ExtArgs["result"]["bankTransaction"]>
+
+  export type BankTransactionSelectScalar = {
+    id?: boolean
+    connectionId?: boolean
+    date?: boolean
+    description?: boolean
+    amount?: boolean
+    balance?: boolean
+    category?: boolean
+    gstAmount?: boolean
+    gstInclusive?: boolean
+    moneyRuleId?: boolean
+    reference?: boolean
+    reconciled?: boolean
+    createdAt?: boolean
+  }
+
+  export type BankTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "connectionId" | "date" | "description" | "amount" | "balance" | "category" | "gstAmount" | "gstInclusive" | "moneyRuleId" | "reference" | "reconciled" | "createdAt", ExtArgs["result"]["bankTransaction"]>
+  export type BankTransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    connection?: boolean | BankConnectionDefaultArgs<ExtArgs>
+    moneyRule?: boolean | BankTransaction$moneyRuleArgs<ExtArgs>
+  }
+  export type BankTransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    connection?: boolean | BankConnectionDefaultArgs<ExtArgs>
+    moneyRule?: boolean | BankTransaction$moneyRuleArgs<ExtArgs>
+  }
+  export type BankTransactionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    connection?: boolean | BankConnectionDefaultArgs<ExtArgs>
+    moneyRule?: boolean | BankTransaction$moneyRuleArgs<ExtArgs>
+  }
+
+  export type $BankTransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BankTransaction"
+    objects: {
+      connection: Prisma.$BankConnectionPayload<ExtArgs>
+      moneyRule: Prisma.$MoneyRulePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      connectionId: string
+      date: Date
+      description: string
+      amount: Prisma.Decimal
+      balance: Prisma.Decimal | null
+      category: string | null
+      gstAmount: Prisma.Decimal | null
+      gstInclusive: boolean
+      moneyRuleId: string | null
+      reference: string | null
+      reconciled: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["bankTransaction"]>
+    composites: {}
+  }
+
+  type BankTransactionGetPayload<S extends boolean | null | undefined | BankTransactionDefaultArgs> = $Result.GetResult<Prisma.$BankTransactionPayload, S>
+
+  type BankTransactionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BankTransactionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BankTransactionCountAggregateInputType | true
+    }
+
+  export interface BankTransactionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BankTransaction'], meta: { name: 'BankTransaction' } }
+    /**
+     * Find zero or one BankTransaction that matches the filter.
+     * @param {BankTransactionFindUniqueArgs} args - Arguments to find a BankTransaction
+     * @example
+     * // Get one BankTransaction
+     * const bankTransaction = await prisma.bankTransaction.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BankTransactionFindUniqueArgs>(args: SelectSubset<T, BankTransactionFindUniqueArgs<ExtArgs>>): Prisma__BankTransactionClient<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BankTransaction that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BankTransactionFindUniqueOrThrowArgs} args - Arguments to find a BankTransaction
+     * @example
+     * // Get one BankTransaction
+     * const bankTransaction = await prisma.bankTransaction.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BankTransactionFindUniqueOrThrowArgs>(args: SelectSubset<T, BankTransactionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BankTransactionClient<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BankTransaction that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankTransactionFindFirstArgs} args - Arguments to find a BankTransaction
+     * @example
+     * // Get one BankTransaction
+     * const bankTransaction = await prisma.bankTransaction.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BankTransactionFindFirstArgs>(args?: SelectSubset<T, BankTransactionFindFirstArgs<ExtArgs>>): Prisma__BankTransactionClient<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BankTransaction that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankTransactionFindFirstOrThrowArgs} args - Arguments to find a BankTransaction
+     * @example
+     * // Get one BankTransaction
+     * const bankTransaction = await prisma.bankTransaction.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BankTransactionFindFirstOrThrowArgs>(args?: SelectSubset<T, BankTransactionFindFirstOrThrowArgs<ExtArgs>>): Prisma__BankTransactionClient<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BankTransactions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankTransactionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BankTransactions
+     * const bankTransactions = await prisma.bankTransaction.findMany()
+     * 
+     * // Get first 10 BankTransactions
+     * const bankTransactions = await prisma.bankTransaction.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bankTransactionWithIdOnly = await prisma.bankTransaction.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BankTransactionFindManyArgs>(args?: SelectSubset<T, BankTransactionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BankTransaction.
+     * @param {BankTransactionCreateArgs} args - Arguments to create a BankTransaction.
+     * @example
+     * // Create one BankTransaction
+     * const BankTransaction = await prisma.bankTransaction.create({
+     *   data: {
+     *     // ... data to create a BankTransaction
+     *   }
+     * })
+     * 
+     */
+    create<T extends BankTransactionCreateArgs>(args: SelectSubset<T, BankTransactionCreateArgs<ExtArgs>>): Prisma__BankTransactionClient<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BankTransactions.
+     * @param {BankTransactionCreateManyArgs} args - Arguments to create many BankTransactions.
+     * @example
+     * // Create many BankTransactions
+     * const bankTransaction = await prisma.bankTransaction.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BankTransactionCreateManyArgs>(args?: SelectSubset<T, BankTransactionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BankTransactions and returns the data saved in the database.
+     * @param {BankTransactionCreateManyAndReturnArgs} args - Arguments to create many BankTransactions.
+     * @example
+     * // Create many BankTransactions
+     * const bankTransaction = await prisma.bankTransaction.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BankTransactions and only return the `id`
+     * const bankTransactionWithIdOnly = await prisma.bankTransaction.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BankTransactionCreateManyAndReturnArgs>(args?: SelectSubset<T, BankTransactionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BankTransaction.
+     * @param {BankTransactionDeleteArgs} args - Arguments to delete one BankTransaction.
+     * @example
+     * // Delete one BankTransaction
+     * const BankTransaction = await prisma.bankTransaction.delete({
+     *   where: {
+     *     // ... filter to delete one BankTransaction
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BankTransactionDeleteArgs>(args: SelectSubset<T, BankTransactionDeleteArgs<ExtArgs>>): Prisma__BankTransactionClient<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BankTransaction.
+     * @param {BankTransactionUpdateArgs} args - Arguments to update one BankTransaction.
+     * @example
+     * // Update one BankTransaction
+     * const bankTransaction = await prisma.bankTransaction.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BankTransactionUpdateArgs>(args: SelectSubset<T, BankTransactionUpdateArgs<ExtArgs>>): Prisma__BankTransactionClient<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BankTransactions.
+     * @param {BankTransactionDeleteManyArgs} args - Arguments to filter BankTransactions to delete.
+     * @example
+     * // Delete a few BankTransactions
+     * const { count } = await prisma.bankTransaction.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BankTransactionDeleteManyArgs>(args?: SelectSubset<T, BankTransactionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BankTransactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankTransactionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BankTransactions
+     * const bankTransaction = await prisma.bankTransaction.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BankTransactionUpdateManyArgs>(args: SelectSubset<T, BankTransactionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BankTransactions and returns the data updated in the database.
+     * @param {BankTransactionUpdateManyAndReturnArgs} args - Arguments to update many BankTransactions.
+     * @example
+     * // Update many BankTransactions
+     * const bankTransaction = await prisma.bankTransaction.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BankTransactions and only return the `id`
+     * const bankTransactionWithIdOnly = await prisma.bankTransaction.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BankTransactionUpdateManyAndReturnArgs>(args: SelectSubset<T, BankTransactionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BankTransaction.
+     * @param {BankTransactionUpsertArgs} args - Arguments to update or create a BankTransaction.
+     * @example
+     * // Update or create a BankTransaction
+     * const bankTransaction = await prisma.bankTransaction.upsert({
+     *   create: {
+     *     // ... data to create a BankTransaction
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BankTransaction we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BankTransactionUpsertArgs>(args: SelectSubset<T, BankTransactionUpsertArgs<ExtArgs>>): Prisma__BankTransactionClient<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BankTransactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankTransactionCountArgs} args - Arguments to filter BankTransactions to count.
+     * @example
+     * // Count the number of BankTransactions
+     * const count = await prisma.bankTransaction.count({
+     *   where: {
+     *     // ... the filter for the BankTransactions we want to count
+     *   }
+     * })
+    **/
+    count<T extends BankTransactionCountArgs>(
+      args?: Subset<T, BankTransactionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BankTransactionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BankTransaction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankTransactionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BankTransactionAggregateArgs>(args: Subset<T, BankTransactionAggregateArgs>): Prisma.PrismaPromise<GetBankTransactionAggregateType<T>>
+
+    /**
+     * Group by BankTransaction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankTransactionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BankTransactionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BankTransactionGroupByArgs['orderBy'] }
+        : { orderBy?: BankTransactionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BankTransactionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBankTransactionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BankTransaction model
+   */
+  readonly fields: BankTransactionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BankTransaction.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BankTransactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    connection<T extends BankConnectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BankConnectionDefaultArgs<ExtArgs>>): Prisma__BankConnectionClient<$Result.GetResult<Prisma.$BankConnectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    moneyRule<T extends BankTransaction$moneyRuleArgs<ExtArgs> = {}>(args?: Subset<T, BankTransaction$moneyRuleArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BankTransaction model
+   */
+  interface BankTransactionFieldRefs {
+    readonly id: FieldRef<"BankTransaction", 'String'>
+    readonly connectionId: FieldRef<"BankTransaction", 'String'>
+    readonly date: FieldRef<"BankTransaction", 'DateTime'>
+    readonly description: FieldRef<"BankTransaction", 'String'>
+    readonly amount: FieldRef<"BankTransaction", 'Decimal'>
+    readonly balance: FieldRef<"BankTransaction", 'Decimal'>
+    readonly category: FieldRef<"BankTransaction", 'String'>
+    readonly gstAmount: FieldRef<"BankTransaction", 'Decimal'>
+    readonly gstInclusive: FieldRef<"BankTransaction", 'Boolean'>
+    readonly moneyRuleId: FieldRef<"BankTransaction", 'String'>
+    readonly reference: FieldRef<"BankTransaction", 'String'>
+    readonly reconciled: FieldRef<"BankTransaction", 'Boolean'>
+    readonly createdAt: FieldRef<"BankTransaction", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BankTransaction findUnique
+   */
+  export type BankTransactionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankTransaction to fetch.
+     */
+    where: BankTransactionWhereUniqueInput
+  }
+
+  /**
+   * BankTransaction findUniqueOrThrow
+   */
+  export type BankTransactionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankTransaction to fetch.
+     */
+    where: BankTransactionWhereUniqueInput
+  }
+
+  /**
+   * BankTransaction findFirst
+   */
+  export type BankTransactionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankTransaction to fetch.
+     */
+    where?: BankTransactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankTransactions to fetch.
+     */
+    orderBy?: BankTransactionOrderByWithRelationInput | BankTransactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BankTransactions.
+     */
+    cursor?: BankTransactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankTransactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankTransactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BankTransactions.
+     */
+    distinct?: BankTransactionScalarFieldEnum | BankTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * BankTransaction findFirstOrThrow
+   */
+  export type BankTransactionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankTransaction to fetch.
+     */
+    where?: BankTransactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankTransactions to fetch.
+     */
+    orderBy?: BankTransactionOrderByWithRelationInput | BankTransactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BankTransactions.
+     */
+    cursor?: BankTransactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankTransactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankTransactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BankTransactions.
+     */
+    distinct?: BankTransactionScalarFieldEnum | BankTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * BankTransaction findMany
+   */
+  export type BankTransactionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * Filter, which BankTransactions to fetch.
+     */
+    where?: BankTransactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BankTransactions to fetch.
+     */
+    orderBy?: BankTransactionOrderByWithRelationInput | BankTransactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BankTransactions.
+     */
+    cursor?: BankTransactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BankTransactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BankTransactions.
+     */
+    skip?: number
+    distinct?: BankTransactionScalarFieldEnum | BankTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * BankTransaction create
+   */
+  export type BankTransactionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BankTransaction.
+     */
+    data: XOR<BankTransactionCreateInput, BankTransactionUncheckedCreateInput>
+  }
+
+  /**
+   * BankTransaction createMany
+   */
+  export type BankTransactionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BankTransactions.
+     */
+    data: BankTransactionCreateManyInput | BankTransactionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BankTransaction createManyAndReturn
+   */
+  export type BankTransactionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * The data used to create many BankTransactions.
+     */
+    data: BankTransactionCreateManyInput | BankTransactionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BankTransaction update
+   */
+  export type BankTransactionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BankTransaction.
+     */
+    data: XOR<BankTransactionUpdateInput, BankTransactionUncheckedUpdateInput>
+    /**
+     * Choose, which BankTransaction to update.
+     */
+    where: BankTransactionWhereUniqueInput
+  }
+
+  /**
+   * BankTransaction updateMany
+   */
+  export type BankTransactionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BankTransactions.
+     */
+    data: XOR<BankTransactionUpdateManyMutationInput, BankTransactionUncheckedUpdateManyInput>
+    /**
+     * Filter which BankTransactions to update
+     */
+    where?: BankTransactionWhereInput
+    /**
+     * Limit how many BankTransactions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BankTransaction updateManyAndReturn
+   */
+  export type BankTransactionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * The data used to update BankTransactions.
+     */
+    data: XOR<BankTransactionUpdateManyMutationInput, BankTransactionUncheckedUpdateManyInput>
+    /**
+     * Filter which BankTransactions to update
+     */
+    where?: BankTransactionWhereInput
+    /**
+     * Limit how many BankTransactions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BankTransaction upsert
+   */
+  export type BankTransactionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BankTransaction to update in case it exists.
+     */
+    where: BankTransactionWhereUniqueInput
+    /**
+     * In case the BankTransaction found by the `where` argument doesn't exist, create a new BankTransaction with this data.
+     */
+    create: XOR<BankTransactionCreateInput, BankTransactionUncheckedCreateInput>
+    /**
+     * In case the BankTransaction was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BankTransactionUpdateInput, BankTransactionUncheckedUpdateInput>
+  }
+
+  /**
+   * BankTransaction delete
+   */
+  export type BankTransactionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    /**
+     * Filter which BankTransaction to delete.
+     */
+    where: BankTransactionWhereUniqueInput
+  }
+
+  /**
+   * BankTransaction deleteMany
+   */
+  export type BankTransactionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BankTransactions to delete
+     */
+    where?: BankTransactionWhereInput
+    /**
+     * Limit how many BankTransactions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BankTransaction.moneyRule
+   */
+  export type BankTransaction$moneyRuleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    where?: MoneyRuleWhereInput
+  }
+
+  /**
+   * BankTransaction without action
+   */
+  export type BankTransactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GSTReturn
+   */
+
+  export type AggregateGSTReturn = {
+    _count: GSTReturnCountAggregateOutputType | null
+    _avg: GSTReturnAvgAggregateOutputType | null
+    _sum: GSTReturnSumAggregateOutputType | null
+    _min: GSTReturnMinAggregateOutputType | null
+    _max: GSTReturnMaxAggregateOutputType | null
+  }
+
+  export type GSTReturnAvgAggregateOutputType = {
+    totalSales: Decimal | null
+    gstOnSales: Decimal | null
+    totalPurchases: Decimal | null
+    gstOnPurchases: Decimal | null
+    netGST: Decimal | null
+  }
+
+  export type GSTReturnSumAggregateOutputType = {
+    totalSales: Decimal | null
+    gstOnSales: Decimal | null
+    totalPurchases: Decimal | null
+    gstOnPurchases: Decimal | null
+    netGST: Decimal | null
+  }
+
+  export type GSTReturnMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    period: string | null
+    periodStart: Date | null
+    periodEnd: Date | null
+    totalSales: Decimal | null
+    gstOnSales: Decimal | null
+    totalPurchases: Decimal | null
+    gstOnPurchases: Decimal | null
+    netGST: Decimal | null
+    status: string | null
+    lodgedAt: Date | null
+    atoRef: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GSTReturnMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    period: string | null
+    periodStart: Date | null
+    periodEnd: Date | null
+    totalSales: Decimal | null
+    gstOnSales: Decimal | null
+    totalPurchases: Decimal | null
+    gstOnPurchases: Decimal | null
+    netGST: Decimal | null
+    status: string | null
+    lodgedAt: Date | null
+    atoRef: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GSTReturnCountAggregateOutputType = {
+    id: number
+    userId: number
+    period: number
+    periodStart: number
+    periodEnd: number
+    totalSales: number
+    gstOnSales: number
+    totalPurchases: number
+    gstOnPurchases: number
+    netGST: number
+    status: number
+    lodgedAt: number
+    atoRef: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type GSTReturnAvgAggregateInputType = {
+    totalSales?: true
+    gstOnSales?: true
+    totalPurchases?: true
+    gstOnPurchases?: true
+    netGST?: true
+  }
+
+  export type GSTReturnSumAggregateInputType = {
+    totalSales?: true
+    gstOnSales?: true
+    totalPurchases?: true
+    gstOnPurchases?: true
+    netGST?: true
+  }
+
+  export type GSTReturnMinAggregateInputType = {
+    id?: true
+    userId?: true
+    period?: true
+    periodStart?: true
+    periodEnd?: true
+    totalSales?: true
+    gstOnSales?: true
+    totalPurchases?: true
+    gstOnPurchases?: true
+    netGST?: true
+    status?: true
+    lodgedAt?: true
+    atoRef?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GSTReturnMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    period?: true
+    periodStart?: true
+    periodEnd?: true
+    totalSales?: true
+    gstOnSales?: true
+    totalPurchases?: true
+    gstOnPurchases?: true
+    netGST?: true
+    status?: true
+    lodgedAt?: true
+    atoRef?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GSTReturnCountAggregateInputType = {
+    id?: true
+    userId?: true
+    period?: true
+    periodStart?: true
+    periodEnd?: true
+    totalSales?: true
+    gstOnSales?: true
+    totalPurchases?: true
+    gstOnPurchases?: true
+    netGST?: true
+    status?: true
+    lodgedAt?: true
+    atoRef?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type GSTReturnAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GSTReturn to aggregate.
+     */
+    where?: GSTReturnWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GSTReturns to fetch.
+     */
+    orderBy?: GSTReturnOrderByWithRelationInput | GSTReturnOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GSTReturnWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GSTReturns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GSTReturns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GSTReturns
+    **/
+    _count?: true | GSTReturnCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GSTReturnAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GSTReturnSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GSTReturnMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GSTReturnMaxAggregateInputType
+  }
+
+  export type GetGSTReturnAggregateType<T extends GSTReturnAggregateArgs> = {
+        [P in keyof T & keyof AggregateGSTReturn]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGSTReturn[P]>
+      : GetScalarType<T[P], AggregateGSTReturn[P]>
+  }
+
+
+
+
+  export type GSTReturnGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GSTReturnWhereInput
+    orderBy?: GSTReturnOrderByWithAggregationInput | GSTReturnOrderByWithAggregationInput[]
+    by: GSTReturnScalarFieldEnum[] | GSTReturnScalarFieldEnum
+    having?: GSTReturnScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GSTReturnCountAggregateInputType | true
+    _avg?: GSTReturnAvgAggregateInputType
+    _sum?: GSTReturnSumAggregateInputType
+    _min?: GSTReturnMinAggregateInputType
+    _max?: GSTReturnMaxAggregateInputType
+  }
+
+  export type GSTReturnGroupByOutputType = {
+    id: string
+    userId: string
+    period: string
+    periodStart: Date
+    periodEnd: Date
+    totalSales: Decimal
+    gstOnSales: Decimal
+    totalPurchases: Decimal
+    gstOnPurchases: Decimal
+    netGST: Decimal
+    status: string
+    lodgedAt: Date | null
+    atoRef: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: GSTReturnCountAggregateOutputType | null
+    _avg: GSTReturnAvgAggregateOutputType | null
+    _sum: GSTReturnSumAggregateOutputType | null
+    _min: GSTReturnMinAggregateOutputType | null
+    _max: GSTReturnMaxAggregateOutputType | null
+  }
+
+  type GetGSTReturnGroupByPayload<T extends GSTReturnGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GSTReturnGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GSTReturnGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GSTReturnGroupByOutputType[P]>
+            : GetScalarType<T[P], GSTReturnGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GSTReturnSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    period?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    totalSales?: boolean
+    gstOnSales?: boolean
+    totalPurchases?: boolean
+    gstOnPurchases?: boolean
+    netGST?: boolean
+    status?: boolean
+    lodgedAt?: boolean
+    atoRef?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gSTReturn"]>
+
+  export type GSTReturnSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    period?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    totalSales?: boolean
+    gstOnSales?: boolean
+    totalPurchases?: boolean
+    gstOnPurchases?: boolean
+    netGST?: boolean
+    status?: boolean
+    lodgedAt?: boolean
+    atoRef?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gSTReturn"]>
+
+  export type GSTReturnSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    period?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    totalSales?: boolean
+    gstOnSales?: boolean
+    totalPurchases?: boolean
+    gstOnPurchases?: boolean
+    netGST?: boolean
+    status?: boolean
+    lodgedAt?: boolean
+    atoRef?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gSTReturn"]>
+
+  export type GSTReturnSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    period?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    totalSales?: boolean
+    gstOnSales?: boolean
+    totalPurchases?: boolean
+    gstOnPurchases?: boolean
+    netGST?: boolean
+    status?: boolean
+    lodgedAt?: boolean
+    atoRef?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type GSTReturnOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "period" | "periodStart" | "periodEnd" | "totalSales" | "gstOnSales" | "totalPurchases" | "gstOnPurchases" | "netGST" | "status" | "lodgedAt" | "atoRef" | "createdAt" | "updatedAt", ExtArgs["result"]["gSTReturn"]>
+  export type GSTReturnInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type GSTReturnIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type GSTReturnIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $GSTReturnPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GSTReturn"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      period: string
+      periodStart: Date
+      periodEnd: Date
+      totalSales: Prisma.Decimal
+      gstOnSales: Prisma.Decimal
+      totalPurchases: Prisma.Decimal
+      gstOnPurchases: Prisma.Decimal
+      netGST: Prisma.Decimal
+      status: string
+      lodgedAt: Date | null
+      atoRef: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["gSTReturn"]>
+    composites: {}
+  }
+
+  type GSTReturnGetPayload<S extends boolean | null | undefined | GSTReturnDefaultArgs> = $Result.GetResult<Prisma.$GSTReturnPayload, S>
+
+  type GSTReturnCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GSTReturnFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GSTReturnCountAggregateInputType | true
+    }
+
+  export interface GSTReturnDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GSTReturn'], meta: { name: 'GSTReturn' } }
+    /**
+     * Find zero or one GSTReturn that matches the filter.
+     * @param {GSTReturnFindUniqueArgs} args - Arguments to find a GSTReturn
+     * @example
+     * // Get one GSTReturn
+     * const gSTReturn = await prisma.gSTReturn.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GSTReturnFindUniqueArgs>(args: SelectSubset<T, GSTReturnFindUniqueArgs<ExtArgs>>): Prisma__GSTReturnClient<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GSTReturn that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GSTReturnFindUniqueOrThrowArgs} args - Arguments to find a GSTReturn
+     * @example
+     * // Get one GSTReturn
+     * const gSTReturn = await prisma.gSTReturn.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GSTReturnFindUniqueOrThrowArgs>(args: SelectSubset<T, GSTReturnFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GSTReturnClient<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GSTReturn that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GSTReturnFindFirstArgs} args - Arguments to find a GSTReturn
+     * @example
+     * // Get one GSTReturn
+     * const gSTReturn = await prisma.gSTReturn.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GSTReturnFindFirstArgs>(args?: SelectSubset<T, GSTReturnFindFirstArgs<ExtArgs>>): Prisma__GSTReturnClient<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GSTReturn that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GSTReturnFindFirstOrThrowArgs} args - Arguments to find a GSTReturn
+     * @example
+     * // Get one GSTReturn
+     * const gSTReturn = await prisma.gSTReturn.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GSTReturnFindFirstOrThrowArgs>(args?: SelectSubset<T, GSTReturnFindFirstOrThrowArgs<ExtArgs>>): Prisma__GSTReturnClient<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GSTReturns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GSTReturnFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GSTReturns
+     * const gSTReturns = await prisma.gSTReturn.findMany()
+     * 
+     * // Get first 10 GSTReturns
+     * const gSTReturns = await prisma.gSTReturn.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const gSTReturnWithIdOnly = await prisma.gSTReturn.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GSTReturnFindManyArgs>(args?: SelectSubset<T, GSTReturnFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GSTReturn.
+     * @param {GSTReturnCreateArgs} args - Arguments to create a GSTReturn.
+     * @example
+     * // Create one GSTReturn
+     * const GSTReturn = await prisma.gSTReturn.create({
+     *   data: {
+     *     // ... data to create a GSTReturn
+     *   }
+     * })
+     * 
+     */
+    create<T extends GSTReturnCreateArgs>(args: SelectSubset<T, GSTReturnCreateArgs<ExtArgs>>): Prisma__GSTReturnClient<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GSTReturns.
+     * @param {GSTReturnCreateManyArgs} args - Arguments to create many GSTReturns.
+     * @example
+     * // Create many GSTReturns
+     * const gSTReturn = await prisma.gSTReturn.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GSTReturnCreateManyArgs>(args?: SelectSubset<T, GSTReturnCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GSTReturns and returns the data saved in the database.
+     * @param {GSTReturnCreateManyAndReturnArgs} args - Arguments to create many GSTReturns.
+     * @example
+     * // Create many GSTReturns
+     * const gSTReturn = await prisma.gSTReturn.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GSTReturns and only return the `id`
+     * const gSTReturnWithIdOnly = await prisma.gSTReturn.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GSTReturnCreateManyAndReturnArgs>(args?: SelectSubset<T, GSTReturnCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GSTReturn.
+     * @param {GSTReturnDeleteArgs} args - Arguments to delete one GSTReturn.
+     * @example
+     * // Delete one GSTReturn
+     * const GSTReturn = await prisma.gSTReturn.delete({
+     *   where: {
+     *     // ... filter to delete one GSTReturn
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GSTReturnDeleteArgs>(args: SelectSubset<T, GSTReturnDeleteArgs<ExtArgs>>): Prisma__GSTReturnClient<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GSTReturn.
+     * @param {GSTReturnUpdateArgs} args - Arguments to update one GSTReturn.
+     * @example
+     * // Update one GSTReturn
+     * const gSTReturn = await prisma.gSTReturn.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GSTReturnUpdateArgs>(args: SelectSubset<T, GSTReturnUpdateArgs<ExtArgs>>): Prisma__GSTReturnClient<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GSTReturns.
+     * @param {GSTReturnDeleteManyArgs} args - Arguments to filter GSTReturns to delete.
+     * @example
+     * // Delete a few GSTReturns
+     * const { count } = await prisma.gSTReturn.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GSTReturnDeleteManyArgs>(args?: SelectSubset<T, GSTReturnDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GSTReturns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GSTReturnUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GSTReturns
+     * const gSTReturn = await prisma.gSTReturn.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GSTReturnUpdateManyArgs>(args: SelectSubset<T, GSTReturnUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GSTReturns and returns the data updated in the database.
+     * @param {GSTReturnUpdateManyAndReturnArgs} args - Arguments to update many GSTReturns.
+     * @example
+     * // Update many GSTReturns
+     * const gSTReturn = await prisma.gSTReturn.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GSTReturns and only return the `id`
+     * const gSTReturnWithIdOnly = await prisma.gSTReturn.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GSTReturnUpdateManyAndReturnArgs>(args: SelectSubset<T, GSTReturnUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GSTReturn.
+     * @param {GSTReturnUpsertArgs} args - Arguments to update or create a GSTReturn.
+     * @example
+     * // Update or create a GSTReturn
+     * const gSTReturn = await prisma.gSTReturn.upsert({
+     *   create: {
+     *     // ... data to create a GSTReturn
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GSTReturn we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GSTReturnUpsertArgs>(args: SelectSubset<T, GSTReturnUpsertArgs<ExtArgs>>): Prisma__GSTReturnClient<$Result.GetResult<Prisma.$GSTReturnPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GSTReturns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GSTReturnCountArgs} args - Arguments to filter GSTReturns to count.
+     * @example
+     * // Count the number of GSTReturns
+     * const count = await prisma.gSTReturn.count({
+     *   where: {
+     *     // ... the filter for the GSTReturns we want to count
+     *   }
+     * })
+    **/
+    count<T extends GSTReturnCountArgs>(
+      args?: Subset<T, GSTReturnCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GSTReturnCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GSTReturn.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GSTReturnAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GSTReturnAggregateArgs>(args: Subset<T, GSTReturnAggregateArgs>): Prisma.PrismaPromise<GetGSTReturnAggregateType<T>>
+
+    /**
+     * Group by GSTReturn.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GSTReturnGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GSTReturnGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GSTReturnGroupByArgs['orderBy'] }
+        : { orderBy?: GSTReturnGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GSTReturnGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGSTReturnGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GSTReturn model
+   */
+  readonly fields: GSTReturnFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GSTReturn.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GSTReturnClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GSTReturn model
+   */
+  interface GSTReturnFieldRefs {
+    readonly id: FieldRef<"GSTReturn", 'String'>
+    readonly userId: FieldRef<"GSTReturn", 'String'>
+    readonly period: FieldRef<"GSTReturn", 'String'>
+    readonly periodStart: FieldRef<"GSTReturn", 'DateTime'>
+    readonly periodEnd: FieldRef<"GSTReturn", 'DateTime'>
+    readonly totalSales: FieldRef<"GSTReturn", 'Decimal'>
+    readonly gstOnSales: FieldRef<"GSTReturn", 'Decimal'>
+    readonly totalPurchases: FieldRef<"GSTReturn", 'Decimal'>
+    readonly gstOnPurchases: FieldRef<"GSTReturn", 'Decimal'>
+    readonly netGST: FieldRef<"GSTReturn", 'Decimal'>
+    readonly status: FieldRef<"GSTReturn", 'String'>
+    readonly lodgedAt: FieldRef<"GSTReturn", 'DateTime'>
+    readonly atoRef: FieldRef<"GSTReturn", 'String'>
+    readonly createdAt: FieldRef<"GSTReturn", 'DateTime'>
+    readonly updatedAt: FieldRef<"GSTReturn", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GSTReturn findUnique
+   */
+  export type GSTReturnFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * Filter, which GSTReturn to fetch.
+     */
+    where: GSTReturnWhereUniqueInput
+  }
+
+  /**
+   * GSTReturn findUniqueOrThrow
+   */
+  export type GSTReturnFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * Filter, which GSTReturn to fetch.
+     */
+    where: GSTReturnWhereUniqueInput
+  }
+
+  /**
+   * GSTReturn findFirst
+   */
+  export type GSTReturnFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * Filter, which GSTReturn to fetch.
+     */
+    where?: GSTReturnWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GSTReturns to fetch.
+     */
+    orderBy?: GSTReturnOrderByWithRelationInput | GSTReturnOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GSTReturns.
+     */
+    cursor?: GSTReturnWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GSTReturns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GSTReturns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GSTReturns.
+     */
+    distinct?: GSTReturnScalarFieldEnum | GSTReturnScalarFieldEnum[]
+  }
+
+  /**
+   * GSTReturn findFirstOrThrow
+   */
+  export type GSTReturnFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * Filter, which GSTReturn to fetch.
+     */
+    where?: GSTReturnWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GSTReturns to fetch.
+     */
+    orderBy?: GSTReturnOrderByWithRelationInput | GSTReturnOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GSTReturns.
+     */
+    cursor?: GSTReturnWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GSTReturns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GSTReturns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GSTReturns.
+     */
+    distinct?: GSTReturnScalarFieldEnum | GSTReturnScalarFieldEnum[]
+  }
+
+  /**
+   * GSTReturn findMany
+   */
+  export type GSTReturnFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * Filter, which GSTReturns to fetch.
+     */
+    where?: GSTReturnWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GSTReturns to fetch.
+     */
+    orderBy?: GSTReturnOrderByWithRelationInput | GSTReturnOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GSTReturns.
+     */
+    cursor?: GSTReturnWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GSTReturns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GSTReturns.
+     */
+    skip?: number
+    distinct?: GSTReturnScalarFieldEnum | GSTReturnScalarFieldEnum[]
+  }
+
+  /**
+   * GSTReturn create
+   */
+  export type GSTReturnCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GSTReturn.
+     */
+    data: XOR<GSTReturnCreateInput, GSTReturnUncheckedCreateInput>
+  }
+
+  /**
+   * GSTReturn createMany
+   */
+  export type GSTReturnCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GSTReturns.
+     */
+    data: GSTReturnCreateManyInput | GSTReturnCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GSTReturn createManyAndReturn
+   */
+  export type GSTReturnCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * The data used to create many GSTReturns.
+     */
+    data: GSTReturnCreateManyInput | GSTReturnCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GSTReturn update
+   */
+  export type GSTReturnUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GSTReturn.
+     */
+    data: XOR<GSTReturnUpdateInput, GSTReturnUncheckedUpdateInput>
+    /**
+     * Choose, which GSTReturn to update.
+     */
+    where: GSTReturnWhereUniqueInput
+  }
+
+  /**
+   * GSTReturn updateMany
+   */
+  export type GSTReturnUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GSTReturns.
+     */
+    data: XOR<GSTReturnUpdateManyMutationInput, GSTReturnUncheckedUpdateManyInput>
+    /**
+     * Filter which GSTReturns to update
+     */
+    where?: GSTReturnWhereInput
+    /**
+     * Limit how many GSTReturns to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GSTReturn updateManyAndReturn
+   */
+  export type GSTReturnUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * The data used to update GSTReturns.
+     */
+    data: XOR<GSTReturnUpdateManyMutationInput, GSTReturnUncheckedUpdateManyInput>
+    /**
+     * Filter which GSTReturns to update
+     */
+    where?: GSTReturnWhereInput
+    /**
+     * Limit how many GSTReturns to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GSTReturn upsert
+   */
+  export type GSTReturnUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GSTReturn to update in case it exists.
+     */
+    where: GSTReturnWhereUniqueInput
+    /**
+     * In case the GSTReturn found by the `where` argument doesn't exist, create a new GSTReturn with this data.
+     */
+    create: XOR<GSTReturnCreateInput, GSTReturnUncheckedCreateInput>
+    /**
+     * In case the GSTReturn was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GSTReturnUpdateInput, GSTReturnUncheckedUpdateInput>
+  }
+
+  /**
+   * GSTReturn delete
+   */
+  export type GSTReturnDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+    /**
+     * Filter which GSTReturn to delete.
+     */
+    where: GSTReturnWhereUniqueInput
+  }
+
+  /**
+   * GSTReturn deleteMany
+   */
+  export type GSTReturnDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GSTReturns to delete
+     */
+    where?: GSTReturnWhereInput
+    /**
+     * Limit how many GSTReturns to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GSTReturn without action
+   */
+  export type GSTReturnDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GSTReturn
+     */
+    select?: GSTReturnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GSTReturn
+     */
+    omit?: GSTReturnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GSTReturnInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MoneyRule
+   */
+
+  export type AggregateMoneyRule = {
+    _count: MoneyRuleCountAggregateOutputType | null
+    _avg: MoneyRuleAvgAggregateOutputType | null
+    _sum: MoneyRuleSumAggregateOutputType | null
+    _min: MoneyRuleMinAggregateOutputType | null
+    _max: MoneyRuleMaxAggregateOutputType | null
+  }
+
+  export type MoneyRuleAvgAggregateOutputType = {
+    percentage: Decimal | null
+    monthlyTarget: Decimal | null
+    sortOrder: number | null
+  }
+
+  export type MoneyRuleSumAggregateOutputType = {
+    percentage: Decimal | null
+    monthlyTarget: Decimal | null
+    sortOrder: number | null
+  }
+
+  export type MoneyRuleMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    name: string | null
+    percentage: Decimal | null
+    color: string | null
+    icon: string | null
+    monthlyTarget: Decimal | null
+    sortOrder: number | null
+    createdAt: Date | null
+  }
+
+  export type MoneyRuleMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    name: string | null
+    percentage: Decimal | null
+    color: string | null
+    icon: string | null
+    monthlyTarget: Decimal | null
+    sortOrder: number | null
+    createdAt: Date | null
+  }
+
+  export type MoneyRuleCountAggregateOutputType = {
+    id: number
+    userId: number
+    name: number
+    percentage: number
+    color: number
+    icon: number
+    categories: number
+    monthlyTarget: number
+    sortOrder: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MoneyRuleAvgAggregateInputType = {
+    percentage?: true
+    monthlyTarget?: true
+    sortOrder?: true
+  }
+
+  export type MoneyRuleSumAggregateInputType = {
+    percentage?: true
+    monthlyTarget?: true
+    sortOrder?: true
+  }
+
+  export type MoneyRuleMinAggregateInputType = {
+    id?: true
+    userId?: true
+    name?: true
+    percentage?: true
+    color?: true
+    icon?: true
+    monthlyTarget?: true
+    sortOrder?: true
+    createdAt?: true
+  }
+
+  export type MoneyRuleMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    name?: true
+    percentage?: true
+    color?: true
+    icon?: true
+    monthlyTarget?: true
+    sortOrder?: true
+    createdAt?: true
+  }
+
+  export type MoneyRuleCountAggregateInputType = {
+    id?: true
+    userId?: true
+    name?: true
+    percentage?: true
+    color?: true
+    icon?: true
+    categories?: true
+    monthlyTarget?: true
+    sortOrder?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MoneyRuleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MoneyRule to aggregate.
+     */
+    where?: MoneyRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MoneyRules to fetch.
+     */
+    orderBy?: MoneyRuleOrderByWithRelationInput | MoneyRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MoneyRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MoneyRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MoneyRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MoneyRules
+    **/
+    _count?: true | MoneyRuleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MoneyRuleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MoneyRuleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MoneyRuleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MoneyRuleMaxAggregateInputType
+  }
+
+  export type GetMoneyRuleAggregateType<T extends MoneyRuleAggregateArgs> = {
+        [P in keyof T & keyof AggregateMoneyRule]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMoneyRule[P]>
+      : GetScalarType<T[P], AggregateMoneyRule[P]>
+  }
+
+
+
+
+  export type MoneyRuleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MoneyRuleWhereInput
+    orderBy?: MoneyRuleOrderByWithAggregationInput | MoneyRuleOrderByWithAggregationInput[]
+    by: MoneyRuleScalarFieldEnum[] | MoneyRuleScalarFieldEnum
+    having?: MoneyRuleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MoneyRuleCountAggregateInputType | true
+    _avg?: MoneyRuleAvgAggregateInputType
+    _sum?: MoneyRuleSumAggregateInputType
+    _min?: MoneyRuleMinAggregateInputType
+    _max?: MoneyRuleMaxAggregateInputType
+  }
+
+  export type MoneyRuleGroupByOutputType = {
+    id: string
+    userId: string
+    name: string
+    percentage: Decimal
+    color: string
+    icon: string | null
+    categories: string[]
+    monthlyTarget: Decimal | null
+    sortOrder: number
+    createdAt: Date
+    _count: MoneyRuleCountAggregateOutputType | null
+    _avg: MoneyRuleAvgAggregateOutputType | null
+    _sum: MoneyRuleSumAggregateOutputType | null
+    _min: MoneyRuleMinAggregateOutputType | null
+    _max: MoneyRuleMaxAggregateOutputType | null
+  }
+
+  type GetMoneyRuleGroupByPayload<T extends MoneyRuleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MoneyRuleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MoneyRuleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MoneyRuleGroupByOutputType[P]>
+            : GetScalarType<T[P], MoneyRuleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MoneyRuleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    name?: boolean
+    percentage?: boolean
+    color?: boolean
+    icon?: boolean
+    categories?: boolean
+    monthlyTarget?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transactions?: boolean | MoneyRule$transactionsArgs<ExtArgs>
+    _count?: boolean | MoneyRuleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["moneyRule"]>
+
+  export type MoneyRuleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    name?: boolean
+    percentage?: boolean
+    color?: boolean
+    icon?: boolean
+    categories?: boolean
+    monthlyTarget?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["moneyRule"]>
+
+  export type MoneyRuleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    name?: boolean
+    percentage?: boolean
+    color?: boolean
+    icon?: boolean
+    categories?: boolean
+    monthlyTarget?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["moneyRule"]>
+
+  export type MoneyRuleSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    name?: boolean
+    percentage?: boolean
+    color?: boolean
+    icon?: boolean
+    categories?: boolean
+    monthlyTarget?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+  }
+
+  export type MoneyRuleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "percentage" | "color" | "icon" | "categories" | "monthlyTarget" | "sortOrder" | "createdAt", ExtArgs["result"]["moneyRule"]>
+  export type MoneyRuleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    transactions?: boolean | MoneyRule$transactionsArgs<ExtArgs>
+    _count?: boolean | MoneyRuleCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MoneyRuleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MoneyRuleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MoneyRulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MoneyRule"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      transactions: Prisma.$BankTransactionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      name: string
+      percentage: Prisma.Decimal
+      color: string
+      icon: string | null
+      categories: string[]
+      monthlyTarget: Prisma.Decimal | null
+      sortOrder: number
+      createdAt: Date
+    }, ExtArgs["result"]["moneyRule"]>
+    composites: {}
+  }
+
+  type MoneyRuleGetPayload<S extends boolean | null | undefined | MoneyRuleDefaultArgs> = $Result.GetResult<Prisma.$MoneyRulePayload, S>
+
+  type MoneyRuleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MoneyRuleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MoneyRuleCountAggregateInputType | true
+    }
+
+  export interface MoneyRuleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MoneyRule'], meta: { name: 'MoneyRule' } }
+    /**
+     * Find zero or one MoneyRule that matches the filter.
+     * @param {MoneyRuleFindUniqueArgs} args - Arguments to find a MoneyRule
+     * @example
+     * // Get one MoneyRule
+     * const moneyRule = await prisma.moneyRule.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MoneyRuleFindUniqueArgs>(args: SelectSubset<T, MoneyRuleFindUniqueArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MoneyRule that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MoneyRuleFindUniqueOrThrowArgs} args - Arguments to find a MoneyRule
+     * @example
+     * // Get one MoneyRule
+     * const moneyRule = await prisma.moneyRule.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MoneyRuleFindUniqueOrThrowArgs>(args: SelectSubset<T, MoneyRuleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MoneyRule that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MoneyRuleFindFirstArgs} args - Arguments to find a MoneyRule
+     * @example
+     * // Get one MoneyRule
+     * const moneyRule = await prisma.moneyRule.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MoneyRuleFindFirstArgs>(args?: SelectSubset<T, MoneyRuleFindFirstArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MoneyRule that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MoneyRuleFindFirstOrThrowArgs} args - Arguments to find a MoneyRule
+     * @example
+     * // Get one MoneyRule
+     * const moneyRule = await prisma.moneyRule.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MoneyRuleFindFirstOrThrowArgs>(args?: SelectSubset<T, MoneyRuleFindFirstOrThrowArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MoneyRules that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MoneyRuleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MoneyRules
+     * const moneyRules = await prisma.moneyRule.findMany()
+     * 
+     * // Get first 10 MoneyRules
+     * const moneyRules = await prisma.moneyRule.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const moneyRuleWithIdOnly = await prisma.moneyRule.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MoneyRuleFindManyArgs>(args?: SelectSubset<T, MoneyRuleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MoneyRule.
+     * @param {MoneyRuleCreateArgs} args - Arguments to create a MoneyRule.
+     * @example
+     * // Create one MoneyRule
+     * const MoneyRule = await prisma.moneyRule.create({
+     *   data: {
+     *     // ... data to create a MoneyRule
+     *   }
+     * })
+     * 
+     */
+    create<T extends MoneyRuleCreateArgs>(args: SelectSubset<T, MoneyRuleCreateArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MoneyRules.
+     * @param {MoneyRuleCreateManyArgs} args - Arguments to create many MoneyRules.
+     * @example
+     * // Create many MoneyRules
+     * const moneyRule = await prisma.moneyRule.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MoneyRuleCreateManyArgs>(args?: SelectSubset<T, MoneyRuleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MoneyRules and returns the data saved in the database.
+     * @param {MoneyRuleCreateManyAndReturnArgs} args - Arguments to create many MoneyRules.
+     * @example
+     * // Create many MoneyRules
+     * const moneyRule = await prisma.moneyRule.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MoneyRules and only return the `id`
+     * const moneyRuleWithIdOnly = await prisma.moneyRule.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MoneyRuleCreateManyAndReturnArgs>(args?: SelectSubset<T, MoneyRuleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MoneyRule.
+     * @param {MoneyRuleDeleteArgs} args - Arguments to delete one MoneyRule.
+     * @example
+     * // Delete one MoneyRule
+     * const MoneyRule = await prisma.moneyRule.delete({
+     *   where: {
+     *     // ... filter to delete one MoneyRule
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MoneyRuleDeleteArgs>(args: SelectSubset<T, MoneyRuleDeleteArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MoneyRule.
+     * @param {MoneyRuleUpdateArgs} args - Arguments to update one MoneyRule.
+     * @example
+     * // Update one MoneyRule
+     * const moneyRule = await prisma.moneyRule.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MoneyRuleUpdateArgs>(args: SelectSubset<T, MoneyRuleUpdateArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MoneyRules.
+     * @param {MoneyRuleDeleteManyArgs} args - Arguments to filter MoneyRules to delete.
+     * @example
+     * // Delete a few MoneyRules
+     * const { count } = await prisma.moneyRule.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MoneyRuleDeleteManyArgs>(args?: SelectSubset<T, MoneyRuleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MoneyRules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MoneyRuleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MoneyRules
+     * const moneyRule = await prisma.moneyRule.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MoneyRuleUpdateManyArgs>(args: SelectSubset<T, MoneyRuleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MoneyRules and returns the data updated in the database.
+     * @param {MoneyRuleUpdateManyAndReturnArgs} args - Arguments to update many MoneyRules.
+     * @example
+     * // Update many MoneyRules
+     * const moneyRule = await prisma.moneyRule.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MoneyRules and only return the `id`
+     * const moneyRuleWithIdOnly = await prisma.moneyRule.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MoneyRuleUpdateManyAndReturnArgs>(args: SelectSubset<T, MoneyRuleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MoneyRule.
+     * @param {MoneyRuleUpsertArgs} args - Arguments to update or create a MoneyRule.
+     * @example
+     * // Update or create a MoneyRule
+     * const moneyRule = await prisma.moneyRule.upsert({
+     *   create: {
+     *     // ... data to create a MoneyRule
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MoneyRule we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MoneyRuleUpsertArgs>(args: SelectSubset<T, MoneyRuleUpsertArgs<ExtArgs>>): Prisma__MoneyRuleClient<$Result.GetResult<Prisma.$MoneyRulePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MoneyRules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MoneyRuleCountArgs} args - Arguments to filter MoneyRules to count.
+     * @example
+     * // Count the number of MoneyRules
+     * const count = await prisma.moneyRule.count({
+     *   where: {
+     *     // ... the filter for the MoneyRules we want to count
+     *   }
+     * })
+    **/
+    count<T extends MoneyRuleCountArgs>(
+      args?: Subset<T, MoneyRuleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MoneyRuleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MoneyRule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MoneyRuleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MoneyRuleAggregateArgs>(args: Subset<T, MoneyRuleAggregateArgs>): Prisma.PrismaPromise<GetMoneyRuleAggregateType<T>>
+
+    /**
+     * Group by MoneyRule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MoneyRuleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MoneyRuleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MoneyRuleGroupByArgs['orderBy'] }
+        : { orderBy?: MoneyRuleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MoneyRuleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMoneyRuleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MoneyRule model
+   */
+  readonly fields: MoneyRuleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MoneyRule.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MoneyRuleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transactions<T extends MoneyRule$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, MoneyRule$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MoneyRule model
+   */
+  interface MoneyRuleFieldRefs {
+    readonly id: FieldRef<"MoneyRule", 'String'>
+    readonly userId: FieldRef<"MoneyRule", 'String'>
+    readonly name: FieldRef<"MoneyRule", 'String'>
+    readonly percentage: FieldRef<"MoneyRule", 'Decimal'>
+    readonly color: FieldRef<"MoneyRule", 'String'>
+    readonly icon: FieldRef<"MoneyRule", 'String'>
+    readonly categories: FieldRef<"MoneyRule", 'String[]'>
+    readonly monthlyTarget: FieldRef<"MoneyRule", 'Decimal'>
+    readonly sortOrder: FieldRef<"MoneyRule", 'Int'>
+    readonly createdAt: FieldRef<"MoneyRule", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MoneyRule findUnique
+   */
+  export type MoneyRuleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MoneyRule to fetch.
+     */
+    where: MoneyRuleWhereUniqueInput
+  }
+
+  /**
+   * MoneyRule findUniqueOrThrow
+   */
+  export type MoneyRuleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MoneyRule to fetch.
+     */
+    where: MoneyRuleWhereUniqueInput
+  }
+
+  /**
+   * MoneyRule findFirst
+   */
+  export type MoneyRuleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MoneyRule to fetch.
+     */
+    where?: MoneyRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MoneyRules to fetch.
+     */
+    orderBy?: MoneyRuleOrderByWithRelationInput | MoneyRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MoneyRules.
+     */
+    cursor?: MoneyRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MoneyRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MoneyRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MoneyRules.
+     */
+    distinct?: MoneyRuleScalarFieldEnum | MoneyRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MoneyRule findFirstOrThrow
+   */
+  export type MoneyRuleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MoneyRule to fetch.
+     */
+    where?: MoneyRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MoneyRules to fetch.
+     */
+    orderBy?: MoneyRuleOrderByWithRelationInput | MoneyRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MoneyRules.
+     */
+    cursor?: MoneyRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MoneyRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MoneyRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MoneyRules.
+     */
+    distinct?: MoneyRuleScalarFieldEnum | MoneyRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MoneyRule findMany
+   */
+  export type MoneyRuleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MoneyRules to fetch.
+     */
+    where?: MoneyRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MoneyRules to fetch.
+     */
+    orderBy?: MoneyRuleOrderByWithRelationInput | MoneyRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MoneyRules.
+     */
+    cursor?: MoneyRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MoneyRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MoneyRules.
+     */
+    skip?: number
+    distinct?: MoneyRuleScalarFieldEnum | MoneyRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MoneyRule create
+   */
+  export type MoneyRuleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MoneyRule.
+     */
+    data: XOR<MoneyRuleCreateInput, MoneyRuleUncheckedCreateInput>
+  }
+
+  /**
+   * MoneyRule createMany
+   */
+  export type MoneyRuleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MoneyRules.
+     */
+    data: MoneyRuleCreateManyInput | MoneyRuleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MoneyRule createManyAndReturn
+   */
+  export type MoneyRuleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * The data used to create many MoneyRules.
+     */
+    data: MoneyRuleCreateManyInput | MoneyRuleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MoneyRule update
+   */
+  export type MoneyRuleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MoneyRule.
+     */
+    data: XOR<MoneyRuleUpdateInput, MoneyRuleUncheckedUpdateInput>
+    /**
+     * Choose, which MoneyRule to update.
+     */
+    where: MoneyRuleWhereUniqueInput
+  }
+
+  /**
+   * MoneyRule updateMany
+   */
+  export type MoneyRuleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MoneyRules.
+     */
+    data: XOR<MoneyRuleUpdateManyMutationInput, MoneyRuleUncheckedUpdateManyInput>
+    /**
+     * Filter which MoneyRules to update
+     */
+    where?: MoneyRuleWhereInput
+    /**
+     * Limit how many MoneyRules to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MoneyRule updateManyAndReturn
+   */
+  export type MoneyRuleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * The data used to update MoneyRules.
+     */
+    data: XOR<MoneyRuleUpdateManyMutationInput, MoneyRuleUncheckedUpdateManyInput>
+    /**
+     * Filter which MoneyRules to update
+     */
+    where?: MoneyRuleWhereInput
+    /**
+     * Limit how many MoneyRules to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MoneyRule upsert
+   */
+  export type MoneyRuleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MoneyRule to update in case it exists.
+     */
+    where: MoneyRuleWhereUniqueInput
+    /**
+     * In case the MoneyRule found by the `where` argument doesn't exist, create a new MoneyRule with this data.
+     */
+    create: XOR<MoneyRuleCreateInput, MoneyRuleUncheckedCreateInput>
+    /**
+     * In case the MoneyRule was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MoneyRuleUpdateInput, MoneyRuleUncheckedUpdateInput>
+  }
+
+  /**
+   * MoneyRule delete
+   */
+  export type MoneyRuleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+    /**
+     * Filter which MoneyRule to delete.
+     */
+    where: MoneyRuleWhereUniqueInput
+  }
+
+  /**
+   * MoneyRule deleteMany
+   */
+  export type MoneyRuleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MoneyRules to delete
+     */
+    where?: MoneyRuleWhereInput
+    /**
+     * Limit how many MoneyRules to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MoneyRule.transactions
+   */
+  export type MoneyRule$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BankTransaction
+     */
+    select?: BankTransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BankTransaction
+     */
+    omit?: BankTransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BankTransactionInclude<ExtArgs> | null
+    where?: BankTransactionWhereInput
+    orderBy?: BankTransactionOrderByWithRelationInput | BankTransactionOrderByWithRelationInput[]
+    cursor?: BankTransactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BankTransactionScalarFieldEnum | BankTransactionScalarFieldEnum[]
+  }
+
+  /**
+   * MoneyRule without action
+   */
+  export type MoneyRuleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MoneyRule
+     */
+    select?: MoneyRuleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MoneyRule
+     */
+    omit?: MoneyRuleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoneyRuleInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -17305,6 +22741,82 @@ export namespace Prisma {
   export type ProgressScalarFieldEnum = (typeof ProgressScalarFieldEnum)[keyof typeof ProgressScalarFieldEnum]
 
 
+  export const BankConnectionScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    institution: 'institution',
+    accountName: 'accountName',
+    accountBSB: 'accountBSB',
+    accountNumber: 'accountNumber',
+    balance: 'balance',
+    currency: 'currency',
+    provider: 'provider',
+    providerRef: 'providerRef',
+    lastSynced: 'lastSynced',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BankConnectionScalarFieldEnum = (typeof BankConnectionScalarFieldEnum)[keyof typeof BankConnectionScalarFieldEnum]
+
+
+  export const BankTransactionScalarFieldEnum: {
+    id: 'id',
+    connectionId: 'connectionId',
+    date: 'date',
+    description: 'description',
+    amount: 'amount',
+    balance: 'balance',
+    category: 'category',
+    gstAmount: 'gstAmount',
+    gstInclusive: 'gstInclusive',
+    moneyRuleId: 'moneyRuleId',
+    reference: 'reference',
+    reconciled: 'reconciled',
+    createdAt: 'createdAt'
+  };
+
+  export type BankTransactionScalarFieldEnum = (typeof BankTransactionScalarFieldEnum)[keyof typeof BankTransactionScalarFieldEnum]
+
+
+  export const GSTReturnScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    period: 'period',
+    periodStart: 'periodStart',
+    periodEnd: 'periodEnd',
+    totalSales: 'totalSales',
+    gstOnSales: 'gstOnSales',
+    totalPurchases: 'totalPurchases',
+    gstOnPurchases: 'gstOnPurchases',
+    netGST: 'netGST',
+    status: 'status',
+    lodgedAt: 'lodgedAt',
+    atoRef: 'atoRef',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type GSTReturnScalarFieldEnum = (typeof GSTReturnScalarFieldEnum)[keyof typeof GSTReturnScalarFieldEnum]
+
+
+  export const MoneyRuleScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    name: 'name',
+    percentage: 'percentage',
+    color: 'color',
+    icon: 'icon',
+    categories: 'categories',
+    monthlyTarget: 'monthlyTarget',
+    sortOrder: 'sortOrder',
+    createdAt: 'createdAt'
+  };
+
+  export type MoneyRuleScalarFieldEnum = (typeof MoneyRuleScalarFieldEnum)[keyof typeof MoneyRuleScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -17422,6 +22934,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -17470,6 +22996,9 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     appData?: AppDataListRelationFilter
     progress?: ProgressListRelationFilter
+    bankConnections?: BankConnectionListRelationFilter
+    gstReturns?: GSTReturnListRelationFilter
+    moneyRules?: MoneyRuleListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -17501,6 +23030,9 @@ export namespace Prisma {
     sessions?: SessionOrderByRelationAggregateInput
     appData?: AppDataOrderByRelationAggregateInput
     progress?: ProgressOrderByRelationAggregateInput
+    bankConnections?: BankConnectionOrderByRelationAggregateInput
+    gstReturns?: GSTReturnOrderByRelationAggregateInput
+    moneyRules?: MoneyRuleOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -17535,6 +23067,9 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     appData?: AppDataListRelationFilter
     progress?: ProgressListRelationFilter
+    bankConnections?: BankConnectionListRelationFilter
+    gstReturns?: GSTReturnListRelationFilter
+    moneyRules?: MoneyRuleListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -18484,6 +24019,404 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Progress"> | Date | string
   }
 
+  export type BankConnectionWhereInput = {
+    AND?: BankConnectionWhereInput | BankConnectionWhereInput[]
+    OR?: BankConnectionWhereInput[]
+    NOT?: BankConnectionWhereInput | BankConnectionWhereInput[]
+    id?: UuidFilter<"BankConnection"> | string
+    userId?: UuidFilter<"BankConnection"> | string
+    institution?: StringFilter<"BankConnection"> | string
+    accountName?: StringFilter<"BankConnection"> | string
+    accountBSB?: StringNullableFilter<"BankConnection"> | string | null
+    accountNumber?: StringNullableFilter<"BankConnection"> | string | null
+    balance?: DecimalNullableFilter<"BankConnection"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFilter<"BankConnection"> | string
+    provider?: StringFilter<"BankConnection"> | string
+    providerRef?: StringNullableFilter<"BankConnection"> | string | null
+    lastSynced?: DateTimeNullableFilter<"BankConnection"> | Date | string | null
+    status?: StringFilter<"BankConnection"> | string
+    createdAt?: DateTimeFilter<"BankConnection"> | Date | string
+    updatedAt?: DateTimeFilter<"BankConnection"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    transactions?: BankTransactionListRelationFilter
+  }
+
+  export type BankConnectionOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    institution?: SortOrder
+    accountName?: SortOrder
+    accountBSB?: SortOrderInput | SortOrder
+    accountNumber?: SortOrderInput | SortOrder
+    balance?: SortOrderInput | SortOrder
+    currency?: SortOrder
+    provider?: SortOrder
+    providerRef?: SortOrderInput | SortOrder
+    lastSynced?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    transactions?: BankTransactionOrderByRelationAggregateInput
+  }
+
+  export type BankConnectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BankConnectionWhereInput | BankConnectionWhereInput[]
+    OR?: BankConnectionWhereInput[]
+    NOT?: BankConnectionWhereInput | BankConnectionWhereInput[]
+    userId?: UuidFilter<"BankConnection"> | string
+    institution?: StringFilter<"BankConnection"> | string
+    accountName?: StringFilter<"BankConnection"> | string
+    accountBSB?: StringNullableFilter<"BankConnection"> | string | null
+    accountNumber?: StringNullableFilter<"BankConnection"> | string | null
+    balance?: DecimalNullableFilter<"BankConnection"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFilter<"BankConnection"> | string
+    provider?: StringFilter<"BankConnection"> | string
+    providerRef?: StringNullableFilter<"BankConnection"> | string | null
+    lastSynced?: DateTimeNullableFilter<"BankConnection"> | Date | string | null
+    status?: StringFilter<"BankConnection"> | string
+    createdAt?: DateTimeFilter<"BankConnection"> | Date | string
+    updatedAt?: DateTimeFilter<"BankConnection"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    transactions?: BankTransactionListRelationFilter
+  }, "id">
+
+  export type BankConnectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    institution?: SortOrder
+    accountName?: SortOrder
+    accountBSB?: SortOrderInput | SortOrder
+    accountNumber?: SortOrderInput | SortOrder
+    balance?: SortOrderInput | SortOrder
+    currency?: SortOrder
+    provider?: SortOrder
+    providerRef?: SortOrderInput | SortOrder
+    lastSynced?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BankConnectionCountOrderByAggregateInput
+    _avg?: BankConnectionAvgOrderByAggregateInput
+    _max?: BankConnectionMaxOrderByAggregateInput
+    _min?: BankConnectionMinOrderByAggregateInput
+    _sum?: BankConnectionSumOrderByAggregateInput
+  }
+
+  export type BankConnectionScalarWhereWithAggregatesInput = {
+    AND?: BankConnectionScalarWhereWithAggregatesInput | BankConnectionScalarWhereWithAggregatesInput[]
+    OR?: BankConnectionScalarWhereWithAggregatesInput[]
+    NOT?: BankConnectionScalarWhereWithAggregatesInput | BankConnectionScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"BankConnection"> | string
+    userId?: UuidWithAggregatesFilter<"BankConnection"> | string
+    institution?: StringWithAggregatesFilter<"BankConnection"> | string
+    accountName?: StringWithAggregatesFilter<"BankConnection"> | string
+    accountBSB?: StringNullableWithAggregatesFilter<"BankConnection"> | string | null
+    accountNumber?: StringNullableWithAggregatesFilter<"BankConnection"> | string | null
+    balance?: DecimalNullableWithAggregatesFilter<"BankConnection"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringWithAggregatesFilter<"BankConnection"> | string
+    provider?: StringWithAggregatesFilter<"BankConnection"> | string
+    providerRef?: StringNullableWithAggregatesFilter<"BankConnection"> | string | null
+    lastSynced?: DateTimeNullableWithAggregatesFilter<"BankConnection"> | Date | string | null
+    status?: StringWithAggregatesFilter<"BankConnection"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"BankConnection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BankConnection"> | Date | string
+  }
+
+  export type BankTransactionWhereInput = {
+    AND?: BankTransactionWhereInput | BankTransactionWhereInput[]
+    OR?: BankTransactionWhereInput[]
+    NOT?: BankTransactionWhereInput | BankTransactionWhereInput[]
+    id?: UuidFilter<"BankTransaction"> | string
+    connectionId?: UuidFilter<"BankTransaction"> | string
+    date?: DateTimeFilter<"BankTransaction"> | Date | string
+    description?: StringFilter<"BankTransaction"> | string
+    amount?: DecimalFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string
+    balance?: DecimalNullableFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string | null
+    category?: StringNullableFilter<"BankTransaction"> | string | null
+    gstAmount?: DecimalNullableFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFilter<"BankTransaction"> | boolean
+    moneyRuleId?: UuidNullableFilter<"BankTransaction"> | string | null
+    reference?: StringNullableFilter<"BankTransaction"> | string | null
+    reconciled?: BoolFilter<"BankTransaction"> | boolean
+    createdAt?: DateTimeFilter<"BankTransaction"> | Date | string
+    connection?: XOR<BankConnectionScalarRelationFilter, BankConnectionWhereInput>
+    moneyRule?: XOR<MoneyRuleNullableScalarRelationFilter, MoneyRuleWhereInput> | null
+  }
+
+  export type BankTransactionOrderByWithRelationInput = {
+    id?: SortOrder
+    connectionId?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    balance?: SortOrderInput | SortOrder
+    category?: SortOrderInput | SortOrder
+    gstAmount?: SortOrderInput | SortOrder
+    gstInclusive?: SortOrder
+    moneyRuleId?: SortOrderInput | SortOrder
+    reference?: SortOrderInput | SortOrder
+    reconciled?: SortOrder
+    createdAt?: SortOrder
+    connection?: BankConnectionOrderByWithRelationInput
+    moneyRule?: MoneyRuleOrderByWithRelationInput
+  }
+
+  export type BankTransactionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BankTransactionWhereInput | BankTransactionWhereInput[]
+    OR?: BankTransactionWhereInput[]
+    NOT?: BankTransactionWhereInput | BankTransactionWhereInput[]
+    connectionId?: UuidFilter<"BankTransaction"> | string
+    date?: DateTimeFilter<"BankTransaction"> | Date | string
+    description?: StringFilter<"BankTransaction"> | string
+    amount?: DecimalFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string
+    balance?: DecimalNullableFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string | null
+    category?: StringNullableFilter<"BankTransaction"> | string | null
+    gstAmount?: DecimalNullableFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFilter<"BankTransaction"> | boolean
+    moneyRuleId?: UuidNullableFilter<"BankTransaction"> | string | null
+    reference?: StringNullableFilter<"BankTransaction"> | string | null
+    reconciled?: BoolFilter<"BankTransaction"> | boolean
+    createdAt?: DateTimeFilter<"BankTransaction"> | Date | string
+    connection?: XOR<BankConnectionScalarRelationFilter, BankConnectionWhereInput>
+    moneyRule?: XOR<MoneyRuleNullableScalarRelationFilter, MoneyRuleWhereInput> | null
+  }, "id">
+
+  export type BankTransactionOrderByWithAggregationInput = {
+    id?: SortOrder
+    connectionId?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    balance?: SortOrderInput | SortOrder
+    category?: SortOrderInput | SortOrder
+    gstAmount?: SortOrderInput | SortOrder
+    gstInclusive?: SortOrder
+    moneyRuleId?: SortOrderInput | SortOrder
+    reference?: SortOrderInput | SortOrder
+    reconciled?: SortOrder
+    createdAt?: SortOrder
+    _count?: BankTransactionCountOrderByAggregateInput
+    _avg?: BankTransactionAvgOrderByAggregateInput
+    _max?: BankTransactionMaxOrderByAggregateInput
+    _min?: BankTransactionMinOrderByAggregateInput
+    _sum?: BankTransactionSumOrderByAggregateInput
+  }
+
+  export type BankTransactionScalarWhereWithAggregatesInput = {
+    AND?: BankTransactionScalarWhereWithAggregatesInput | BankTransactionScalarWhereWithAggregatesInput[]
+    OR?: BankTransactionScalarWhereWithAggregatesInput[]
+    NOT?: BankTransactionScalarWhereWithAggregatesInput | BankTransactionScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"BankTransaction"> | string
+    connectionId?: UuidWithAggregatesFilter<"BankTransaction"> | string
+    date?: DateTimeWithAggregatesFilter<"BankTransaction"> | Date | string
+    description?: StringWithAggregatesFilter<"BankTransaction"> | string
+    amount?: DecimalWithAggregatesFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string
+    balance?: DecimalNullableWithAggregatesFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string | null
+    category?: StringNullableWithAggregatesFilter<"BankTransaction"> | string | null
+    gstAmount?: DecimalNullableWithAggregatesFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolWithAggregatesFilter<"BankTransaction"> | boolean
+    moneyRuleId?: UuidNullableWithAggregatesFilter<"BankTransaction"> | string | null
+    reference?: StringNullableWithAggregatesFilter<"BankTransaction"> | string | null
+    reconciled?: BoolWithAggregatesFilter<"BankTransaction"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"BankTransaction"> | Date | string
+  }
+
+  export type GSTReturnWhereInput = {
+    AND?: GSTReturnWhereInput | GSTReturnWhereInput[]
+    OR?: GSTReturnWhereInput[]
+    NOT?: GSTReturnWhereInput | GSTReturnWhereInput[]
+    id?: UuidFilter<"GSTReturn"> | string
+    userId?: UuidFilter<"GSTReturn"> | string
+    period?: StringFilter<"GSTReturn"> | string
+    periodStart?: DateTimeFilter<"GSTReturn"> | Date | string
+    periodEnd?: DateTimeFilter<"GSTReturn"> | Date | string
+    totalSales?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    status?: StringFilter<"GSTReturn"> | string
+    lodgedAt?: DateTimeNullableFilter<"GSTReturn"> | Date | string | null
+    atoRef?: StringNullableFilter<"GSTReturn"> | string | null
+    createdAt?: DateTimeFilter<"GSTReturn"> | Date | string
+    updatedAt?: DateTimeFilter<"GSTReturn"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type GSTReturnOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    period?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    totalSales?: SortOrder
+    gstOnSales?: SortOrder
+    totalPurchases?: SortOrder
+    gstOnPurchases?: SortOrder
+    netGST?: SortOrder
+    status?: SortOrder
+    lodgedAt?: SortOrderInput | SortOrder
+    atoRef?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type GSTReturnWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_period?: GSTReturnUserIdPeriodCompoundUniqueInput
+    AND?: GSTReturnWhereInput | GSTReturnWhereInput[]
+    OR?: GSTReturnWhereInput[]
+    NOT?: GSTReturnWhereInput | GSTReturnWhereInput[]
+    userId?: UuidFilter<"GSTReturn"> | string
+    period?: StringFilter<"GSTReturn"> | string
+    periodStart?: DateTimeFilter<"GSTReturn"> | Date | string
+    periodEnd?: DateTimeFilter<"GSTReturn"> | Date | string
+    totalSales?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    status?: StringFilter<"GSTReturn"> | string
+    lodgedAt?: DateTimeNullableFilter<"GSTReturn"> | Date | string | null
+    atoRef?: StringNullableFilter<"GSTReturn"> | string | null
+    createdAt?: DateTimeFilter<"GSTReturn"> | Date | string
+    updatedAt?: DateTimeFilter<"GSTReturn"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_period">
+
+  export type GSTReturnOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    period?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    totalSales?: SortOrder
+    gstOnSales?: SortOrder
+    totalPurchases?: SortOrder
+    gstOnPurchases?: SortOrder
+    netGST?: SortOrder
+    status?: SortOrder
+    lodgedAt?: SortOrderInput | SortOrder
+    atoRef?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: GSTReturnCountOrderByAggregateInput
+    _avg?: GSTReturnAvgOrderByAggregateInput
+    _max?: GSTReturnMaxOrderByAggregateInput
+    _min?: GSTReturnMinOrderByAggregateInput
+    _sum?: GSTReturnSumOrderByAggregateInput
+  }
+
+  export type GSTReturnScalarWhereWithAggregatesInput = {
+    AND?: GSTReturnScalarWhereWithAggregatesInput | GSTReturnScalarWhereWithAggregatesInput[]
+    OR?: GSTReturnScalarWhereWithAggregatesInput[]
+    NOT?: GSTReturnScalarWhereWithAggregatesInput | GSTReturnScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"GSTReturn"> | string
+    userId?: UuidWithAggregatesFilter<"GSTReturn"> | string
+    period?: StringWithAggregatesFilter<"GSTReturn"> | string
+    periodStart?: DateTimeWithAggregatesFilter<"GSTReturn"> | Date | string
+    periodEnd?: DateTimeWithAggregatesFilter<"GSTReturn"> | Date | string
+    totalSales?: DecimalWithAggregatesFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalWithAggregatesFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalWithAggregatesFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalWithAggregatesFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalWithAggregatesFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    status?: StringWithAggregatesFilter<"GSTReturn"> | string
+    lodgedAt?: DateTimeNullableWithAggregatesFilter<"GSTReturn"> | Date | string | null
+    atoRef?: StringNullableWithAggregatesFilter<"GSTReturn"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"GSTReturn"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"GSTReturn"> | Date | string
+  }
+
+  export type MoneyRuleWhereInput = {
+    AND?: MoneyRuleWhereInput | MoneyRuleWhereInput[]
+    OR?: MoneyRuleWhereInput[]
+    NOT?: MoneyRuleWhereInput | MoneyRuleWhereInput[]
+    id?: UuidFilter<"MoneyRule"> | string
+    userId?: UuidFilter<"MoneyRule"> | string
+    name?: StringFilter<"MoneyRule"> | string
+    percentage?: DecimalFilter<"MoneyRule"> | Decimal | DecimalJsLike | number | string
+    color?: StringFilter<"MoneyRule"> | string
+    icon?: StringNullableFilter<"MoneyRule"> | string | null
+    categories?: StringNullableListFilter<"MoneyRule">
+    monthlyTarget?: DecimalNullableFilter<"MoneyRule"> | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFilter<"MoneyRule"> | number
+    createdAt?: DateTimeFilter<"MoneyRule"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    transactions?: BankTransactionListRelationFilter
+  }
+
+  export type MoneyRuleOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    percentage?: SortOrder
+    color?: SortOrder
+    icon?: SortOrderInput | SortOrder
+    categories?: SortOrder
+    monthlyTarget?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    transactions?: BankTransactionOrderByRelationAggregateInput
+  }
+
+  export type MoneyRuleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MoneyRuleWhereInput | MoneyRuleWhereInput[]
+    OR?: MoneyRuleWhereInput[]
+    NOT?: MoneyRuleWhereInput | MoneyRuleWhereInput[]
+    userId?: UuidFilter<"MoneyRule"> | string
+    name?: StringFilter<"MoneyRule"> | string
+    percentage?: DecimalFilter<"MoneyRule"> | Decimal | DecimalJsLike | number | string
+    color?: StringFilter<"MoneyRule"> | string
+    icon?: StringNullableFilter<"MoneyRule"> | string | null
+    categories?: StringNullableListFilter<"MoneyRule">
+    monthlyTarget?: DecimalNullableFilter<"MoneyRule"> | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFilter<"MoneyRule"> | number
+    createdAt?: DateTimeFilter<"MoneyRule"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    transactions?: BankTransactionListRelationFilter
+  }, "id">
+
+  export type MoneyRuleOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    percentage?: SortOrder
+    color?: SortOrder
+    icon?: SortOrderInput | SortOrder
+    categories?: SortOrder
+    monthlyTarget?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+    _count?: MoneyRuleCountOrderByAggregateInput
+    _avg?: MoneyRuleAvgOrderByAggregateInput
+    _max?: MoneyRuleMaxOrderByAggregateInput
+    _min?: MoneyRuleMinOrderByAggregateInput
+    _sum?: MoneyRuleSumOrderByAggregateInput
+  }
+
+  export type MoneyRuleScalarWhereWithAggregatesInput = {
+    AND?: MoneyRuleScalarWhereWithAggregatesInput | MoneyRuleScalarWhereWithAggregatesInput[]
+    OR?: MoneyRuleScalarWhereWithAggregatesInput[]
+    NOT?: MoneyRuleScalarWhereWithAggregatesInput | MoneyRuleScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"MoneyRule"> | string
+    userId?: UuidWithAggregatesFilter<"MoneyRule"> | string
+    name?: StringWithAggregatesFilter<"MoneyRule"> | string
+    percentage?: DecimalWithAggregatesFilter<"MoneyRule"> | Decimal | DecimalJsLike | number | string
+    color?: StringWithAggregatesFilter<"MoneyRule"> | string
+    icon?: StringNullableWithAggregatesFilter<"MoneyRule"> | string | null
+    categories?: StringNullableListFilter<"MoneyRule">
+    monthlyTarget?: DecimalNullableWithAggregatesFilter<"MoneyRule"> | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntWithAggregatesFilter<"MoneyRule"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"MoneyRule"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -18513,6 +24446,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -18544,6 +24480,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -18575,6 +24514,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -18606,6 +24548,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -19643,6 +25588,457 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BankConnectionCreateInput = {
+    id?: string
+    institution: string
+    accountName: string
+    accountBSB?: string | null
+    accountNumber?: string | null
+    balance?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    provider?: string
+    providerRef?: string | null
+    lastSynced?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutBankConnectionsInput
+    transactions?: BankTransactionCreateNestedManyWithoutConnectionInput
+  }
+
+  export type BankConnectionUncheckedCreateInput = {
+    id?: string
+    userId: string
+    institution: string
+    accountName: string
+    accountBSB?: string | null
+    accountNumber?: string | null
+    balance?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    provider?: string
+    providerRef?: string | null
+    lastSynced?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transactions?: BankTransactionUncheckedCreateNestedManyWithoutConnectionInput
+  }
+
+  export type BankConnectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBankConnectionsNestedInput
+    transactions?: BankTransactionUpdateManyWithoutConnectionNestedInput
+  }
+
+  export type BankConnectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: BankTransactionUncheckedUpdateManyWithoutConnectionNestedInput
+  }
+
+  export type BankConnectionCreateManyInput = {
+    id?: string
+    userId: string
+    institution: string
+    accountName: string
+    accountBSB?: string | null
+    accountNumber?: string | null
+    balance?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    provider?: string
+    providerRef?: string | null
+    lastSynced?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BankConnectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankConnectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankTransactionCreateInput = {
+    id?: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+    connection: BankConnectionCreateNestedOneWithoutTransactionsInput
+    moneyRule?: MoneyRuleCreateNestedOneWithoutTransactionsInput
+  }
+
+  export type BankTransactionUncheckedCreateInput = {
+    id?: string
+    connectionId: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    moneyRuleId?: string | null
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+  }
+
+  export type BankTransactionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    connection?: BankConnectionUpdateOneRequiredWithoutTransactionsNestedInput
+    moneyRule?: MoneyRuleUpdateOneWithoutTransactionsNestedInput
+  }
+
+  export type BankTransactionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    connectionId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    moneyRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankTransactionCreateManyInput = {
+    id?: string
+    connectionId: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    moneyRuleId?: string | null
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+  }
+
+  export type BankTransactionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankTransactionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    connectionId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    moneyRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GSTReturnCreateInput = {
+    id?: string
+    period: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    totalSales?: Decimal | DecimalJsLike | number | string
+    gstOnSales?: Decimal | DecimalJsLike | number | string
+    totalPurchases?: Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: Decimal | DecimalJsLike | number | string
+    netGST?: Decimal | DecimalJsLike | number | string
+    status?: string
+    lodgedAt?: Date | string | null
+    atoRef?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutGstReturnsInput
+  }
+
+  export type GSTReturnUncheckedCreateInput = {
+    id?: string
+    userId: string
+    period: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    totalSales?: Decimal | DecimalJsLike | number | string
+    gstOnSales?: Decimal | DecimalJsLike | number | string
+    totalPurchases?: Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: Decimal | DecimalJsLike | number | string
+    netGST?: Decimal | DecimalJsLike | number | string
+    status?: string
+    lodgedAt?: Date | string | null
+    atoRef?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GSTReturnUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    period?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    lodgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    atoRef?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutGstReturnsNestedInput
+  }
+
+  export type GSTReturnUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    period?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    lodgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    atoRef?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GSTReturnCreateManyInput = {
+    id?: string
+    userId: string
+    period: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    totalSales?: Decimal | DecimalJsLike | number | string
+    gstOnSales?: Decimal | DecimalJsLike | number | string
+    totalPurchases?: Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: Decimal | DecimalJsLike | number | string
+    netGST?: Decimal | DecimalJsLike | number | string
+    status?: string
+    lodgedAt?: Date | string | null
+    atoRef?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GSTReturnUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    period?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    lodgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    atoRef?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GSTReturnUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    period?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    lodgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    atoRef?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MoneyRuleCreateInput = {
+    id?: string
+    name: string
+    percentage: Decimal | DecimalJsLike | number | string
+    color?: string
+    icon?: string | null
+    categories?: MoneyRuleCreatecategoriesInput | string[]
+    monthlyTarget?: Decimal | DecimalJsLike | number | string | null
+    sortOrder?: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutMoneyRulesInput
+    transactions?: BankTransactionCreateNestedManyWithoutMoneyRuleInput
+  }
+
+  export type MoneyRuleUncheckedCreateInput = {
+    id?: string
+    userId: string
+    name: string
+    percentage: Decimal | DecimalJsLike | number | string
+    color?: string
+    icon?: string | null
+    categories?: MoneyRuleCreatecategoriesInput | string[]
+    monthlyTarget?: Decimal | DecimalJsLike | number | string | null
+    sortOrder?: number
+    createdAt?: Date | string
+    transactions?: BankTransactionUncheckedCreateNestedManyWithoutMoneyRuleInput
+  }
+
+  export type MoneyRuleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMoneyRulesNestedInput
+    transactions?: BankTransactionUpdateManyWithoutMoneyRuleNestedInput
+  }
+
+  export type MoneyRuleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: BankTransactionUncheckedUpdateManyWithoutMoneyRuleNestedInput
+  }
+
+  export type MoneyRuleCreateManyInput = {
+    id?: string
+    userId: string
+    name: string
+    percentage: Decimal | DecimalJsLike | number | string
+    color?: string
+    icon?: string | null
+    categories?: MoneyRuleCreatecategoriesInput | string[]
+    monthlyTarget?: Decimal | DecimalJsLike | number | string | null
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type MoneyRuleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MoneyRuleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UuidFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -19789,6 +26185,24 @@ export namespace Prisma {
     none?: ProgressWhereInput
   }
 
+  export type BankConnectionListRelationFilter = {
+    every?: BankConnectionWhereInput
+    some?: BankConnectionWhereInput
+    none?: BankConnectionWhereInput
+  }
+
+  export type GSTReturnListRelationFilter = {
+    every?: GSTReturnWhereInput
+    some?: GSTReturnWhereInput
+    none?: GSTReturnWhereInput
+  }
+
+  export type MoneyRuleListRelationFilter = {
+    every?: MoneyRuleWhereInput
+    some?: MoneyRuleWhereInput
+    none?: MoneyRuleWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -19835,6 +26249,18 @@ export namespace Prisma {
   }
 
   export type ProgressOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BankConnectionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GSTReturnOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MoneyRuleOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -20639,6 +27065,331 @@ export namespace Prisma {
     total?: SortOrder
   }
 
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type BankTransactionListRelationFilter = {
+    every?: BankTransactionWhereInput
+    some?: BankTransactionWhereInput
+    none?: BankTransactionWhereInput
+  }
+
+  export type BankTransactionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BankConnectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    institution?: SortOrder
+    accountName?: SortOrder
+    accountBSB?: SortOrder
+    accountNumber?: SortOrder
+    balance?: SortOrder
+    currency?: SortOrder
+    provider?: SortOrder
+    providerRef?: SortOrder
+    lastSynced?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BankConnectionAvgOrderByAggregateInput = {
+    balance?: SortOrder
+  }
+
+  export type BankConnectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    institution?: SortOrder
+    accountName?: SortOrder
+    accountBSB?: SortOrder
+    accountNumber?: SortOrder
+    balance?: SortOrder
+    currency?: SortOrder
+    provider?: SortOrder
+    providerRef?: SortOrder
+    lastSynced?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BankConnectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    institution?: SortOrder
+    accountName?: SortOrder
+    accountBSB?: SortOrder
+    accountNumber?: SortOrder
+    balance?: SortOrder
+    currency?: SortOrder
+    provider?: SortOrder
+    providerRef?: SortOrder
+    lastSynced?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BankConnectionSumOrderByAggregateInput = {
+    balance?: SortOrder
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type BankConnectionScalarRelationFilter = {
+    is?: BankConnectionWhereInput
+    isNot?: BankConnectionWhereInput
+  }
+
+  export type MoneyRuleNullableScalarRelationFilter = {
+    is?: MoneyRuleWhereInput | null
+    isNot?: MoneyRuleWhereInput | null
+  }
+
+  export type BankTransactionCountOrderByAggregateInput = {
+    id?: SortOrder
+    connectionId?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    balance?: SortOrder
+    category?: SortOrder
+    gstAmount?: SortOrder
+    gstInclusive?: SortOrder
+    moneyRuleId?: SortOrder
+    reference?: SortOrder
+    reconciled?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BankTransactionAvgOrderByAggregateInput = {
+    amount?: SortOrder
+    balance?: SortOrder
+    gstAmount?: SortOrder
+  }
+
+  export type BankTransactionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    connectionId?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    balance?: SortOrder
+    category?: SortOrder
+    gstAmount?: SortOrder
+    gstInclusive?: SortOrder
+    moneyRuleId?: SortOrder
+    reference?: SortOrder
+    reconciled?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BankTransactionMinOrderByAggregateInput = {
+    id?: SortOrder
+    connectionId?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    amount?: SortOrder
+    balance?: SortOrder
+    category?: SortOrder
+    gstAmount?: SortOrder
+    gstInclusive?: SortOrder
+    moneyRuleId?: SortOrder
+    reference?: SortOrder
+    reconciled?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BankTransactionSumOrderByAggregateInput = {
+    amount?: SortOrder
+    balance?: SortOrder
+    gstAmount?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type GSTReturnUserIdPeriodCompoundUniqueInput = {
+    userId: string
+    period: string
+  }
+
+  export type GSTReturnCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    period?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    totalSales?: SortOrder
+    gstOnSales?: SortOrder
+    totalPurchases?: SortOrder
+    gstOnPurchases?: SortOrder
+    netGST?: SortOrder
+    status?: SortOrder
+    lodgedAt?: SortOrder
+    atoRef?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GSTReturnAvgOrderByAggregateInput = {
+    totalSales?: SortOrder
+    gstOnSales?: SortOrder
+    totalPurchases?: SortOrder
+    gstOnPurchases?: SortOrder
+    netGST?: SortOrder
+  }
+
+  export type GSTReturnMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    period?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    totalSales?: SortOrder
+    gstOnSales?: SortOrder
+    totalPurchases?: SortOrder
+    gstOnPurchases?: SortOrder
+    netGST?: SortOrder
+    status?: SortOrder
+    lodgedAt?: SortOrder
+    atoRef?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GSTReturnMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    period?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    totalSales?: SortOrder
+    gstOnSales?: SortOrder
+    totalPurchases?: SortOrder
+    gstOnPurchases?: SortOrder
+    netGST?: SortOrder
+    status?: SortOrder
+    lodgedAt?: SortOrder
+    atoRef?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GSTReturnSumOrderByAggregateInput = {
+    totalSales?: SortOrder
+    gstOnSales?: SortOrder
+    totalPurchases?: SortOrder
+    gstOnPurchases?: SortOrder
+    netGST?: SortOrder
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type MoneyRuleCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    percentage?: SortOrder
+    color?: SortOrder
+    icon?: SortOrder
+    categories?: SortOrder
+    monthlyTarget?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MoneyRuleAvgOrderByAggregateInput = {
+    percentage?: SortOrder
+    monthlyTarget?: SortOrder
+    sortOrder?: SortOrder
+  }
+
+  export type MoneyRuleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    percentage?: SortOrder
+    color?: SortOrder
+    icon?: SortOrder
+    monthlyTarget?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MoneyRuleMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    percentage?: SortOrder
+    color?: SortOrder
+    icon?: SortOrder
+    monthlyTarget?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MoneyRuleSumOrderByAggregateInput = {
+    percentage?: SortOrder
+    monthlyTarget?: SortOrder
+    sortOrder?: SortOrder
+  }
+
   export type SettingCreateNestedManyWithoutUserInput = {
     create?: XOR<SettingCreateWithoutUserInput, SettingUncheckedCreateWithoutUserInput> | SettingCreateWithoutUserInput[] | SettingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SettingCreateOrConnectWithoutUserInput | SettingCreateOrConnectWithoutUserInput[]
@@ -20716,6 +27467,27 @@ export namespace Prisma {
     connect?: ProgressWhereUniqueInput | ProgressWhereUniqueInput[]
   }
 
+  export type BankConnectionCreateNestedManyWithoutUserInput = {
+    create?: XOR<BankConnectionCreateWithoutUserInput, BankConnectionUncheckedCreateWithoutUserInput> | BankConnectionCreateWithoutUserInput[] | BankConnectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BankConnectionCreateOrConnectWithoutUserInput | BankConnectionCreateOrConnectWithoutUserInput[]
+    createMany?: BankConnectionCreateManyUserInputEnvelope
+    connect?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+  }
+
+  export type GSTReturnCreateNestedManyWithoutUserInput = {
+    create?: XOR<GSTReturnCreateWithoutUserInput, GSTReturnUncheckedCreateWithoutUserInput> | GSTReturnCreateWithoutUserInput[] | GSTReturnUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GSTReturnCreateOrConnectWithoutUserInput | GSTReturnCreateOrConnectWithoutUserInput[]
+    createMany?: GSTReturnCreateManyUserInputEnvelope
+    connect?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+  }
+
+  export type MoneyRuleCreateNestedManyWithoutUserInput = {
+    create?: XOR<MoneyRuleCreateWithoutUserInput, MoneyRuleUncheckedCreateWithoutUserInput> | MoneyRuleCreateWithoutUserInput[] | MoneyRuleUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MoneyRuleCreateOrConnectWithoutUserInput | MoneyRuleCreateOrConnectWithoutUserInput[]
+    createMany?: MoneyRuleCreateManyUserInputEnvelope
+    connect?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+  }
+
   export type SettingUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SettingCreateWithoutUserInput, SettingUncheckedCreateWithoutUserInput> | SettingCreateWithoutUserInput[] | SettingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SettingCreateOrConnectWithoutUserInput | SettingCreateOrConnectWithoutUserInput[]
@@ -20791,6 +27563,27 @@ export namespace Prisma {
     connectOrCreate?: ProgressCreateOrConnectWithoutUserInput | ProgressCreateOrConnectWithoutUserInput[]
     createMany?: ProgressCreateManyUserInputEnvelope
     connect?: ProgressWhereUniqueInput | ProgressWhereUniqueInput[]
+  }
+
+  export type BankConnectionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BankConnectionCreateWithoutUserInput, BankConnectionUncheckedCreateWithoutUserInput> | BankConnectionCreateWithoutUserInput[] | BankConnectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BankConnectionCreateOrConnectWithoutUserInput | BankConnectionCreateOrConnectWithoutUserInput[]
+    createMany?: BankConnectionCreateManyUserInputEnvelope
+    connect?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+  }
+
+  export type GSTReturnUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GSTReturnCreateWithoutUserInput, GSTReturnUncheckedCreateWithoutUserInput> | GSTReturnCreateWithoutUserInput[] | GSTReturnUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GSTReturnCreateOrConnectWithoutUserInput | GSTReturnCreateOrConnectWithoutUserInput[]
+    createMany?: GSTReturnCreateManyUserInputEnvelope
+    connect?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+  }
+
+  export type MoneyRuleUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<MoneyRuleCreateWithoutUserInput, MoneyRuleUncheckedCreateWithoutUserInput> | MoneyRuleCreateWithoutUserInput[] | MoneyRuleUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MoneyRuleCreateOrConnectWithoutUserInput | MoneyRuleCreateOrConnectWithoutUserInput[]
+    createMany?: MoneyRuleCreateManyUserInputEnvelope
+    connect?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -20975,6 +27768,48 @@ export namespace Prisma {
     deleteMany?: ProgressScalarWhereInput | ProgressScalarWhereInput[]
   }
 
+  export type BankConnectionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BankConnectionCreateWithoutUserInput, BankConnectionUncheckedCreateWithoutUserInput> | BankConnectionCreateWithoutUserInput[] | BankConnectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BankConnectionCreateOrConnectWithoutUserInput | BankConnectionCreateOrConnectWithoutUserInput[]
+    upsert?: BankConnectionUpsertWithWhereUniqueWithoutUserInput | BankConnectionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BankConnectionCreateManyUserInputEnvelope
+    set?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+    disconnect?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+    delete?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+    connect?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+    update?: BankConnectionUpdateWithWhereUniqueWithoutUserInput | BankConnectionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BankConnectionUpdateManyWithWhereWithoutUserInput | BankConnectionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BankConnectionScalarWhereInput | BankConnectionScalarWhereInput[]
+  }
+
+  export type GSTReturnUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GSTReturnCreateWithoutUserInput, GSTReturnUncheckedCreateWithoutUserInput> | GSTReturnCreateWithoutUserInput[] | GSTReturnUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GSTReturnCreateOrConnectWithoutUserInput | GSTReturnCreateOrConnectWithoutUserInput[]
+    upsert?: GSTReturnUpsertWithWhereUniqueWithoutUserInput | GSTReturnUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GSTReturnCreateManyUserInputEnvelope
+    set?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+    disconnect?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+    delete?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+    connect?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+    update?: GSTReturnUpdateWithWhereUniqueWithoutUserInput | GSTReturnUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GSTReturnUpdateManyWithWhereWithoutUserInput | GSTReturnUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GSTReturnScalarWhereInput | GSTReturnScalarWhereInput[]
+  }
+
+  export type MoneyRuleUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MoneyRuleCreateWithoutUserInput, MoneyRuleUncheckedCreateWithoutUserInput> | MoneyRuleCreateWithoutUserInput[] | MoneyRuleUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MoneyRuleCreateOrConnectWithoutUserInput | MoneyRuleCreateOrConnectWithoutUserInput[]
+    upsert?: MoneyRuleUpsertWithWhereUniqueWithoutUserInput | MoneyRuleUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MoneyRuleCreateManyUserInputEnvelope
+    set?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+    disconnect?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+    delete?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+    connect?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+    update?: MoneyRuleUpdateWithWhereUniqueWithoutUserInput | MoneyRuleUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MoneyRuleUpdateManyWithWhereWithoutUserInput | MoneyRuleUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MoneyRuleScalarWhereInput | MoneyRuleScalarWhereInput[]
+  }
+
   export type SettingUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SettingCreateWithoutUserInput, SettingUncheckedCreateWithoutUserInput> | SettingCreateWithoutUserInput[] | SettingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SettingCreateOrConnectWithoutUserInput | SettingCreateOrConnectWithoutUserInput[]
@@ -21127,6 +27962,48 @@ export namespace Prisma {
     update?: ProgressUpdateWithWhereUniqueWithoutUserInput | ProgressUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ProgressUpdateManyWithWhereWithoutUserInput | ProgressUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ProgressScalarWhereInput | ProgressScalarWhereInput[]
+  }
+
+  export type BankConnectionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BankConnectionCreateWithoutUserInput, BankConnectionUncheckedCreateWithoutUserInput> | BankConnectionCreateWithoutUserInput[] | BankConnectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BankConnectionCreateOrConnectWithoutUserInput | BankConnectionCreateOrConnectWithoutUserInput[]
+    upsert?: BankConnectionUpsertWithWhereUniqueWithoutUserInput | BankConnectionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BankConnectionCreateManyUserInputEnvelope
+    set?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+    disconnect?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+    delete?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+    connect?: BankConnectionWhereUniqueInput | BankConnectionWhereUniqueInput[]
+    update?: BankConnectionUpdateWithWhereUniqueWithoutUserInput | BankConnectionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BankConnectionUpdateManyWithWhereWithoutUserInput | BankConnectionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BankConnectionScalarWhereInput | BankConnectionScalarWhereInput[]
+  }
+
+  export type GSTReturnUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GSTReturnCreateWithoutUserInput, GSTReturnUncheckedCreateWithoutUserInput> | GSTReturnCreateWithoutUserInput[] | GSTReturnUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GSTReturnCreateOrConnectWithoutUserInput | GSTReturnCreateOrConnectWithoutUserInput[]
+    upsert?: GSTReturnUpsertWithWhereUniqueWithoutUserInput | GSTReturnUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GSTReturnCreateManyUserInputEnvelope
+    set?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+    disconnect?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+    delete?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+    connect?: GSTReturnWhereUniqueInput | GSTReturnWhereUniqueInput[]
+    update?: GSTReturnUpdateWithWhereUniqueWithoutUserInput | GSTReturnUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GSTReturnUpdateManyWithWhereWithoutUserInput | GSTReturnUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GSTReturnScalarWhereInput | GSTReturnScalarWhereInput[]
+  }
+
+  export type MoneyRuleUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MoneyRuleCreateWithoutUserInput, MoneyRuleUncheckedCreateWithoutUserInput> | MoneyRuleCreateWithoutUserInput[] | MoneyRuleUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MoneyRuleCreateOrConnectWithoutUserInput | MoneyRuleCreateOrConnectWithoutUserInput[]
+    upsert?: MoneyRuleUpsertWithWhereUniqueWithoutUserInput | MoneyRuleUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MoneyRuleCreateManyUserInputEnvelope
+    set?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+    disconnect?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+    delete?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+    connect?: MoneyRuleWhereUniqueInput | MoneyRuleWhereUniqueInput[]
+    update?: MoneyRuleUpdateWithWhereUniqueWithoutUserInput | MoneyRuleUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MoneyRuleUpdateManyWithWhereWithoutUserInput | MoneyRuleUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MoneyRuleScalarWhereInput | MoneyRuleScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -21409,6 +28286,187 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutProgressInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProgressInput, UserUpdateWithoutProgressInput>, UserUncheckedUpdateWithoutProgressInput>
+  }
+
+  export type UserCreateNestedOneWithoutBankConnectionsInput = {
+    create?: XOR<UserCreateWithoutBankConnectionsInput, UserUncheckedCreateWithoutBankConnectionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBankConnectionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BankTransactionCreateNestedManyWithoutConnectionInput = {
+    create?: XOR<BankTransactionCreateWithoutConnectionInput, BankTransactionUncheckedCreateWithoutConnectionInput> | BankTransactionCreateWithoutConnectionInput[] | BankTransactionUncheckedCreateWithoutConnectionInput[]
+    connectOrCreate?: BankTransactionCreateOrConnectWithoutConnectionInput | BankTransactionCreateOrConnectWithoutConnectionInput[]
+    createMany?: BankTransactionCreateManyConnectionInputEnvelope
+    connect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+  }
+
+  export type BankTransactionUncheckedCreateNestedManyWithoutConnectionInput = {
+    create?: XOR<BankTransactionCreateWithoutConnectionInput, BankTransactionUncheckedCreateWithoutConnectionInput> | BankTransactionCreateWithoutConnectionInput[] | BankTransactionUncheckedCreateWithoutConnectionInput[]
+    connectOrCreate?: BankTransactionCreateOrConnectWithoutConnectionInput | BankTransactionCreateOrConnectWithoutConnectionInput[]
+    createMany?: BankTransactionCreateManyConnectionInputEnvelope
+    connect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+  }
+
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type UserUpdateOneRequiredWithoutBankConnectionsNestedInput = {
+    create?: XOR<UserCreateWithoutBankConnectionsInput, UserUncheckedCreateWithoutBankConnectionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBankConnectionsInput
+    upsert?: UserUpsertWithoutBankConnectionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBankConnectionsInput, UserUpdateWithoutBankConnectionsInput>, UserUncheckedUpdateWithoutBankConnectionsInput>
+  }
+
+  export type BankTransactionUpdateManyWithoutConnectionNestedInput = {
+    create?: XOR<BankTransactionCreateWithoutConnectionInput, BankTransactionUncheckedCreateWithoutConnectionInput> | BankTransactionCreateWithoutConnectionInput[] | BankTransactionUncheckedCreateWithoutConnectionInput[]
+    connectOrCreate?: BankTransactionCreateOrConnectWithoutConnectionInput | BankTransactionCreateOrConnectWithoutConnectionInput[]
+    upsert?: BankTransactionUpsertWithWhereUniqueWithoutConnectionInput | BankTransactionUpsertWithWhereUniqueWithoutConnectionInput[]
+    createMany?: BankTransactionCreateManyConnectionInputEnvelope
+    set?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    disconnect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    delete?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    connect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    update?: BankTransactionUpdateWithWhereUniqueWithoutConnectionInput | BankTransactionUpdateWithWhereUniqueWithoutConnectionInput[]
+    updateMany?: BankTransactionUpdateManyWithWhereWithoutConnectionInput | BankTransactionUpdateManyWithWhereWithoutConnectionInput[]
+    deleteMany?: BankTransactionScalarWhereInput | BankTransactionScalarWhereInput[]
+  }
+
+  export type BankTransactionUncheckedUpdateManyWithoutConnectionNestedInput = {
+    create?: XOR<BankTransactionCreateWithoutConnectionInput, BankTransactionUncheckedCreateWithoutConnectionInput> | BankTransactionCreateWithoutConnectionInput[] | BankTransactionUncheckedCreateWithoutConnectionInput[]
+    connectOrCreate?: BankTransactionCreateOrConnectWithoutConnectionInput | BankTransactionCreateOrConnectWithoutConnectionInput[]
+    upsert?: BankTransactionUpsertWithWhereUniqueWithoutConnectionInput | BankTransactionUpsertWithWhereUniqueWithoutConnectionInput[]
+    createMany?: BankTransactionCreateManyConnectionInputEnvelope
+    set?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    disconnect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    delete?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    connect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    update?: BankTransactionUpdateWithWhereUniqueWithoutConnectionInput | BankTransactionUpdateWithWhereUniqueWithoutConnectionInput[]
+    updateMany?: BankTransactionUpdateManyWithWhereWithoutConnectionInput | BankTransactionUpdateManyWithWhereWithoutConnectionInput[]
+    deleteMany?: BankTransactionScalarWhereInput | BankTransactionScalarWhereInput[]
+  }
+
+  export type BankConnectionCreateNestedOneWithoutTransactionsInput = {
+    create?: XOR<BankConnectionCreateWithoutTransactionsInput, BankConnectionUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: BankConnectionCreateOrConnectWithoutTransactionsInput
+    connect?: BankConnectionWhereUniqueInput
+  }
+
+  export type MoneyRuleCreateNestedOneWithoutTransactionsInput = {
+    create?: XOR<MoneyRuleCreateWithoutTransactionsInput, MoneyRuleUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: MoneyRuleCreateOrConnectWithoutTransactionsInput
+    connect?: MoneyRuleWhereUniqueInput
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type BankConnectionUpdateOneRequiredWithoutTransactionsNestedInput = {
+    create?: XOR<BankConnectionCreateWithoutTransactionsInput, BankConnectionUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: BankConnectionCreateOrConnectWithoutTransactionsInput
+    upsert?: BankConnectionUpsertWithoutTransactionsInput
+    connect?: BankConnectionWhereUniqueInput
+    update?: XOR<XOR<BankConnectionUpdateToOneWithWhereWithoutTransactionsInput, BankConnectionUpdateWithoutTransactionsInput>, BankConnectionUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type MoneyRuleUpdateOneWithoutTransactionsNestedInput = {
+    create?: XOR<MoneyRuleCreateWithoutTransactionsInput, MoneyRuleUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: MoneyRuleCreateOrConnectWithoutTransactionsInput
+    upsert?: MoneyRuleUpsertWithoutTransactionsInput
+    disconnect?: MoneyRuleWhereInput | boolean
+    delete?: MoneyRuleWhereInput | boolean
+    connect?: MoneyRuleWhereUniqueInput
+    update?: XOR<XOR<MoneyRuleUpdateToOneWithWhereWithoutTransactionsInput, MoneyRuleUpdateWithoutTransactionsInput>, MoneyRuleUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type UserCreateNestedOneWithoutGstReturnsInput = {
+    create?: XOR<UserCreateWithoutGstReturnsInput, UserUncheckedCreateWithoutGstReturnsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGstReturnsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutGstReturnsNestedInput = {
+    create?: XOR<UserCreateWithoutGstReturnsInput, UserUncheckedCreateWithoutGstReturnsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGstReturnsInput
+    upsert?: UserUpsertWithoutGstReturnsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGstReturnsInput, UserUpdateWithoutGstReturnsInput>, UserUncheckedUpdateWithoutGstReturnsInput>
+  }
+
+  export type MoneyRuleCreatecategoriesInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutMoneyRulesInput = {
+    create?: XOR<UserCreateWithoutMoneyRulesInput, UserUncheckedCreateWithoutMoneyRulesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMoneyRulesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BankTransactionCreateNestedManyWithoutMoneyRuleInput = {
+    create?: XOR<BankTransactionCreateWithoutMoneyRuleInput, BankTransactionUncheckedCreateWithoutMoneyRuleInput> | BankTransactionCreateWithoutMoneyRuleInput[] | BankTransactionUncheckedCreateWithoutMoneyRuleInput[]
+    connectOrCreate?: BankTransactionCreateOrConnectWithoutMoneyRuleInput | BankTransactionCreateOrConnectWithoutMoneyRuleInput[]
+    createMany?: BankTransactionCreateManyMoneyRuleInputEnvelope
+    connect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+  }
+
+  export type BankTransactionUncheckedCreateNestedManyWithoutMoneyRuleInput = {
+    create?: XOR<BankTransactionCreateWithoutMoneyRuleInput, BankTransactionUncheckedCreateWithoutMoneyRuleInput> | BankTransactionCreateWithoutMoneyRuleInput[] | BankTransactionUncheckedCreateWithoutMoneyRuleInput[]
+    connectOrCreate?: BankTransactionCreateOrConnectWithoutMoneyRuleInput | BankTransactionCreateOrConnectWithoutMoneyRuleInput[]
+    createMany?: BankTransactionCreateManyMoneyRuleInputEnvelope
+    connect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+  }
+
+  export type MoneyRuleUpdatecategoriesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutMoneyRulesNestedInput = {
+    create?: XOR<UserCreateWithoutMoneyRulesInput, UserUncheckedCreateWithoutMoneyRulesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMoneyRulesInput
+    upsert?: UserUpsertWithoutMoneyRulesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMoneyRulesInput, UserUpdateWithoutMoneyRulesInput>, UserUncheckedUpdateWithoutMoneyRulesInput>
+  }
+
+  export type BankTransactionUpdateManyWithoutMoneyRuleNestedInput = {
+    create?: XOR<BankTransactionCreateWithoutMoneyRuleInput, BankTransactionUncheckedCreateWithoutMoneyRuleInput> | BankTransactionCreateWithoutMoneyRuleInput[] | BankTransactionUncheckedCreateWithoutMoneyRuleInput[]
+    connectOrCreate?: BankTransactionCreateOrConnectWithoutMoneyRuleInput | BankTransactionCreateOrConnectWithoutMoneyRuleInput[]
+    upsert?: BankTransactionUpsertWithWhereUniqueWithoutMoneyRuleInput | BankTransactionUpsertWithWhereUniqueWithoutMoneyRuleInput[]
+    createMany?: BankTransactionCreateManyMoneyRuleInputEnvelope
+    set?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    disconnect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    delete?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    connect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    update?: BankTransactionUpdateWithWhereUniqueWithoutMoneyRuleInput | BankTransactionUpdateWithWhereUniqueWithoutMoneyRuleInput[]
+    updateMany?: BankTransactionUpdateManyWithWhereWithoutMoneyRuleInput | BankTransactionUpdateManyWithWhereWithoutMoneyRuleInput[]
+    deleteMany?: BankTransactionScalarWhereInput | BankTransactionScalarWhereInput[]
+  }
+
+  export type BankTransactionUncheckedUpdateManyWithoutMoneyRuleNestedInput = {
+    create?: XOR<BankTransactionCreateWithoutMoneyRuleInput, BankTransactionUncheckedCreateWithoutMoneyRuleInput> | BankTransactionCreateWithoutMoneyRuleInput[] | BankTransactionUncheckedCreateWithoutMoneyRuleInput[]
+    connectOrCreate?: BankTransactionCreateOrConnectWithoutMoneyRuleInput | BankTransactionCreateOrConnectWithoutMoneyRuleInput[]
+    upsert?: BankTransactionUpsertWithWhereUniqueWithoutMoneyRuleInput | BankTransactionUpsertWithWhereUniqueWithoutMoneyRuleInput[]
+    createMany?: BankTransactionCreateManyMoneyRuleInputEnvelope
+    set?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    disconnect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    delete?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    connect?: BankTransactionWhereUniqueInput | BankTransactionWhereUniqueInput[]
+    update?: BankTransactionUpdateWithWhereUniqueWithoutMoneyRuleInput | BankTransactionUpdateWithWhereUniqueWithoutMoneyRuleInput[]
+    updateMany?: BankTransactionUpdateManyWithWhereWithoutMoneyRuleInput | BankTransactionUpdateManyWithWhereWithoutMoneyRuleInput[]
+    deleteMany?: BankTransactionScalarWhereInput | BankTransactionScalarWhereInput[]
   }
 
   export type NestedUuidFilter<$PrismaModel = never> = {
@@ -21706,6 +28764,60 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type SettingCreateWithoutUserInput = {
@@ -22062,6 +29174,130 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type BankConnectionCreateWithoutUserInput = {
+    id?: string
+    institution: string
+    accountName: string
+    accountBSB?: string | null
+    accountNumber?: string | null
+    balance?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    provider?: string
+    providerRef?: string | null
+    lastSynced?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transactions?: BankTransactionCreateNestedManyWithoutConnectionInput
+  }
+
+  export type BankConnectionUncheckedCreateWithoutUserInput = {
+    id?: string
+    institution: string
+    accountName: string
+    accountBSB?: string | null
+    accountNumber?: string | null
+    balance?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    provider?: string
+    providerRef?: string | null
+    lastSynced?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transactions?: BankTransactionUncheckedCreateNestedManyWithoutConnectionInput
+  }
+
+  export type BankConnectionCreateOrConnectWithoutUserInput = {
+    where: BankConnectionWhereUniqueInput
+    create: XOR<BankConnectionCreateWithoutUserInput, BankConnectionUncheckedCreateWithoutUserInput>
+  }
+
+  export type BankConnectionCreateManyUserInputEnvelope = {
+    data: BankConnectionCreateManyUserInput | BankConnectionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GSTReturnCreateWithoutUserInput = {
+    id?: string
+    period: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    totalSales?: Decimal | DecimalJsLike | number | string
+    gstOnSales?: Decimal | DecimalJsLike | number | string
+    totalPurchases?: Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: Decimal | DecimalJsLike | number | string
+    netGST?: Decimal | DecimalJsLike | number | string
+    status?: string
+    lodgedAt?: Date | string | null
+    atoRef?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GSTReturnUncheckedCreateWithoutUserInput = {
+    id?: string
+    period: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    totalSales?: Decimal | DecimalJsLike | number | string
+    gstOnSales?: Decimal | DecimalJsLike | number | string
+    totalPurchases?: Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: Decimal | DecimalJsLike | number | string
+    netGST?: Decimal | DecimalJsLike | number | string
+    status?: string
+    lodgedAt?: Date | string | null
+    atoRef?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GSTReturnCreateOrConnectWithoutUserInput = {
+    where: GSTReturnWhereUniqueInput
+    create: XOR<GSTReturnCreateWithoutUserInput, GSTReturnUncheckedCreateWithoutUserInput>
+  }
+
+  export type GSTReturnCreateManyUserInputEnvelope = {
+    data: GSTReturnCreateManyUserInput | GSTReturnCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MoneyRuleCreateWithoutUserInput = {
+    id?: string
+    name: string
+    percentage: Decimal | DecimalJsLike | number | string
+    color?: string
+    icon?: string | null
+    categories?: MoneyRuleCreatecategoriesInput | string[]
+    monthlyTarget?: Decimal | DecimalJsLike | number | string | null
+    sortOrder?: number
+    createdAt?: Date | string
+    transactions?: BankTransactionCreateNestedManyWithoutMoneyRuleInput
+  }
+
+  export type MoneyRuleUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    percentage: Decimal | DecimalJsLike | number | string
+    color?: string
+    icon?: string | null
+    categories?: MoneyRuleCreatecategoriesInput | string[]
+    monthlyTarget?: Decimal | DecimalJsLike | number | string | null
+    sortOrder?: number
+    createdAt?: Date | string
+    transactions?: BankTransactionUncheckedCreateNestedManyWithoutMoneyRuleInput
+  }
+
+  export type MoneyRuleCreateOrConnectWithoutUserInput = {
+    where: MoneyRuleWhereUniqueInput
+    create: XOR<MoneyRuleCreateWithoutUserInput, MoneyRuleUncheckedCreateWithoutUserInput>
+  }
+
+  export type MoneyRuleCreateManyUserInputEnvelope = {
+    data: MoneyRuleCreateManyUserInput | MoneyRuleCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SettingUpsertWithWhereUniqueWithoutUserInput = {
     where: SettingWhereUniqueInput
     update: XOR<SettingUpdateWithoutUserInput, SettingUncheckedUpdateWithoutUserInput>
@@ -22402,6 +29638,111 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Progress"> | Date | string
   }
 
+  export type BankConnectionUpsertWithWhereUniqueWithoutUserInput = {
+    where: BankConnectionWhereUniqueInput
+    update: XOR<BankConnectionUpdateWithoutUserInput, BankConnectionUncheckedUpdateWithoutUserInput>
+    create: XOR<BankConnectionCreateWithoutUserInput, BankConnectionUncheckedCreateWithoutUserInput>
+  }
+
+  export type BankConnectionUpdateWithWhereUniqueWithoutUserInput = {
+    where: BankConnectionWhereUniqueInput
+    data: XOR<BankConnectionUpdateWithoutUserInput, BankConnectionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BankConnectionUpdateManyWithWhereWithoutUserInput = {
+    where: BankConnectionScalarWhereInput
+    data: XOR<BankConnectionUpdateManyMutationInput, BankConnectionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BankConnectionScalarWhereInput = {
+    AND?: BankConnectionScalarWhereInput | BankConnectionScalarWhereInput[]
+    OR?: BankConnectionScalarWhereInput[]
+    NOT?: BankConnectionScalarWhereInput | BankConnectionScalarWhereInput[]
+    id?: UuidFilter<"BankConnection"> | string
+    userId?: UuidFilter<"BankConnection"> | string
+    institution?: StringFilter<"BankConnection"> | string
+    accountName?: StringFilter<"BankConnection"> | string
+    accountBSB?: StringNullableFilter<"BankConnection"> | string | null
+    accountNumber?: StringNullableFilter<"BankConnection"> | string | null
+    balance?: DecimalNullableFilter<"BankConnection"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFilter<"BankConnection"> | string
+    provider?: StringFilter<"BankConnection"> | string
+    providerRef?: StringNullableFilter<"BankConnection"> | string | null
+    lastSynced?: DateTimeNullableFilter<"BankConnection"> | Date | string | null
+    status?: StringFilter<"BankConnection"> | string
+    createdAt?: DateTimeFilter<"BankConnection"> | Date | string
+    updatedAt?: DateTimeFilter<"BankConnection"> | Date | string
+  }
+
+  export type GSTReturnUpsertWithWhereUniqueWithoutUserInput = {
+    where: GSTReturnWhereUniqueInput
+    update: XOR<GSTReturnUpdateWithoutUserInput, GSTReturnUncheckedUpdateWithoutUserInput>
+    create: XOR<GSTReturnCreateWithoutUserInput, GSTReturnUncheckedCreateWithoutUserInput>
+  }
+
+  export type GSTReturnUpdateWithWhereUniqueWithoutUserInput = {
+    where: GSTReturnWhereUniqueInput
+    data: XOR<GSTReturnUpdateWithoutUserInput, GSTReturnUncheckedUpdateWithoutUserInput>
+  }
+
+  export type GSTReturnUpdateManyWithWhereWithoutUserInput = {
+    where: GSTReturnScalarWhereInput
+    data: XOR<GSTReturnUpdateManyMutationInput, GSTReturnUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type GSTReturnScalarWhereInput = {
+    AND?: GSTReturnScalarWhereInput | GSTReturnScalarWhereInput[]
+    OR?: GSTReturnScalarWhereInput[]
+    NOT?: GSTReturnScalarWhereInput | GSTReturnScalarWhereInput[]
+    id?: UuidFilter<"GSTReturn"> | string
+    userId?: UuidFilter<"GSTReturn"> | string
+    period?: StringFilter<"GSTReturn"> | string
+    periodStart?: DateTimeFilter<"GSTReturn"> | Date | string
+    periodEnd?: DateTimeFilter<"GSTReturn"> | Date | string
+    totalSales?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFilter<"GSTReturn"> | Decimal | DecimalJsLike | number | string
+    status?: StringFilter<"GSTReturn"> | string
+    lodgedAt?: DateTimeNullableFilter<"GSTReturn"> | Date | string | null
+    atoRef?: StringNullableFilter<"GSTReturn"> | string | null
+    createdAt?: DateTimeFilter<"GSTReturn"> | Date | string
+    updatedAt?: DateTimeFilter<"GSTReturn"> | Date | string
+  }
+
+  export type MoneyRuleUpsertWithWhereUniqueWithoutUserInput = {
+    where: MoneyRuleWhereUniqueInput
+    update: XOR<MoneyRuleUpdateWithoutUserInput, MoneyRuleUncheckedUpdateWithoutUserInput>
+    create: XOR<MoneyRuleCreateWithoutUserInput, MoneyRuleUncheckedCreateWithoutUserInput>
+  }
+
+  export type MoneyRuleUpdateWithWhereUniqueWithoutUserInput = {
+    where: MoneyRuleWhereUniqueInput
+    data: XOR<MoneyRuleUpdateWithoutUserInput, MoneyRuleUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MoneyRuleUpdateManyWithWhereWithoutUserInput = {
+    where: MoneyRuleScalarWhereInput
+    data: XOR<MoneyRuleUpdateManyMutationInput, MoneyRuleUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type MoneyRuleScalarWhereInput = {
+    AND?: MoneyRuleScalarWhereInput | MoneyRuleScalarWhereInput[]
+    OR?: MoneyRuleScalarWhereInput[]
+    NOT?: MoneyRuleScalarWhereInput | MoneyRuleScalarWhereInput[]
+    id?: UuidFilter<"MoneyRule"> | string
+    userId?: UuidFilter<"MoneyRule"> | string
+    name?: StringFilter<"MoneyRule"> | string
+    percentage?: DecimalFilter<"MoneyRule"> | Decimal | DecimalJsLike | number | string
+    color?: StringFilter<"MoneyRule"> | string
+    icon?: StringNullableFilter<"MoneyRule"> | string | null
+    categories?: StringNullableListFilter<"MoneyRule">
+    monthlyTarget?: DecimalNullableFilter<"MoneyRule"> | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFilter<"MoneyRule"> | number
+    createdAt?: DateTimeFilter<"MoneyRule"> | Date | string
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id?: string
     email: string
@@ -22430,6 +29771,9 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -22460,6 +29804,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -22506,6 +29853,9 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -22536,6 +29886,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -22566,6 +29919,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -22596,6 +29952,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -22642,6 +30001,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -22672,6 +30034,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSettingsInput = {
@@ -22702,6 +30067,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSettingsInput = {
@@ -22732,6 +30100,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSettingsInput = {
@@ -22778,6 +30149,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSettingsInput = {
@@ -22808,6 +30182,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutCategoriesInput = {
@@ -22838,6 +30215,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCategoriesInput = {
@@ -22868,6 +30248,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCategoriesInput = {
@@ -22967,6 +30350,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCategoriesInput = {
@@ -22997,6 +30383,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TransactionUpsertWithWhereUniqueWithoutCategoryInput = {
@@ -23043,6 +30432,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProjectsInput = {
@@ -23073,6 +30465,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProjectsInput = {
@@ -23172,6 +30567,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProjectsInput = {
@@ -23202,6 +30600,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TransactionUpsertWithWhereUniqueWithoutProjectInput = {
@@ -23248,6 +30649,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFieldsInput = {
@@ -23278,6 +30682,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFieldsInput = {
@@ -23324,6 +30731,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFieldsInput = {
@@ -23354,6 +30764,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutFilesInput = {
@@ -23384,6 +30797,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFilesInput = {
@@ -23414,6 +30830,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFilesInput = {
@@ -23460,6 +30879,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFilesInput = {
@@ -23490,6 +30912,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutTransactionsInput = {
@@ -23520,6 +30945,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTransactionsInput = {
@@ -23550,6 +30978,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTransactionsInput = {
@@ -23646,6 +31077,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTransactionsInput = {
@@ -23676,6 +31110,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CategoryUpsertWithoutTransactionsInput = {
@@ -23768,6 +31205,9 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCurrenciesInput = {
@@ -23798,6 +31238,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCurrenciesInput = {
@@ -23844,6 +31287,9 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCurrenciesInput = {
@@ -23874,6 +31320,9 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAppDataInput = {
@@ -23904,6 +31353,9 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAppDataInput = {
@@ -23934,6 +31386,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAppDataInput = {
@@ -23980,6 +31435,9 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAppDataInput = {
@@ -24010,6 +31468,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutProgressInput = {
@@ -24040,6 +31501,9 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     appData?: AppDataCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProgressInput = {
@@ -24070,6 +31534,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProgressInput = {
@@ -24116,6 +31583,9 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     appData?: AppDataUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProgressInput = {
@@ -24146,6 +31616,736 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutBankConnectionsInput = {
+    id?: string
+    email: string
+    name: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeCustomerId?: string | null
+    membershipPlan?: string | null
+    membershipExpiresAt?: Date | string | null
+    emailVerified?: boolean
+    storageUsed?: number
+    storageLimit?: number
+    aiBalance?: number
+    businessName?: string | null
+    businessAddress?: string | null
+    businessBankDetails?: string | null
+    businessLogo?: string | null
+    settings?: SettingCreateNestedManyWithoutUserInput
+    categories?: CategoryCreateNestedManyWithoutUserInput
+    projects?: ProjectCreateNestedManyWithoutUserInput
+    fields?: FieldCreateNestedManyWithoutUserInput
+    files?: FileCreateNestedManyWithoutUserInput
+    currencies?: CurrencyCreateNestedManyWithoutUserInput
+    transactions?: TransactionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    appData?: AppDataCreateNestedManyWithoutUserInput
+    progress?: ProgressCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutBankConnectionsInput = {
+    id?: string
+    email: string
+    name: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeCustomerId?: string | null
+    membershipPlan?: string | null
+    membershipExpiresAt?: Date | string | null
+    emailVerified?: boolean
+    storageUsed?: number
+    storageLimit?: number
+    aiBalance?: number
+    businessName?: string | null
+    businessAddress?: string | null
+    businessBankDetails?: string | null
+    businessLogo?: string | null
+    settings?: SettingUncheckedCreateNestedManyWithoutUserInput
+    categories?: CategoryUncheckedCreateNestedManyWithoutUserInput
+    projects?: ProjectUncheckedCreateNestedManyWithoutUserInput
+    fields?: FieldUncheckedCreateNestedManyWithoutUserInput
+    files?: FileUncheckedCreateNestedManyWithoutUserInput
+    currencies?: CurrencyUncheckedCreateNestedManyWithoutUserInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
+    progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutBankConnectionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBankConnectionsInput, UserUncheckedCreateWithoutBankConnectionsInput>
+  }
+
+  export type BankTransactionCreateWithoutConnectionInput = {
+    id?: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+    moneyRule?: MoneyRuleCreateNestedOneWithoutTransactionsInput
+  }
+
+  export type BankTransactionUncheckedCreateWithoutConnectionInput = {
+    id?: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    moneyRuleId?: string | null
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+  }
+
+  export type BankTransactionCreateOrConnectWithoutConnectionInput = {
+    where: BankTransactionWhereUniqueInput
+    create: XOR<BankTransactionCreateWithoutConnectionInput, BankTransactionUncheckedCreateWithoutConnectionInput>
+  }
+
+  export type BankTransactionCreateManyConnectionInputEnvelope = {
+    data: BankTransactionCreateManyConnectionInput | BankTransactionCreateManyConnectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutBankConnectionsInput = {
+    update: XOR<UserUpdateWithoutBankConnectionsInput, UserUncheckedUpdateWithoutBankConnectionsInput>
+    create: XOR<UserCreateWithoutBankConnectionsInput, UserUncheckedCreateWithoutBankConnectionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBankConnectionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBankConnectionsInput, UserUncheckedUpdateWithoutBankConnectionsInput>
+  }
+
+  export type UserUpdateWithoutBankConnectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    storageUsed?: IntFieldUpdateOperationsInput | number
+    storageLimit?: IntFieldUpdateOperationsInput | number
+    aiBalance?: IntFieldUpdateOperationsInput | number
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    businessBankDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    businessLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: SettingUpdateManyWithoutUserNestedInput
+    categories?: CategoryUpdateManyWithoutUserNestedInput
+    projects?: ProjectUpdateManyWithoutUserNestedInput
+    fields?: FieldUpdateManyWithoutUserNestedInput
+    files?: FileUpdateManyWithoutUserNestedInput
+    currencies?: CurrencyUpdateManyWithoutUserNestedInput
+    transactions?: TransactionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    appData?: AppDataUpdateManyWithoutUserNestedInput
+    progress?: ProgressUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutBankConnectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    storageUsed?: IntFieldUpdateOperationsInput | number
+    storageLimit?: IntFieldUpdateOperationsInput | number
+    aiBalance?: IntFieldUpdateOperationsInput | number
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    businessBankDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    businessLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: SettingUncheckedUpdateManyWithoutUserNestedInput
+    categories?: CategoryUncheckedUpdateManyWithoutUserNestedInput
+    projects?: ProjectUncheckedUpdateManyWithoutUserNestedInput
+    fields?: FieldUncheckedUpdateManyWithoutUserNestedInput
+    files?: FileUncheckedUpdateManyWithoutUserNestedInput
+    currencies?: CurrencyUncheckedUpdateManyWithoutUserNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
+    progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type BankTransactionUpsertWithWhereUniqueWithoutConnectionInput = {
+    where: BankTransactionWhereUniqueInput
+    update: XOR<BankTransactionUpdateWithoutConnectionInput, BankTransactionUncheckedUpdateWithoutConnectionInput>
+    create: XOR<BankTransactionCreateWithoutConnectionInput, BankTransactionUncheckedCreateWithoutConnectionInput>
+  }
+
+  export type BankTransactionUpdateWithWhereUniqueWithoutConnectionInput = {
+    where: BankTransactionWhereUniqueInput
+    data: XOR<BankTransactionUpdateWithoutConnectionInput, BankTransactionUncheckedUpdateWithoutConnectionInput>
+  }
+
+  export type BankTransactionUpdateManyWithWhereWithoutConnectionInput = {
+    where: BankTransactionScalarWhereInput
+    data: XOR<BankTransactionUpdateManyMutationInput, BankTransactionUncheckedUpdateManyWithoutConnectionInput>
+  }
+
+  export type BankTransactionScalarWhereInput = {
+    AND?: BankTransactionScalarWhereInput | BankTransactionScalarWhereInput[]
+    OR?: BankTransactionScalarWhereInput[]
+    NOT?: BankTransactionScalarWhereInput | BankTransactionScalarWhereInput[]
+    id?: UuidFilter<"BankTransaction"> | string
+    connectionId?: UuidFilter<"BankTransaction"> | string
+    date?: DateTimeFilter<"BankTransaction"> | Date | string
+    description?: StringFilter<"BankTransaction"> | string
+    amount?: DecimalFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string
+    balance?: DecimalNullableFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string | null
+    category?: StringNullableFilter<"BankTransaction"> | string | null
+    gstAmount?: DecimalNullableFilter<"BankTransaction"> | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFilter<"BankTransaction"> | boolean
+    moneyRuleId?: UuidNullableFilter<"BankTransaction"> | string | null
+    reference?: StringNullableFilter<"BankTransaction"> | string | null
+    reconciled?: BoolFilter<"BankTransaction"> | boolean
+    createdAt?: DateTimeFilter<"BankTransaction"> | Date | string
+  }
+
+  export type BankConnectionCreateWithoutTransactionsInput = {
+    id?: string
+    institution: string
+    accountName: string
+    accountBSB?: string | null
+    accountNumber?: string | null
+    balance?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    provider?: string
+    providerRef?: string | null
+    lastSynced?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutBankConnectionsInput
+  }
+
+  export type BankConnectionUncheckedCreateWithoutTransactionsInput = {
+    id?: string
+    userId: string
+    institution: string
+    accountName: string
+    accountBSB?: string | null
+    accountNumber?: string | null
+    balance?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    provider?: string
+    providerRef?: string | null
+    lastSynced?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BankConnectionCreateOrConnectWithoutTransactionsInput = {
+    where: BankConnectionWhereUniqueInput
+    create: XOR<BankConnectionCreateWithoutTransactionsInput, BankConnectionUncheckedCreateWithoutTransactionsInput>
+  }
+
+  export type MoneyRuleCreateWithoutTransactionsInput = {
+    id?: string
+    name: string
+    percentage: Decimal | DecimalJsLike | number | string
+    color?: string
+    icon?: string | null
+    categories?: MoneyRuleCreatecategoriesInput | string[]
+    monthlyTarget?: Decimal | DecimalJsLike | number | string | null
+    sortOrder?: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutMoneyRulesInput
+  }
+
+  export type MoneyRuleUncheckedCreateWithoutTransactionsInput = {
+    id?: string
+    userId: string
+    name: string
+    percentage: Decimal | DecimalJsLike | number | string
+    color?: string
+    icon?: string | null
+    categories?: MoneyRuleCreatecategoriesInput | string[]
+    monthlyTarget?: Decimal | DecimalJsLike | number | string | null
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type MoneyRuleCreateOrConnectWithoutTransactionsInput = {
+    where: MoneyRuleWhereUniqueInput
+    create: XOR<MoneyRuleCreateWithoutTransactionsInput, MoneyRuleUncheckedCreateWithoutTransactionsInput>
+  }
+
+  export type BankConnectionUpsertWithoutTransactionsInput = {
+    update: XOR<BankConnectionUpdateWithoutTransactionsInput, BankConnectionUncheckedUpdateWithoutTransactionsInput>
+    create: XOR<BankConnectionCreateWithoutTransactionsInput, BankConnectionUncheckedCreateWithoutTransactionsInput>
+    where?: BankConnectionWhereInput
+  }
+
+  export type BankConnectionUpdateToOneWithWhereWithoutTransactionsInput = {
+    where?: BankConnectionWhereInput
+    data: XOR<BankConnectionUpdateWithoutTransactionsInput, BankConnectionUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type BankConnectionUpdateWithoutTransactionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBankConnectionsNestedInput
+  }
+
+  export type BankConnectionUncheckedUpdateWithoutTransactionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MoneyRuleUpsertWithoutTransactionsInput = {
+    update: XOR<MoneyRuleUpdateWithoutTransactionsInput, MoneyRuleUncheckedUpdateWithoutTransactionsInput>
+    create: XOR<MoneyRuleCreateWithoutTransactionsInput, MoneyRuleUncheckedCreateWithoutTransactionsInput>
+    where?: MoneyRuleWhereInput
+  }
+
+  export type MoneyRuleUpdateToOneWithWhereWithoutTransactionsInput = {
+    where?: MoneyRuleWhereInput
+    data: XOR<MoneyRuleUpdateWithoutTransactionsInput, MoneyRuleUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type MoneyRuleUpdateWithoutTransactionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMoneyRulesNestedInput
+  }
+
+  export type MoneyRuleUncheckedUpdateWithoutTransactionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCreateWithoutGstReturnsInput = {
+    id?: string
+    email: string
+    name: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeCustomerId?: string | null
+    membershipPlan?: string | null
+    membershipExpiresAt?: Date | string | null
+    emailVerified?: boolean
+    storageUsed?: number
+    storageLimit?: number
+    aiBalance?: number
+    businessName?: string | null
+    businessAddress?: string | null
+    businessBankDetails?: string | null
+    businessLogo?: string | null
+    settings?: SettingCreateNestedManyWithoutUserInput
+    categories?: CategoryCreateNestedManyWithoutUserInput
+    projects?: ProjectCreateNestedManyWithoutUserInput
+    fields?: FieldCreateNestedManyWithoutUserInput
+    files?: FileCreateNestedManyWithoutUserInput
+    currencies?: CurrencyCreateNestedManyWithoutUserInput
+    transactions?: TransactionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    appData?: AppDataCreateNestedManyWithoutUserInput
+    progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutGstReturnsInput = {
+    id?: string
+    email: string
+    name: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeCustomerId?: string | null
+    membershipPlan?: string | null
+    membershipExpiresAt?: Date | string | null
+    emailVerified?: boolean
+    storageUsed?: number
+    storageLimit?: number
+    aiBalance?: number
+    businessName?: string | null
+    businessAddress?: string | null
+    businessBankDetails?: string | null
+    businessLogo?: string | null
+    settings?: SettingUncheckedCreateNestedManyWithoutUserInput
+    categories?: CategoryUncheckedCreateNestedManyWithoutUserInput
+    projects?: ProjectUncheckedCreateNestedManyWithoutUserInput
+    fields?: FieldUncheckedCreateNestedManyWithoutUserInput
+    files?: FileUncheckedCreateNestedManyWithoutUserInput
+    currencies?: CurrencyUncheckedCreateNestedManyWithoutUserInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
+    progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    moneyRules?: MoneyRuleUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutGstReturnsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGstReturnsInput, UserUncheckedCreateWithoutGstReturnsInput>
+  }
+
+  export type UserUpsertWithoutGstReturnsInput = {
+    update: XOR<UserUpdateWithoutGstReturnsInput, UserUncheckedUpdateWithoutGstReturnsInput>
+    create: XOR<UserCreateWithoutGstReturnsInput, UserUncheckedCreateWithoutGstReturnsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutGstReturnsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGstReturnsInput, UserUncheckedUpdateWithoutGstReturnsInput>
+  }
+
+  export type UserUpdateWithoutGstReturnsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    storageUsed?: IntFieldUpdateOperationsInput | number
+    storageLimit?: IntFieldUpdateOperationsInput | number
+    aiBalance?: IntFieldUpdateOperationsInput | number
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    businessBankDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    businessLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: SettingUpdateManyWithoutUserNestedInput
+    categories?: CategoryUpdateManyWithoutUserNestedInput
+    projects?: ProjectUpdateManyWithoutUserNestedInput
+    fields?: FieldUpdateManyWithoutUserNestedInput
+    files?: FileUpdateManyWithoutUserNestedInput
+    currencies?: CurrencyUpdateManyWithoutUserNestedInput
+    transactions?: TransactionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    appData?: AppDataUpdateManyWithoutUserNestedInput
+    progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGstReturnsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    storageUsed?: IntFieldUpdateOperationsInput | number
+    storageLimit?: IntFieldUpdateOperationsInput | number
+    aiBalance?: IntFieldUpdateOperationsInput | number
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    businessBankDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    businessLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: SettingUncheckedUpdateManyWithoutUserNestedInput
+    categories?: CategoryUncheckedUpdateManyWithoutUserNestedInput
+    projects?: ProjectUncheckedUpdateManyWithoutUserNestedInput
+    fields?: FieldUncheckedUpdateManyWithoutUserNestedInput
+    files?: FileUncheckedUpdateManyWithoutUserNestedInput
+    currencies?: CurrencyUncheckedUpdateManyWithoutUserNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
+    progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    moneyRules?: MoneyRuleUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutMoneyRulesInput = {
+    id?: string
+    email: string
+    name: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeCustomerId?: string | null
+    membershipPlan?: string | null
+    membershipExpiresAt?: Date | string | null
+    emailVerified?: boolean
+    storageUsed?: number
+    storageLimit?: number
+    aiBalance?: number
+    businessName?: string | null
+    businessAddress?: string | null
+    businessBankDetails?: string | null
+    businessLogo?: string | null
+    settings?: SettingCreateNestedManyWithoutUserInput
+    categories?: CategoryCreateNestedManyWithoutUserInput
+    projects?: ProjectCreateNestedManyWithoutUserInput
+    fields?: FieldCreateNestedManyWithoutUserInput
+    files?: FileCreateNestedManyWithoutUserInput
+    currencies?: CurrencyCreateNestedManyWithoutUserInput
+    transactions?: TransactionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    appData?: AppDataCreateNestedManyWithoutUserInput
+    progress?: ProgressCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutMoneyRulesInput = {
+    id?: string
+    email: string
+    name: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    stripeCustomerId?: string | null
+    membershipPlan?: string | null
+    membershipExpiresAt?: Date | string | null
+    emailVerified?: boolean
+    storageUsed?: number
+    storageLimit?: number
+    aiBalance?: number
+    businessName?: string | null
+    businessAddress?: string | null
+    businessBankDetails?: string | null
+    businessLogo?: string | null
+    settings?: SettingUncheckedCreateNestedManyWithoutUserInput
+    categories?: CategoryUncheckedCreateNestedManyWithoutUserInput
+    projects?: ProjectUncheckedCreateNestedManyWithoutUserInput
+    fields?: FieldUncheckedCreateNestedManyWithoutUserInput
+    files?: FileUncheckedCreateNestedManyWithoutUserInput
+    currencies?: CurrencyUncheckedCreateNestedManyWithoutUserInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    appData?: AppDataUncheckedCreateNestedManyWithoutUserInput
+    progress?: ProgressUncheckedCreateNestedManyWithoutUserInput
+    bankConnections?: BankConnectionUncheckedCreateNestedManyWithoutUserInput
+    gstReturns?: GSTReturnUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMoneyRulesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMoneyRulesInput, UserUncheckedCreateWithoutMoneyRulesInput>
+  }
+
+  export type BankTransactionCreateWithoutMoneyRuleInput = {
+    id?: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+    connection: BankConnectionCreateNestedOneWithoutTransactionsInput
+  }
+
+  export type BankTransactionUncheckedCreateWithoutMoneyRuleInput = {
+    id?: string
+    connectionId: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+  }
+
+  export type BankTransactionCreateOrConnectWithoutMoneyRuleInput = {
+    where: BankTransactionWhereUniqueInput
+    create: XOR<BankTransactionCreateWithoutMoneyRuleInput, BankTransactionUncheckedCreateWithoutMoneyRuleInput>
+  }
+
+  export type BankTransactionCreateManyMoneyRuleInputEnvelope = {
+    data: BankTransactionCreateManyMoneyRuleInput | BankTransactionCreateManyMoneyRuleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutMoneyRulesInput = {
+    update: XOR<UserUpdateWithoutMoneyRulesInput, UserUncheckedUpdateWithoutMoneyRulesInput>
+    create: XOR<UserCreateWithoutMoneyRulesInput, UserUncheckedCreateWithoutMoneyRulesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMoneyRulesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMoneyRulesInput, UserUncheckedUpdateWithoutMoneyRulesInput>
+  }
+
+  export type UserUpdateWithoutMoneyRulesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    storageUsed?: IntFieldUpdateOperationsInput | number
+    storageLimit?: IntFieldUpdateOperationsInput | number
+    aiBalance?: IntFieldUpdateOperationsInput | number
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    businessBankDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    businessLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: SettingUpdateManyWithoutUserNestedInput
+    categories?: CategoryUpdateManyWithoutUserNestedInput
+    projects?: ProjectUpdateManyWithoutUserNestedInput
+    fields?: FieldUpdateManyWithoutUserNestedInput
+    files?: FileUpdateManyWithoutUserNestedInput
+    currencies?: CurrencyUpdateManyWithoutUserNestedInput
+    transactions?: TransactionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    appData?: AppDataUpdateManyWithoutUserNestedInput
+    progress?: ProgressUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMoneyRulesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipPlan?: NullableStringFieldUpdateOperationsInput | string | null
+    membershipExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    storageUsed?: IntFieldUpdateOperationsInput | number
+    storageLimit?: IntFieldUpdateOperationsInput | number
+    aiBalance?: IntFieldUpdateOperationsInput | number
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    businessBankDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    businessLogo?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: SettingUncheckedUpdateManyWithoutUserNestedInput
+    categories?: CategoryUncheckedUpdateManyWithoutUserNestedInput
+    projects?: ProjectUncheckedUpdateManyWithoutUserNestedInput
+    fields?: FieldUncheckedUpdateManyWithoutUserNestedInput
+    files?: FileUncheckedUpdateManyWithoutUserNestedInput
+    currencies?: CurrencyUncheckedUpdateManyWithoutUserNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    appData?: AppDataUncheckedUpdateManyWithoutUserNestedInput
+    progress?: ProgressUncheckedUpdateManyWithoutUserNestedInput
+    bankConnections?: BankConnectionUncheckedUpdateManyWithoutUserNestedInput
+    gstReturns?: GSTReturnUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type BankTransactionUpsertWithWhereUniqueWithoutMoneyRuleInput = {
+    where: BankTransactionWhereUniqueInput
+    update: XOR<BankTransactionUpdateWithoutMoneyRuleInput, BankTransactionUncheckedUpdateWithoutMoneyRuleInput>
+    create: XOR<BankTransactionCreateWithoutMoneyRuleInput, BankTransactionUncheckedCreateWithoutMoneyRuleInput>
+  }
+
+  export type BankTransactionUpdateWithWhereUniqueWithoutMoneyRuleInput = {
+    where: BankTransactionWhereUniqueInput
+    data: XOR<BankTransactionUpdateWithoutMoneyRuleInput, BankTransactionUncheckedUpdateWithoutMoneyRuleInput>
+  }
+
+  export type BankTransactionUpdateManyWithWhereWithoutMoneyRuleInput = {
+    where: BankTransactionScalarWhereInput
+    data: XOR<BankTransactionUpdateManyMutationInput, BankTransactionUncheckedUpdateManyWithoutMoneyRuleInput>
   }
 
   export type SettingCreateManyUserInput = {
@@ -24265,6 +32465,51 @@ export namespace Prisma {
     data?: NullableJsonNullValueInput | InputJsonValue
     current?: number
     total?: number
+    createdAt?: Date | string
+  }
+
+  export type BankConnectionCreateManyUserInput = {
+    id?: string
+    institution: string
+    accountName: string
+    accountBSB?: string | null
+    accountNumber?: string | null
+    balance?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    provider?: string
+    providerRef?: string | null
+    lastSynced?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GSTReturnCreateManyUserInput = {
+    id?: string
+    period: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    totalSales?: Decimal | DecimalJsLike | number | string
+    gstOnSales?: Decimal | DecimalJsLike | number | string
+    totalPurchases?: Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: Decimal | DecimalJsLike | number | string
+    netGST?: Decimal | DecimalJsLike | number | string
+    status?: string
+    lodgedAt?: Date | string | null
+    atoRef?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MoneyRuleCreateManyUserInput = {
+    id?: string
+    name: string
+    percentage: Decimal | DecimalJsLike | number | string
+    color?: string
+    icon?: string | null
+    categories?: MoneyRuleCreatecategoriesInput | string[]
+    monthlyTarget?: Decimal | DecimalJsLike | number | string | null
+    sortOrder?: number
     createdAt?: Date | string
   }
 
@@ -24632,6 +32877,145 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BankConnectionUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: BankTransactionUpdateManyWithoutConnectionNestedInput
+  }
+
+  export type BankConnectionUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: BankTransactionUncheckedUpdateManyWithoutConnectionNestedInput
+  }
+
+  export type BankConnectionUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    institution?: StringFieldUpdateOperationsInput | string
+    accountName?: StringFieldUpdateOperationsInput | string
+    accountBSB?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    providerRef?: NullableStringFieldUpdateOperationsInput | string | null
+    lastSynced?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GSTReturnUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    period?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    lodgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    atoRef?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GSTReturnUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    period?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    lodgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    atoRef?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GSTReturnUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    period?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    totalSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnSales?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    totalPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    gstOnPurchases?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    netGST?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    lodgedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    atoRef?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MoneyRuleUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: BankTransactionUpdateManyWithoutMoneyRuleNestedInput
+  }
+
+  export type MoneyRuleUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: BankTransactionUncheckedUpdateManyWithoutMoneyRuleNestedInput
+  }
+
+  export type MoneyRuleUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    percentage?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    color?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: MoneyRuleUpdatecategoriesInput | string[]
+    monthlyTarget?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type TransactionCreateManyCategoryInput = {
     id?: string
     name?: string | null
@@ -24800,6 +33184,126 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BankTransactionCreateManyConnectionInput = {
+    id?: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    moneyRuleId?: string | null
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+  }
+
+  export type BankTransactionUpdateWithoutConnectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    moneyRule?: MoneyRuleUpdateOneWithoutTransactionsNestedInput
+  }
+
+  export type BankTransactionUncheckedUpdateWithoutConnectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    moneyRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankTransactionUncheckedUpdateManyWithoutConnectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    moneyRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankTransactionCreateManyMoneyRuleInput = {
+    id?: string
+    connectionId: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    balance?: Decimal | DecimalJsLike | number | string | null
+    category?: string | null
+    gstAmount?: Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: boolean
+    reference?: string | null
+    reconciled?: boolean
+    createdAt?: Date | string
+  }
+
+  export type BankTransactionUpdateWithoutMoneyRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    connection?: BankConnectionUpdateOneRequiredWithoutTransactionsNestedInput
+  }
+
+  export type BankTransactionUncheckedUpdateWithoutMoneyRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    connectionId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankTransactionUncheckedUpdateManyWithoutMoneyRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    connectionId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    balance?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    gstAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    gstInclusive?: BoolFieldUpdateOperationsInput | boolean
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    reconciled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

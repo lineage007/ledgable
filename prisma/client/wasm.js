@@ -277,6 +277,70 @@ exports.Prisma.ProgressScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.BankConnectionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  institution: 'institution',
+  accountName: 'accountName',
+  accountBSB: 'accountBSB',
+  accountNumber: 'accountNumber',
+  balance: 'balance',
+  currency: 'currency',
+  provider: 'provider',
+  providerRef: 'providerRef',
+  lastSynced: 'lastSynced',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BankTransactionScalarFieldEnum = {
+  id: 'id',
+  connectionId: 'connectionId',
+  date: 'date',
+  description: 'description',
+  amount: 'amount',
+  balance: 'balance',
+  category: 'category',
+  gstAmount: 'gstAmount',
+  gstInclusive: 'gstInclusive',
+  moneyRuleId: 'moneyRuleId',
+  reference: 'reference',
+  reconciled: 'reconciled',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.GSTReturnScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  period: 'period',
+  periodStart: 'periodStart',
+  periodEnd: 'periodEnd',
+  totalSales: 'totalSales',
+  gstOnSales: 'gstOnSales',
+  totalPurchases: 'totalPurchases',
+  gstOnPurchases: 'gstOnPurchases',
+  netGST: 'netGST',
+  status: 'status',
+  lodgedAt: 'lodgedAt',
+  atoRef: 'atoRef',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MoneyRuleScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  percentage: 'percentage',
+  color: 'color',
+  icon: 'icon',
+  categories: 'categories',
+  monthlyTarget: 'monthlyTarget',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -321,7 +385,11 @@ exports.Prisma.ModelName = {
   Transaction: 'Transaction',
   Currency: 'Currency',
   AppData: 'AppData',
-  Progress: 'Progress'
+  Progress: 'Progress',
+  BankConnection: 'BankConnection',
+  BankTransaction: 'BankTransaction',
+  GSTReturn: 'GSTReturn',
+  MoneyRule: 'MoneyRule'
 };
 
 /**

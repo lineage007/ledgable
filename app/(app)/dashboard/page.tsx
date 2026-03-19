@@ -37,3 +37,4 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
     </div>
   )
 }
+export const dynamic = "force-dynamic"

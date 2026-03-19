@@ -12,3 +12,4 @@ export default async function ProfileSettingsPage() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

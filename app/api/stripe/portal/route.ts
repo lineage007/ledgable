@@ -28,3 +28,4 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Failed to create Stripe portal session" }, { status: 500 })
   }
 }
+export const dynamic = "force-dynamic"

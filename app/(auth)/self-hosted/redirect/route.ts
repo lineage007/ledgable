@@ -21,3 +21,4 @@ export async function GET() {
   revalidatePath("/dashboard")
   redirect("/dashboard")
 }
+export const dynamic = "force-dynamic"

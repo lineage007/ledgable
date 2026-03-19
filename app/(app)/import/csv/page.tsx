@@ -11,3 +11,4 @@ export default async function CSVImportPage() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

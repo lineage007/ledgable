@@ -29,3 +29,4 @@ export default async function InvoicesApp() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

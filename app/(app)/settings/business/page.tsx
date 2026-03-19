@@ -12,3 +12,4 @@ export default async function BusinessSettingsPage() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

@@ -17,3 +17,4 @@ export default async function LlmSettingsPage() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

@@ -40,3 +40,4 @@ export default async function CurrenciesSettingsPage() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

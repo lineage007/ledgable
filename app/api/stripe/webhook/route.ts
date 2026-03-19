@@ -109,3 +109,4 @@ async function handleUserSubscriptionUpdate(
 
   console.log(`Updated user ${user.id} with plan ${plan.code} and expires at ${newMembershipExpiresAt}`)
 }
+export const dynamic = "force-dynamic"

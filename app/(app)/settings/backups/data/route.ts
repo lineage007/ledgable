@@ -137,3 +137,4 @@ async function getAllFilePaths(dirPath: string): Promise<string[]> {
 
   return filePaths
 }
+export const dynamic = "force-dynamic"

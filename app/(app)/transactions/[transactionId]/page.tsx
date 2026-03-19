@@ -81,3 +81,4 @@ export default async function TransactionPage({ params }: { params: Promise<{ tr
     </div>
   )
 }
+export const dynamic = "force-dynamic"

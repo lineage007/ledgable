@@ -49,3 +49,4 @@ export default async function DangerSettingsPage() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

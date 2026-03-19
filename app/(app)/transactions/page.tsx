@@ -84,3 +84,4 @@ export default async function TransactionsPage({ searchParams }: { searchParams:
     </>
   )
 }
+export const dynamic = "force-dynamic"

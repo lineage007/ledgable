@@ -109,3 +109,4 @@ export default async function UnsortedPage() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

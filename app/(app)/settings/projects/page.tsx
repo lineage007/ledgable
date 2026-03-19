@@ -44,3 +44,4 @@ export default async function ProjectsSettingsPage() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

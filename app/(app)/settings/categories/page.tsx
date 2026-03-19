@@ -45,3 +45,4 @@ export default async function CategoriesSettingsPage() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

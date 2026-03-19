@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/sidebar"
 import { UserProfile } from "@/lib/auth"
 import config from "@/lib/config"
-import { ClockArrowUp, FileText, Gift, House, Import, LayoutDashboard, Settings, Upload } from "lucide-react"
+import { ClockArrowUp, FileText, Gift, House, Import, LayoutDashboard, Settings, Upload, Landmark, Receipt, PiggyBank, TrendingUp, FileSpreadsheet } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -106,6 +106,38 @@ export function AppSidebar({
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/bank-feeds">
+                  <SidebarMenuButton asChild>
+                    <Link href="/bank-feeds">
+                      <Landmark />
+                      <span>Bank Feeds</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/gst">
+                  <SidebarMenuButton asChild>
+                    <Link href="/gst">
+                      <Receipt />
+                      <span>GST & BAS</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/money-rules">
+                  <SidebarMenuButton asChild>
+                    <Link href="/money-rules">
+                      <PiggyBank />
+                      <span>Money Rules</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/cashflow">
+                  <SidebarMenuButton asChild>
+                    <Link href="/cashflow">
+                      <TrendingUp />
+                      <span>Cashflow</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
                 <SidebarMenuItemWithHighlight href="/apps">
                   <SidebarMenuButton asChild>
                     <Link href="/apps">
@@ -142,7 +174,7 @@ export function AppSidebar({
                 {isSelfHosted && (
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
-                      <Link href="https://vas3k.com/donate/" target="_blank">
+                      <Link href="https://ledgable.co" target="_blank">
                         <Gift />
                         Thank the author
                       </Link>

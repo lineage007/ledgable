@@ -28,7 +28,7 @@ export default function BackupSettingsPage() {
     try {
       const progressId = await startProgress("backup")
       const downloadUrl = `/settings/backups/data?progressId=${progressId || ""}`
-      await download(downloadUrl, "taxhacker-backup.zip")
+      await download(downloadUrl, "ledgable-backup.zip")
     } catch (error) {
       console.error("Failed to start backup:", error)
     }

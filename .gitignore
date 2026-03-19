@@ -57,3 +57,4 @@ pgdata
 .env.sentry-build-plugin
 .env.local
 .env.vercel.local
+.env*.local

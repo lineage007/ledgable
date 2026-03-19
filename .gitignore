@@ -58,3 +58,6 @@ pgdata
 .env.local
 .env.vercel.local
 .env*.local
+
+# Prisma generated client (generated at build time)
+prisma/client/

@@ -401,11 +401,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:Svs584987!!!@db.dcemanhmabsjmkitskil.supabase.co:5432/postgres"
+        "value": null
       }
     }
   },

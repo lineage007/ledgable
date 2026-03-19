@@ -1,147 +1,162 @@
 "use client"
 
-import { useState } from "react"
-import { Plus, Sparkles, TrendingUp, AlertTriangle } from "lucide-react"
-
-type Rule = { id: string; name: string; pct: number; actual: number; color: string; icon: string }
-
-const INITIAL_RULES: Rule[] = [
-  { id: "1", name: "Operating Costs", pct: 40, actual: 38, color: "#0D9488", icon: "⚙️" },
-  { id: "2", name: "Tax Reserve", pct: 25, actual: 22, color: "#F59E0B", icon: "🏛️" },
-  { id: "3", name: "Owner Pay", pct: 20, actual: 21, color: "#6366F1", icon: "👤" },
-  { id: "4", name: "Growth Fund", pct: 15, actual: 19, color: "#EC4899", icon: "📈" },
-]
-
-function RuleCard({ rule }: { rule: Rule }) {
-  const ratio = rule.actual / rule.pct
-  const over = rule.actual > rule.pct
-  const statusColor = over ? "#EF4444" : ratio > 0.9 ? "#F59E0B" : "#10B981"
-  const revenue = 42500 // Mock monthly revenue
-  const target = revenue * (rule.pct / 100)
-  const actual = revenue * (rule.actual / 100)
-
-  return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 hover:shadow-md transition-shadow">
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style={{ background: `${rule.color}15` }}>
-            {rule.icon}
-          </div>
-          <div>
-            <div className="font-bold text-slate-900">{rule.name}</div>
-            <div className="text-xs text-slate-400">{rule.pct}% of revenue</div>
-          </div>
-        </div>
-        <div className="flex items-center gap-1.5">
-          {over ? (
-            <AlertTriangle className="w-4 h-4 text-red-500" />
-          ) : (
-            <TrendingUp className="w-4 h-4 text-emerald-500" />
-          )}
-          <span className={`text-sm font-bold ${over ? "text-red-500" : "text-emerald-500"}`}>
-            {over ? "+" : ""}{rule.actual - rule.pct}%
-          </span>
-        </div>
-      </div>
-
-      {/* Progress Bar */}
-      <div className="mb-4">
-        <div className="h-3 bg-slate-100 rounded-full overflow-hidden">
-          <div
-            className="h-full rounded-full transition-all duration-700 ease-out"
-            style={{ width: `${Math.min(ratio * 100, 100)}%`, background: statusColor }}
-          />
-        </div>
-        <div className="flex justify-between mt-2 text-xs text-slate-400">
-          <span>Actual: {rule.actual}%</span>
-          <span>Target: {rule.pct}%</span>
-        </div>
-      </div>
-
-      {/* Amounts */}
-      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
-        <div>
-          <div className="text-xs text-slate-400 mb-0.5">Target</div>
-          <div className="text-lg font-bold text-slate-900" style={{ fontFamily: "'Plus Jakarta Sans'" }}>
-            ${target.toLocaleString("en-AU", { maximumFractionDigits: 0 })}
-          </div>
-        </div>
-        <div>
-          <div className="text-xs text-slate-400 mb-0.5">Actual</div>
-          <div className="text-lg font-bold" style={{ fontFamily: "'Plus Jakarta Sans'", color: over ? "#EF4444" : rule.color }}>
-            ${actual.toLocaleString("en-AU", { maximumFractionDigits: 0 })}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+import { useState, useEffect, useTransition } from "react"
+import { getMoneyRules, updateMoneyRule, getMoneyRuleSummary } from "./actions"
+import { PiggyBank, Pencil, Check } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 export default function MoneyRulesPage() {
-  const [rules] = useState<Rule[]>(INITIAL_RULES)
-  const totalPct = rules.reduce((s, r) => s + r.pct, 0)
-  const revenue = 42500
+  const [rules, setRules] = useState<any[]>([])
+  const [summary, setSummary] = useState<any>(null)
+  const [editingId, setEditingId] = useState<string | null>(null)
+  const [editName, setEditName] = useState("")
+  const [editPct, setEditPct] = useState("")
+  const [isPending, startTransition] = useTransition()
+
+  useEffect(() => { loadData() }, [])
+
+  async function loadData() {
+    const r = await getMoneyRules()
+    setRules(r)
+    const s = await getMoneyRuleSummary()
+    setSummary(s)
+  }
+
+  function startEdit(rule: any) {
+    setEditingId(rule.id)
+    setEditName(rule.name)
+    setEditPct(String(rule.percentage))
+  }
+
+  function saveEdit(id: string) {
+    startTransition(async () => {
+      await updateMoneyRule(id, { name: editName, percentage: parseFloat(editPct) })
+      setEditingId(null)
+      loadData()
+    })
+  }
+
+  const totalPct = rules.reduce((sum, r) => sum + Number(r.percentage), 0)
 
   return (
-    <div className="p-6 md:p-8 max-w-5xl mx-auto space-y-8">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-extrabold text-slate-900" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Money Rules™
-          </h1>
-          <p className="text-slate-500 text-sm mt-1">March 2026 · Revenue: ${revenue.toLocaleString("en-AU")}</p>
-        </div>
-        <button className="flex items-center gap-2 bg-teal-600 text-white px-5 py-2.5 rounded-lg hover:bg-teal-700 transition-colors font-semibold text-sm">
-          <Plus className="w-4 h-4" /> Add rule
-        </button>
+    <div className="p-6 max-w-4xl mx-auto space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+          <PiggyBank className="w-6 h-6 text-emerald-600" /> Money Rules™
+        </h1>
+        <p className="text-slate-500 mt-1">
+          Set spending buckets as percentages of your income. Every dollar has a job.
+        </p>
       </div>
 
-      {/* Allocation Overview */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-        <div className="text-sm text-slate-500 mb-3 font-medium">Revenue Allocation</div>
-        <div className="flex rounded-full overflow-hidden h-5 bg-slate-100">
-          {rules.map(r => (
-            <div
-              key={r.id}
-              className="h-full transition-all duration-500"
-              style={{ width: `${r.pct}%`, background: r.color }}
-              title={`${r.name}: ${r.pct}%`}
-            />
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-4 mt-4">
-          {rules.map(r => (
-            <div key={r.id} className="flex items-center gap-2 text-xs text-slate-600">
-              <div className="w-3 h-3 rounded-sm" style={{ background: r.color }} />
-              {r.name} ({r.pct}%)
+      {/* Donut visualization */}
+      <div className="bg-white rounded-2xl border p-6">
+        <div className="flex flex-col md:flex-row items-center gap-8">
+          {/* SVG Donut */}
+          <div className="relative w-48 h-48">
+            <svg viewBox="0 0 36 36" className="w-48 h-48 transform -rotate-90">
+              {(() => {
+                let offset = 0
+                return rules.map((rule, i) => {
+                  const pct = Number(rule.percentage)
+                  const dash = pct * 0.9 // scale to 90 (leaving small gaps)
+                  const el = (
+                    <circle
+                      key={i}
+                      cx="18" cy="18" r="14"
+                      fill="none"
+                      stroke={rule.color || "#6366f1"}
+                      strokeWidth="4"
+                      strokeDasharray={`${dash} ${100 - dash}`}
+                      strokeDashoffset={-offset}
+                      strokeLinecap="round"
+                    />
+                  )
+                  offset += pct
+                  return el
+                })
+              })()}
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className="text-2xl font-extrabold text-slate-900">{totalPct}%</span>
+              <span className="text-xs text-slate-400">allocated</span>
             </div>
-          ))}
-          {totalPct < 100 && (
-            <div className="flex items-center gap-2 text-xs text-slate-400">
-              <div className="w-3 h-3 rounded-sm bg-slate-200" />
-              Unallocated ({100 - totalPct}%)
-            </div>
-          )}
+          </div>
+
+          {/* Rules list */}
+          <div className="flex-1 w-full space-y-2">
+            {rules.map((rule) => (
+              <div key={rule.id} className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 group">
+                <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: rule.color }} />
+                
+                {editingId === rule.id ? (
+                  <>
+                    <Input value={editName} onChange={e => setEditName(e.target.value)} className="w-32 h-8 text-sm" />
+                    <Input value={editPct} onChange={e => setEditPct(e.target.value)} className="w-16 h-8 text-sm text-right" type="number" />
+                    <span className="text-sm text-slate-400">%</span>
+                    <Button size="sm" variant="ghost" onClick={() => saveEdit(rule.id)} disabled={isPending}>
+                      <Check className="w-4 h-4 text-emerald-600" />
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-sm font-medium text-slate-900 flex-1">{rule.icon} {rule.name}</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div className="h-full rounded-full" style={{ width: `${rule.percentage}%`, backgroundColor: rule.color }} />
+                      </div>
+                      <span className="text-sm font-bold text-slate-700 w-10 text-right">{Number(rule.percentage).toFixed(0)}%</span>
+                      <Button size="sm" variant="ghost" className="opacity-0 group-hover:opacity-100" onClick={() => startEdit(rule)}>
+                        <Pencil className="w-3 h-3 text-slate-400" />
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Rule Cards */}
-      <div className="grid md:grid-cols-2 gap-4">
-        {rules.map(r => <RuleCard key={r.id} rule={r} />)}
-      </div>
+      {/* Monthly breakdown (if summary has data) */}
+      {summary && summary.totalSpend > 0 && (
+        <div className="bg-white rounded-2xl border p-6">
+          <h2 className="text-lg font-bold text-slate-900 mb-4">{summary.month} Breakdown</h2>
+          <div className="space-y-4">
+            {summary.rules.map((rule: any) => (
+              <div key={rule.id} className="space-y-1">
+                <div className="flex justify-between text-sm">
+                  <span className="font-medium text-slate-700">{rule.icon} {rule.name}</span>
+                  <span className={rule.overBudget ? "text-red-500 font-bold" : "text-slate-600"}>
+                    ${rule.spent.toFixed(2)} / ${rule.target.toFixed(2)}
+                  </span>
+                </div>
+                <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all"
+                    style={{
+                      width: `${Math.min(100, (rule.spent / Math.max(rule.target, 1)) * 100)}%`,
+                      backgroundColor: rule.overBudget ? "#ef4444" : rule.color,
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
-      {/* AI Insight */}
-      <div className="bg-teal-900 rounded-2xl p-6 flex items-start gap-4">
-        <div className="w-10 h-10 rounded-full bg-teal-700 flex items-center justify-center flex-shrink-0">
-          <Sparkles className="w-5 h-5 text-amber-400" />
-        </div>
-        <div className="text-white">
-          <div className="font-bold mb-1">AI Insight</div>
-          <p className="text-teal-200 text-sm leading-relaxed">
-            Your Growth Fund is 4% over target this month ($8,075 vs $6,375 target). Consider redirecting $1,700
-            to your Tax Reserve — your Q3 BAS is due in 41 days and you&apos;re $1,275 short of your target reserve.
-          </p>
-        </div>
+      {/* How it works */}
+      <div className="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
+        <h3 className="font-semibold text-emerald-800 mb-2">💡 How Money Rules™ works</h3>
+        <ul className="text-sm text-emerald-700 space-y-1">
+          <li>• Set a percentage for each spending bucket (must total 100%)</li>
+          <li>• Import bank transactions and assign them to categories</li>
+          <li>• Ledgable auto-tracks your spending against your rules</li>
+          <li>• Get alerts when you exceed a bucket threshold</li>
+          <li>• Based on the <strong>Barefoot Investor</strong> approach, adapted for you</li>
+        </ul>
       </div>
     </div>
   )

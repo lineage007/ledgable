@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { getCurrentUser } from "@/lib/auth"
 import { fileExists, fullPathForFile } from "@/lib/files"
 import { EXPORT_AND_IMPORT_FIELD_MAP, ExportFields, ExportFilters } from "@/models/export_and_import"

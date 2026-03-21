@@ -39,23 +39,15 @@ export default async function AI() {
         projects, and reports.
       </p>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">2. AI Providers and Models</h2>
-      <p className="text-gray-700 leading-relaxed mb-3">
-        Our cloud-hosted version uses models provided by <strong>OpenAI</strong>, including:
-      </p>
-      <ul className="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-        <li>
-          <strong>gpt-4o-mini</strong> and <strong>gpt-4.1-mini</strong>
-        </li>
-      </ul>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">2. AI Technology</h2>
       <p className="text-gray-700 leading-relaxed mb-6">
-        In the <strong>self-hosted version</strong>, users may choose to connect their own language models or AI
-        backends. We do not monitor or vet these setups and assume no responsibility for their output.
+        Ledgable uses proprietary AI models to power receipt scanning, categorisation, and financial insights.
+        All AI processing is handled securely by Ledgable — no third-party configuration is required by users.
       </p>
 
       <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">3. Data Sent for AI Processing</h2>
       <p className="text-gray-700 leading-relaxed mb-3">
-        To deliver AI-powered features, we send selected user data to OpenAI&apos;s API, including:
+        To deliver AI-powered features, we process selected user data including:
       </p>
       <ul className="list-disc pl-6 space-y-2 mb-6 text-gray-700">
         <li>Uploaded documents (e.g., receipts, invoices)</li>

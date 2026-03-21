@@ -109,11 +109,11 @@ export function SettingsGeneral({
               <div className="text-xs text-muted-foreground">ABN, address, logo</div>
             </div>
           </a>
-          <a href="/settings/llm" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent transition-colors group">
-            <svg className="w-4 h-4 text-muted-foreground group-hover:text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <a href="/settings/fields" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent transition-colors group">
+            <svg className="w-4 h-4 text-muted-foreground group-hover:text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
             <div>
-              <div className="text-sm font-medium">AI Provider</div>
-              <div className="text-xs text-muted-foreground">Configure receipt scanning</div>
+              <div className="text-sm font-medium">Custom Fields</div>
+              <div className="text-xs text-muted-foreground">Add custom data to transactions</div>
             </div>
           </a>
           <a href="/settings/categories" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent transition-colors group">

@@ -89,7 +89,7 @@ export default async function Terms() {
       <h2 className="text-2xl font-semibold text-slate-800 mb-4">5. AI Usage and Third-Party Integrations</h2>
       <ul className="list-disc pl-6 mb-6 space-y-2 text-slate-700">
         <li>
-          Ledgable uses <strong className="text-slate-800">OpenAI (ChatGPT)</strong> and other third-party APIs to
+          Ledgable uses <strong className="text-slate-800">proprietary AI technology</strong> and other third-party APIs to
           process and analyze documents.
         </li>
         <li>

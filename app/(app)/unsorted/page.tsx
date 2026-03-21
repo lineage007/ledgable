@@ -38,25 +38,7 @@ export default async function UnsortedPage() {
         {files.length > 1 && <AnalyzeAllButton />}
       </header>
 
-      {config.selfHosted.isEnabled &&
-        !settings.openai_api_key &&
-        !settings.google_api_key &&
-        !settings.mistral_api_key && (
-          <Alert>
-            <Settings className="h-4 w-4 mt-2" />
-            <div className="flex flex-row justify-between pt-2">
-              <div className="flex flex-col">
-                <AlertTitle>AI receipt scanning needs setup</AlertTitle>
-                <AlertDescription>
-                  Configure your AI provider in Settings to enable automatic receipt analysis and categorisation.
-                </AlertDescription>
-              </div>
-              <Link href="/settings/llm">
-                <Button>Set up AI</Button>
-              </Link>
-            </div>
-          </Alert>
-        )}
+      {/* AI is provided by Ledgable — no client-facing setup needed */}
 
       <main className="flex flex-col gap-5">
         {files.map((file) => (

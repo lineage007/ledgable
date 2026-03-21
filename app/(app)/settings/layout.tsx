@@ -21,10 +21,6 @@ const settingsCategories = [
     href: "/settings/business",
   },
   {
-    title: "AI Provider",
-    href: "/settings/llm",
-  },
-  {
     title: "Categories",
     href: "/settings/categories",
   },

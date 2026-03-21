@@ -25,7 +25,7 @@ export default async function ProjectsSettingsPage() {
         items={projectsWithActions}
         columns={[
           { key: "name", label: "Name", editable: true },
-          { key: "llm_prompt", label: "LLM Prompt", editable: true },
+          { key: "llm_prompt", label: "AI Hint", editable: true },
           { key: "color", label: "Color", type: "color", defaultValue: randomHexColor(), editable: true },
         ]}
         onDelete={async (code) => {

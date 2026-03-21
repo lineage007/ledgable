@@ -84,7 +84,7 @@ export default async function PrivacyPolicy() {
         3. <strong>AI-Powered Processing</strong>
       </h3>
       <p className="text-slate-700 mb-3">
-        We use external AI services, specifically <strong className="text-slate-800">OpenAI (ChatGPT)</strong>, to:
+        We use external AI services, specifically <strong className="text-slate-800">proprietary AI technology</strong>, to:
       </p>
       <ul className="list-disc pl-6 mb-4 space-y-2 text-slate-700">
         <li>Extract and interpret information from invoices using OCR</li>

@@ -93,18 +93,21 @@ export default async function Dashboard() {
   healthScore = Math.min(healthScore, 100)
 
   return (
-    <div className="flex flex-col gap-6 p-5 md:p-8 w-full max-w-[1400px] mx-auto">
+    <div className="flex flex-col gap-5 p-4 md:gap-6 md:p-8 w-full max-w-[1400px] mx-auto pb-32 md:pb-8">
 
-      {/* Page Header with Period Selector */}
-      <div className="flex items-center justify-between">
+      {/* Page Header — Greeting style on mobile */}
+      <div className="flex items-start justify-between gap-3">
         <div>
-          <h1 className="text-[22px] font-bold tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>Dashboard</h1>
+          <h1 className="text-xl md:text-[22px] font-bold tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+            <span className="hidden md:inline">Dashboard</span>
+            <span className="md:hidden">Good {new Date().getHours() < 12 ? "morning" : new Date().getHours() < 17 ? "afternoon" : "evening"} 👋</span>
+          </h1>
           <p className="text-[13px] text-muted-foreground mt-0.5">
-            Financial overview · {new Date().toLocaleDateString("en-AU", { month: "long", year: "numeric" })}
+            {new Date().toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          {/* Period selector */}
+        <div className="flex items-center gap-2 shrink-0">
+          {/* Period selector — desktop */}
           <div className="hidden md:flex items-center bg-muted rounded-lg p-0.5 text-xs font-medium">
             <button className="px-3 py-1.5 rounded-md bg-card text-foreground shadow-sm">This Month</button>
             <button className="px-3 py-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors">Quarter</button>
@@ -115,6 +118,24 @@ export default async function Dashboard() {
             New Invoice
           </Link>
         </div>
+      </div>
+
+      {/* Mobile Quick Actions — horizontal scroll */}
+      <div className="flex gap-3 overflow-x-auto pb-1 -mx-4 px-4 md:hidden scrollbar-none">
+        {[
+          { href: "/unsorted", icon: Upload, label: "Scan Receipt", color: "bg-violet-500" },
+          { href: "/invoices/create", icon: FileText, label: "New Invoice", color: "bg-emerald-500" },
+          { href: "/bank-feeds", icon: Landmark, label: "Bank Feeds", color: "bg-blue-500" },
+          { href: "/ask", icon: Sparkles, label: "Ask Ledge", color: "bg-primary" },
+        ].map(a => (
+          <Link key={a.label} href={a.href}
+            className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-card border border-border shrink-0 hover:shadow-md transition-all active:scale-[0.97]">
+            <div className={`w-8 h-8 rounded-lg ${a.color} flex items-center justify-center`}>
+              <a.icon className="w-4 h-4 text-white" />
+            </div>
+            <span className="text-[13px] font-medium whitespace-nowrap">{a.label}</span>
+          </Link>
+        ))}
       </div>
 
       {/* Onboarding Checklist (new users) */}
@@ -143,11 +164,28 @@ export default async function Dashboard() {
         </div>
       )}
 
-      {/* KPI Cards — Rich with sparklines */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Hero Net Profit — mobile-first visual impact */}
+      <div className="md:hidden">
+        <div className="relative rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -translate-y-8 translate-x-8" />
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-emerald-500/10 rounded-full translate-y-8 -translate-x-8" />
+          <div className="relative">
+            <div className="text-xs font-medium text-white/60 uppercase tracking-wider mb-1">Net Profit</div>
+            <div className="text-3xl font-bold font-mono tabular-nums">{fmtAud(netProfit)}</div>
+            <div className="flex items-center gap-3 mt-2 text-xs">
+              <span className="text-emerald-400 font-medium">{income > 0 ? `${((netProfit / income) * 100).toFixed(0)}% margin` : "—"}</span>
+              <span className="text-white/30">·</span>
+              <span className="text-white/50">{new Date().toLocaleDateString("en-AU", { month: "long", year: "numeric" })}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* KPI Cards — Grid */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         <KpiCard label="Revenue" value={fmtAud(income)} trend="+12%" trendUp={true} icon={<ArrowUpRight className="h-4 w-4" />} color="teal" sub="vs last month" />
         <KpiCard label="Expenses" value={fmtAud(expenses)} trend={`${transactions.filter(t => (t.total ?? 0) < 0).length} txns`} trendUp={false} icon={<ArrowDownRight className="h-4 w-4" />} color="rose" sub="this period" />
-        <KpiCard label="Net Profit" value={fmtAud(netProfit)} trend={income > 0 ? `${((netProfit / income) * 100).toFixed(0)}% margin` : "—"} trendUp={netProfit >= 0} icon={<TrendingUp className="h-4 w-4" />} color="emerald" sub="income − expenses" />
+        <div className="hidden md:block"><KpiCard label="Net Profit" value={fmtAud(netProfit)} trend={income > 0 ? `${((netProfit / income) * 100).toFixed(0)}% margin` : "—"} trendUp={netProfit >= 0} icon={<TrendingUp className="h-4 w-4" />} color="emerald" sub="income − expenses" /></div>
         <KpiCard label="GST Owing" value={fmtAud2(gstOwing)} trend="Due 28 Apr" trendUp={false} icon={<Receipt className="h-4 w-4" />} color="amber" sub="estimated BAS Q3" />
       </div>
 

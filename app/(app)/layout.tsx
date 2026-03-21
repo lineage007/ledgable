@@ -9,6 +9,7 @@ import config from "@/lib/config"
 import { getUnsortedFilesCount } from "@/models/files"
 import type { Metadata, Viewport } from "next"
 import "../globals.css"
+import { FloatingActions } from "@/components/floating-actions"
 import { NotificationProvider } from "./context"
 
 export const metadata: Metadata = {
@@ -54,9 +55,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             unsortedFilesCount={unsortedFilesCount}
             isSelfHosted={config.selfHosted.isEnabled}
           />
-          <SidebarInset className="w-full h-full mt-[60px] md:mt-0 overflow-auto">
+          <SidebarInset className="w-full h-full mt-[60px] md:mt-0 overflow-auto relative">
             {isSubscriptionExpired(user) && <SubscriptionExpired />}
             {children}
+            {/* Floating AI + Quick Actions */}
+            <FloatingActions />
           </SidebarInset>
         </SidebarProvider>
         <Toaster />

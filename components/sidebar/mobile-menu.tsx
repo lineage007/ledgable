@@ -17,8 +17,8 @@ export default function MobileMenu({ unsortedFilesCount }: { unsortedFilesCount:
         <AvatarFallback>L</AvatarFallback>
       </Avatar>
 
-      {/* Center: wordmark */}
-      <Link href="/dashboard" className="flex items-center">
+      {/* Center: wordmark — links to dashboard */}
+      <Link href="/dashboard" className="flex items-center py-2 px-4 -mx-2 active:opacity-70 transition-opacity">
         <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
           <span className="text-foreground">ledg</span><span style={{ color: '#0D9488' }}>able</span>
         </span>

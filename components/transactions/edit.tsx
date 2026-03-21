@@ -110,7 +110,7 @@ export default function TransactionEditForm({
         isRequired={fieldMap.description.isRequired}
       />
 
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         <FormInput
           title={fieldMap.total.name}
           type="number"
@@ -140,7 +140,7 @@ export default function TransactionEditForm({
         />
       </div>
 
-      <div className="flex flex-row flex-grow gap-4">
+      <div className="flex flex-col sm:flex-row flex-grow gap-4">
         <FormInput
           title={fieldMap.issuedAt.name}
           type="date"
@@ -176,7 +176,7 @@ export default function TransactionEditForm({
         )}
       </div>
 
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         <FormSelectCategory
           title={fieldMap.categoryCode.name}
           categories={categories}

@@ -140,7 +140,7 @@ export default function ChartOfAccountsPage() {
   }, [accounts])
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-4 md:p-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -155,20 +155,23 @@ export default function ChartOfAccountsPage() {
         </button>
       </div>
 
-      {/* Summary strip */}
-      <div className="grid grid-cols-5 gap-3 mb-6">
-        {(Object.entries(TYPE_META) as [AccountType, typeof TYPE_META.asset][]).map(([type, meta]) => (
-          <div key={type} className={`rounded-xl border border-border p-3 ${meta.bg}`}>
-            <div className={`flex items-center gap-1.5 text-xs font-medium ${meta.color}`}>
-              {meta.icon} {meta.label}
+      {/* Summary strip — scrollable on mobile, grid on desktop */}
+      <div className="flex gap-3 mb-6 overflow-x-auto pb-1 -mx-2 px-2 md:mx-0 md:px-0 md:grid md:grid-cols-5 scrollbar-none">
+        {(Object.entries(TYPE_META) as [AccountType, typeof TYPE_META.asset][]).map(([type, meta]) => {
+          const val = type === 'asset' ? totals.assets : type === 'liability' ? totals.liabilities :
+            type === 'equity' ? totals.equity : type === 'revenue' ? totals.revenue : totals.expenses
+          return (
+            <div key={type} className={`rounded-xl border border-border p-3 min-w-[140px] shrink-0 md:min-w-0 ${meta.bg}`}>
+              <div className={`flex items-center gap-1.5 text-xs font-medium ${meta.color}`}>
+                {meta.icon} {meta.label}
+              </div>
+              <div className="text-base md:text-lg font-bold mt-1 font-mono tabular-nums whitespace-nowrap">
+                ${val.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+              </div>
+              <div className="text-[10px] text-muted-foreground">{grouped[type]?.length || 0} accounts</div>
             </div>
-            <div className="text-lg font-bold mt-1">
-              ${(type === 'asset' ? totals.assets : type === 'liability' ? totals.liabilities :
-                type === 'equity' ? totals.equity : type === 'revenue' ? totals.revenue : totals.expenses).toLocaleString(undefined, { minimumFractionDigits: 2 })}
-            </div>
-            <div className="text-[10px] text-muted-foreground">{grouped[type]?.length || 0} accounts</div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       {/* Search + filters */}
@@ -214,36 +217,35 @@ export default function ChartOfAccountsPage() {
                 <div className="divide-y divide-border">
                   {accs.map(account => (
                     <div key={account.id}
-                      className="px-4 py-2.5 flex items-center justify-between hover:bg-accent/30 cursor-pointer group"
+                      className="px-4 py-3 hover:bg-accent/30 cursor-pointer group"
                       onClick={() => setEditAccount(account)}>
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-muted-foreground w-10">{account.code}</span>
-                        <div>
-                          <div className="text-sm font-medium flex items-center gap-2">
-                            {account.name}
+                      {/* Mobile: stacked layout */}
+                      <div className="flex items-start gap-3">
+                        <span className="font-mono text-xs text-muted-foreground w-8 pt-0.5 shrink-0">{account.code}</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-sm font-medium">{account.name}</span>
                             {account.isSystem && <span title="System account"><Lock className="w-3 h-3 text-muted-foreground" /></span>}
+                            {account.taxType && (
+                              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 font-medium">{account.taxType}</span>
+                            )}
+                            {account.accountClass && (
+                              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground capitalize hidden md:inline">{account.accountClass.replace('_', ' ')}</span>
+                            )}
                             {!account.isActive && <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/10 text-red-400">Inactive</span>}
                           </div>
                           {account.description && (
-                            <div className="text-xs text-muted-foreground">{account.description}</div>
+                            <div className="text-xs text-muted-foreground mt-0.5 truncate">{account.description}</div>
                           )}
                         </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        {account.taxType && (
-                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400 font-medium">
-                            {account.taxType}
-                          </span>
-                        )}
-                        {account.accountClass && (
-                          <span className="text-[10px] text-muted-foreground capitalize">{account.accountClass.replace('_', ' ')}</span>
-                        )}
-                        {account.balance !== undefined && account.balance > 0 && (
-                          <span className="font-mono text-sm font-medium w-24 text-right">
-                            ${account.balance.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-                          </span>
-                        )}
-                        <Edit2 className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="flex items-center gap-2 shrink-0">
+                          {account.balance !== undefined && account.balance > 0 && (
+                            <span className="font-mono text-sm font-medium tabular-nums">
+                              ${account.balance.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                            </span>
+                          )}
+                          <Edit2 className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity hidden md:block" />
+                        </div>
                       </div>
                     </div>
                   ))}

@@ -21,7 +21,7 @@ const settingsCategories = [
     href: "/settings/business",
   },
   {
-    title: "LLM settings",
+    title: "AI Provider",
     href: "/settings/llm",
   },
   {
@@ -45,7 +45,7 @@ const settingsCategories = [
     href: "/settings/backups",
   },
   {
-    title: "Danger Zone",
+    title: "Data Management",
     href: "/settings/danger",
   },
 ]

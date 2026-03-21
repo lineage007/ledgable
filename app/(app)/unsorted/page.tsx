@@ -46,13 +46,13 @@ export default async function UnsortedPage() {
             <Settings className="h-4 w-4 mt-2" />
             <div className="flex flex-row justify-between pt-2">
               <div className="flex flex-col">
-                <AlertTitle>LLM provider API Key is required for analyzing files</AlertTitle>
+                <AlertTitle>AI receipt scanning needs setup</AlertTitle>
                 <AlertDescription>
-                  Please set your LLM provider API key in the settings to use the analyze form.
+                  Configure your AI provider in Settings to enable automatic receipt analysis and categorisation.
                 </AlertDescription>
               </div>
               <Link href="/settings/llm">
-                <Button>Go to Settings</Button>
+                <Button>Set up AI</Button>
               </Link>
             </div>
           </Alert>

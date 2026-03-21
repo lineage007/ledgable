@@ -1,8 +1,8 @@
-import GlobalSettingsForm from "@/components/settings/global-settings-form"
 import { getCurrentUser } from "@/lib/auth"
 import { getCategories } from "@/models/categories"
 import { getCurrencies } from "@/models/currencies"
 import { getSettings } from "@/models/settings"
+import { SettingsGeneral } from "./settings-general"
 
 export default async function SettingsPage() {
   const user = await getCurrentUser()
@@ -10,12 +10,6 @@ export default async function SettingsPage() {
   const currencies = await getCurrencies(user.id)
   const categories = await getCategories(user.id)
 
-  return (
-    <>
-      <div className="w-full max-w-2xl">
-        <GlobalSettingsForm settings={settings} currencies={currencies} categories={categories} />
-      </div>
-    </>
-  )
+  return <SettingsGeneral settings={settings} currencies={currencies} categories={categories} />
 }
 export const dynamic = "force-dynamic"

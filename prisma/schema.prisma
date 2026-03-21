@@ -41,9 +41,26 @@ model User {
   sessions            Session[]
   appData             AppData[]
   progress            Progress[]
+  contacts            Contact[]
+  chartOfAccounts     ChartOfAccount[]
+  taxRates            TaxRate[]
+  items               Item[]
+  invoices            Invoice[]
+  payments            Payment[]
+  quotes              Quote[]
+  purchaseOrders      PurchaseOrder[]
+  trackingCategories  TrackingCategory[]
   bankConnections     BankConnection[]
   gstReturns          GSTReturn[]
   moneyRules          MoneyRule[]
+
+  // Business identity (AU)
+  abn                 String?                              // Your business ABN
+  acn                 String?                              // Your business ACN
+  gstRegistered       Boolean   @default(false) @map("gst_registered")
+  basReportingPeriod  String    @default("quarterly") @map("bas_reporting_period") // monthly | quarterly
+  financialYearEnd    String    @default("06-30") @map("financial_year_end")       // MM-DD (AU: June 30)
+  lockDate            DateTime? @map("lock_date")          // Can't edit transactions before this date
 
   @@map("users")
 }
@@ -240,6 +257,360 @@ model Progress {
 
   @@index([userId])
   @@map("progress")
+}
+
+// ─── Core Accounting Models (Xero/QBO/MYOB parity) ──────
+
+model Contact {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Identity
+  name                String                              // Company or display name
+  firstName           String?   @map("first_name")
+  lastName            String?   @map("last_name")
+  contactNumber       String?   @map("contact_number")     // External reference code
+
+  // Australian Business Identifiers
+  abn                 String?                              // Australian Business Number (11 digits)
+  acn                 String?                              // Australian Company Number (9 digits)
+  taxNumber           String?   @map("tax_number")         // Generic tax ID (non-AU fallback)
+
+  // Contact info
+  email               String?
+  phone               String?
+  mobile              String?
+  fax                 String?
+  website             String?
+
+  // Addresses (JSON: { street, city, state, postcode, country })
+  billingAddress      Json?     @map("billing_address")
+  deliveryAddress     Json?     @map("delivery_address")
+
+  // Classification
+  isCustomer          Boolean   @default(false) @map("is_customer")
+  isSupplier          Boolean   @default(false) @map("is_supplier")
+  status              String    @default("active")         // active | archived
+
+  // Payment defaults
+  bankAccountName     String?   @map("bank_account_name")
+  bankBSB             String?   @map("bank_bsb")
+  bankAccountNumber   String?   @map("bank_account_number")
+  defaultCurrency     String    @default("AUD") @map("default_currency")
+  salesTaxType        String?   @map("sales_tax_type")     // Default tax for sales
+  purchaseTaxType     String?   @map("purchase_tax_type")  // Default tax for purchases
+  paymentTermsDays    Int       @default(30) @map("payment_terms_days")
+
+  // Balances (computed / cached)
+  outstandingReceivable Decimal? @default(0) @map("outstanding_receivable") @db.Decimal(12, 2)
+  overdueReceivable     Decimal? @default(0) @map("overdue_receivable") @db.Decimal(12, 2)
+  outstandingPayable    Decimal? @default(0) @map("outstanding_payable") @db.Decimal(12, 2)
+  overduePayable        Decimal? @default(0) @map("overdue_payable") @db.Decimal(12, 2)
+
+  notes               String?
+
+  // Relations
+  invoices            Invoice[]
+  quotes              Quote[]
+  purchaseOrders      PurchaseOrder[]
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@index([abn])
+  @@index([name])
+  @@map("contacts")
+}
+
+model ChartOfAccount {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code                String                               // e.g. "200", "400"
+  name                String                               // e.g. "Sales Revenue"
+  type                String                               // asset | liability | equity | revenue | expense
+  accountClass        String?   @map("account_class")      // current | non_current | fixed | bank | credit_card
+  taxType             String?   @map("tax_type")           // Default GST code
+  description         String?
+  isSystem            Boolean   @default(false) @map("is_system") // Can't delete system accounts
+  isActive            Boolean   @default(true) @map("is_active")
+  bankAccountBSB      String?   @map("bank_account_bsb")
+  bankAccountNumber   String?   @map("bank_account_number")
+  currency            String    @default("AUD")
+  enablePayments      Boolean   @default(false) @map("enable_payments")
+  sortOrder           Int       @default(0) @map("sort_order")
+
+  invoiceLines        InvoiceLine[]
+  quoteLine           QuoteLine[]
+  poLines             PurchaseOrderLine[]
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+
+  @@unique([userId, code])
+  @@index([userId])
+  @@map("chart_of_accounts")
+}
+
+model TaxRate {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code                String                               // "GST", "FRE", "INP", "EXP", "BAS"
+  name                String                               // "GST on Income", "GST Free"
+  rate                Decimal   @db.Decimal(5, 2)          // 10.00, 0.00
+  appliesToSales      Boolean   @default(true) @map("applies_to_sales")
+  appliesToPurchases  Boolean   @default(true) @map("applies_to_purchases")
+  isSystem            Boolean   @default(false) @map("is_system")
+  isActive            Boolean   @default(true) @map("is_active")
+  sortOrder           Int       @default(0) @map("sort_order")
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+
+  @@unique([userId, code])
+  @@map("tax_rates")
+}
+
+model Item {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code                String
+  name                String
+  saleDescription     String?   @map("sale_description")
+  purchaseDescription String?   @map("purchase_description")
+  salePrice           Decimal?  @map("sale_price") @db.Decimal(12, 2)
+  purchasePrice       Decimal?  @map("purchase_price") @db.Decimal(12, 2)
+  saleAccountCode     String?   @map("sale_account_code")
+  purchaseAccountCode String?   @map("purchase_account_code")
+  saleTaxType         String?   @map("sale_tax_type")
+  purchaseTaxType     String?   @map("purchase_tax_type")
+  isTracked           Boolean   @default(false) @map("is_tracked") // Inventory tracking
+  quantityOnHand      Decimal?  @map("quantity_on_hand") @db.Decimal(12, 4)
+  isActive            Boolean   @default(true) @map("is_active")
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+
+  @@unique([userId, code])
+  @@index([userId])
+  @@map("items")
+}
+
+model Invoice {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Type: ACCREC (sales invoice) | ACCPAY (bill/purchase)
+  type                String    @default("ACCREC")
+  invoiceNumber       String    @map("invoice_number")
+  reference           String?
+
+  // Contact
+  contactId           String?   @map("contact_id") @db.Uuid
+  contact             Contact?  @relation(fields: [contactId], references: [id])
+
+  // Dates
+  date                DateTime
+  dueDate             DateTime  @map("due_date")
+  expectedPaymentDate DateTime? @map("expected_payment_date")
+  fullyPaidOnDate     DateTime? @map("fully_paid_on_date")
+
+  // Status: draft | submitted | authorised | paid | voided | deleted
+  status              String    @default("draft")
+
+  // Tax handling on lines
+  lineAmountTypes     String    @default("Exclusive") @map("line_amount_types") // Exclusive | Inclusive | NoTax
+
+  // Totals
+  subtotal            Decimal   @default(0) @db.Decimal(12, 2)
+  totalTax            Decimal   @default(0) @map("total_tax") @db.Decimal(12, 2)
+  total               Decimal   @default(0) @db.Decimal(12, 2)
+  amountDue           Decimal   @default(0) @map("amount_due") @db.Decimal(12, 2)
+  amountPaid          Decimal   @default(0) @map("amount_paid") @db.Decimal(12, 2)
+  amountCredited      Decimal   @default(0) @map("amount_credited") @db.Decimal(12, 2)
+
+  // Currency
+  currencyCode        String    @default("AUD") @map("currency_code")
+  currencyRate        Decimal   @default(1) @map("currency_rate") @db.Decimal(12, 6)
+
+  // Extras
+  brandingTheme       String?   @map("branding_theme")
+  notes               String?
+  terms               String?
+  sentToContact       Boolean   @default(false) @map("sent_to_contact")
+  onlinePaymentUrl    String?   @map("online_payment_url")
+
+  // Relations
+  lineItems           InvoiceLine[]
+  payments            Payment[]
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@index([contactId])
+  @@index([status])
+  @@index([date])
+  @@index([dueDate])
+  @@map("invoices")
+}
+
+model InvoiceLine {
+  id                  String          @id @default(uuid()) @db.Uuid
+  invoiceId           String          @map("invoice_id") @db.Uuid
+  invoice             Invoice         @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  description         String?
+  quantity            Decimal         @default(1) @db.Decimal(12, 4)
+  unitAmount          Decimal         @default(0) @map("unit_amount") @db.Decimal(12, 2)
+  lineAmount          Decimal         @default(0) @map("line_amount") @db.Decimal(12, 2)
+  taxAmount           Decimal         @default(0) @map("tax_amount") @db.Decimal(12, 2)
+  discountRate        Decimal?        @map("discount_rate") @db.Decimal(5, 2)
+  accountId           String?         @map("account_id") @db.Uuid
+  account             ChartOfAccount? @relation(fields: [accountId], references: [id])
+  accountCode         String?         @map("account_code")
+  taxType             String?         @map("tax_type")
+  itemCode            String?         @map("item_code")
+  tracking1           String?                              // Tracking category 1 option
+  tracking2           String?                              // Tracking category 2 option
+  sortOrder           Int             @default(0) @map("sort_order")
+
+  @@index([invoiceId])
+  @@map("invoice_lines")
+}
+
+model Payment {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  invoiceId           String    @map("invoice_id") @db.Uuid
+  invoice             Invoice   @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  date                DateTime
+  amount              Decimal   @db.Decimal(12, 2)
+  reference           String?
+  bankAccountCode     String?   @map("bank_account_code")
+  currencyCode        String    @default("AUD") @map("currency_code")
+  currencyRate        Decimal   @default(1) @map("currency_rate") @db.Decimal(12, 6)
+  status              String    @default("active")         // active | deleted
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+
+  @@index([invoiceId])
+  @@index([userId])
+  @@map("payments")
+}
+
+model Quote {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quoteNumber         String    @map("quote_number")
+  contactId           String?   @map("contact_id") @db.Uuid
+  contact             Contact?  @relation(fields: [contactId], references: [id])
+  date                DateTime
+  expiryDate          DateTime? @map("expiry_date")
+  reference           String?
+  status              String    @default("draft")          // draft | sent | accepted | declined | invoiced
+  lineAmountTypes     String    @default("Exclusive") @map("line_amount_types")
+  subtotal            Decimal   @default(0) @db.Decimal(12, 2)
+  totalTax            Decimal   @default(0) @map("total_tax") @db.Decimal(12, 2)
+  total               Decimal   @default(0) @db.Decimal(12, 2)
+  currencyCode        String    @default("AUD") @map("currency_code")
+  terms               String?
+  notes               String?
+  lineItems           QuoteLine[]
+  // Convert to invoice action (in app logic)
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@index([contactId])
+  @@map("quotes")
+}
+
+model QuoteLine {
+  id                  String          @id @default(uuid()) @db.Uuid
+  quoteId             String          @map("quote_id") @db.Uuid
+  quote               Quote           @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  description         String?
+  quantity            Decimal         @default(1) @db.Decimal(12, 4)
+  unitAmount          Decimal         @default(0) @map("unit_amount") @db.Decimal(12, 2)
+  lineAmount          Decimal         @default(0) @map("line_amount") @db.Decimal(12, 2)
+  taxAmount           Decimal         @default(0) @map("tax_amount") @db.Decimal(12, 2)
+  discountRate        Decimal?        @map("discount_rate") @db.Decimal(5, 2)
+  accountId           String?         @map("account_id") @db.Uuid
+  account             ChartOfAccount? @relation(fields: [accountId], references: [id])
+  taxType             String?         @map("tax_type")
+  itemCode            String?         @map("item_code")
+  sortOrder           Int             @default(0) @map("sort_order")
+
+  @@index([quoteId])
+  @@map("quote_lines")
+}
+
+model PurchaseOrder {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  poNumber            String    @map("po_number")
+  contactId           String?   @map("contact_id") @db.Uuid
+  contact             Contact?  @relation(fields: [contactId], references: [id])
+  date                DateTime
+  deliveryDate        DateTime? @map("delivery_date")
+  reference           String?
+  deliveryAddress     Json?     @map("delivery_address")
+  status              String    @default("draft")          // draft | submitted | authorised | billed
+  lineAmountTypes     String    @default("Exclusive") @map("line_amount_types")
+  subtotal            Decimal   @default(0) @db.Decimal(12, 2)
+  totalTax            Decimal   @default(0) @map("total_tax") @db.Decimal(12, 2)
+  total               Decimal   @default(0) @db.Decimal(12, 2)
+  currencyCode        String    @default("AUD") @map("currency_code")
+  notes               String?
+  lineItems           PurchaseOrderLine[]
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@index([contactId])
+  @@map("purchase_orders")
+}
+
+model PurchaseOrderLine {
+  id                  String          @id @default(uuid()) @db.Uuid
+  purchaseOrderId     String          @map("purchase_order_id") @db.Uuid
+  purchaseOrder       PurchaseOrder   @relation(fields: [purchaseOrderId], references: [id], onDelete: Cascade)
+  description         String?
+  quantity            Decimal         @default(1) @db.Decimal(12, 4)
+  unitAmount          Decimal         @default(0) @map("unit_amount") @db.Decimal(12, 2)
+  lineAmount          Decimal         @default(0) @map("line_amount") @db.Decimal(12, 2)
+  taxAmount           Decimal         @default(0) @map("tax_amount") @db.Decimal(12, 2)
+  discountRate        Decimal?        @map("discount_rate") @db.Decimal(5, 2)
+  accountId           String?         @map("account_id") @db.Uuid
+  account             ChartOfAccount? @relation(fields: [accountId], references: [id])
+  taxType             String?         @map("tax_type")
+  itemCode            String?         @map("item_code")
+  sortOrder           Int             @default(0) @map("sort_order")
+
+  @@index([purchaseOrderId])
+  @@map("purchase_order_lines")
+}
+
+model TrackingCategory {
+  id                  String    @id @default(uuid()) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name                String                               // e.g. "Department", "Region"
+  options             Json      @default("[]")             // ["Sales", "Marketing", "Admin"]
+  isActive            Boolean   @default(true) @map("is_active")
+
+  createdAt           DateTime  @default(now()) @map("created_at")
+
+  @@index([userId])
+  @@map("tracking_categories")
 }
 
 // ─── AU Accounting Models ────────────────────────────────

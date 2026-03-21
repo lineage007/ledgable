@@ -125,7 +125,6 @@ export function AppSidebar({
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <NavItem href="/accountant" icon={UserCheck} label="Accountant Portal" />
               <NavItem href="/migrate" icon={FolderInput} label="Import / Migrate" />
               <NavItem href="/settings" icon={Settings} label="Settings" />
             </SidebarMenu>

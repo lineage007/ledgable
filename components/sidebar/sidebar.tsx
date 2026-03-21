@@ -114,6 +114,14 @@ export function AppSidebar({
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/accounts">
+                  <SidebarMenuButton asChild>
+                    <Link href="/accounts">
+                      <LayoutDashboard />
+                      <span>Chart of Accounts</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
                 <SidebarMenuItemWithHighlight href="/bank-feeds">
                   <SidebarMenuButton asChild>
                     <Link href="/bank-feeds">
@@ -146,9 +154,9 @@ export function AppSidebar({
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItemWithHighlight>
-                <SidebarMenuItemWithHighlight href="/invoices">
+                <SidebarMenuItemWithHighlight href="/invoices/list">
                   <SidebarMenuButton asChild>
-                    <Link href="/invoices">
+                    <Link href="/invoices/list">
                       <FileSpreadsheet />
                       <span>Invoices</span>
                     </Link>

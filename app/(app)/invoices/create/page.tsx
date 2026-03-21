@@ -104,6 +104,7 @@ export default function CreateInvoicePage() {
   const [showContactDropdown, setShowContactDropdown] = useState(false)
   const [itemSearch, setItemSearch] = useState<string | null>(null) // line ID being searched
   const [ledgeMessages, setLedgeMessages] = useState<string[]>([])
+  const [showPreview, setShowPreview] = useState(false)
   const contactRef = useRef<HTMLDivElement>(null)
 
   // Recalc totals whenever lines change
@@ -466,8 +467,9 @@ export default function CreateInvoicePage() {
               <button className="w-full px-4 py-2.5 rounded-lg border border-emerald-500 text-emerald-500 text-sm font-medium hover:bg-emerald-500/10 flex items-center justify-center gap-2">
                 <Send className="w-4 h-4" /> Approve & Send
               </button>
-              <button className="w-full px-4 py-2.5 rounded-lg border border-border text-sm hover:bg-accent flex items-center justify-center gap-2">
-                <Eye className="w-4 h-4" /> Preview PDF
+              <button onClick={() => setShowPreview(!showPreview)}
+                className={`w-full px-4 py-2.5 rounded-lg border text-sm flex items-center justify-center gap-2 transition-colors ${showPreview ? 'border-primary bg-primary/10 text-primary' : 'border-border hover:bg-accent'}`}>
+                <Eye className="w-4 h-4" /> {showPreview ? 'Hide Preview' : 'Live Preview'}
               </button>
             </div>
           </div>
@@ -485,6 +487,80 @@ export default function CreateInvoicePage() {
               <div>• Due date calculates from contact&apos;s Net terms</div>
             </div>
           </div>
+
+          {/* Live Preview Panel */}
+          {showPreview && (
+            <div className="rounded-xl border border-border bg-white text-slate-800 p-6 shadow-lg" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <div className="text-[10px] text-muted-foreground mb-3 uppercase tracking-wider">Live Preview</div>
+              <div className="border-b-2 border-primary pb-3 mb-4 flex justify-between items-start">
+                <div>
+                  <div className="text-lg font-bold text-slate-900">{inv.type === 'ACCREC' ? 'TAX INVOICE' : 'PURCHASE ORDER'}</div>
+                  <div className="text-xs text-slate-500 mt-1">Your Business Name</div>
+                  <div className="text-xs text-slate-500">ABN: 12 345 678 901</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-sm font-mono font-bold">{inv.invoiceNumber || 'INV-0000'}</div>
+                  <div className="text-xs text-slate-500 mt-1">
+                    Date: {inv.date ? new Date(inv.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'}
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    Due: {inv.dueDate ? new Date(inv.dueDate).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'}
+                  </div>
+                </div>
+              </div>
+              {inv.contact && (
+                <div className="mb-4">
+                  <div className="text-[10px] text-slate-400 uppercase">Bill To</div>
+                  <div className="text-sm font-semibold">{inv.contact.name}</div>
+                  {inv.contact.abn && <div className="text-xs text-slate-500">ABN: {inv.contact.abn}</div>}
+                  {inv.contact.billingAddress?.street && <div className="text-xs text-slate-500">{inv.contact.billingAddress.street}</div>}
+                </div>
+              )}
+              <table className="w-full text-xs mb-4">
+                <thead>
+                  <tr className="border-b border-slate-200">
+                    <th className="text-left py-1.5 font-semibold text-slate-600">Description</th>
+                    <th className="text-right py-1.5 font-semibold text-slate-600">Qty</th>
+                    <th className="text-right py-1.5 font-semibold text-slate-600">Price</th>
+                    <th className="text-right py-1.5 font-semibold text-slate-600">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {inv.lineItems.filter(l => l.description).map(line => {
+                    const amt = line.quantity * line.unitAmount * (1 - line.discountRate / 100)
+                    return (
+                      <tr key={line.id} className="border-b border-slate-100">
+                        <td className="py-1.5">{line.description}</td>
+                        <td className="text-right font-mono">{line.quantity}</td>
+                        <td className="text-right font-mono">${line.unitAmount.toFixed(2)}</td>
+                        <td className="text-right font-mono">${amt.toFixed(2)}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+              <div className="border-t-2 border-slate-200 pt-2 space-y-1">
+                <div className="flex justify-between text-xs">
+                  <span className="text-slate-500">Subtotal</span>
+                  <span className="font-mono">${totals.subtotal.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-xs">
+                  <span className="text-slate-500">GST</span>
+                  <span className="font-mono">${totals.totalTax.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-sm font-bold pt-1 border-t border-slate-200 mt-1">
+                  <span>Total AUD</span>
+                  <span className="font-mono">${totals.total.toFixed(2)}</span>
+                </div>
+              </div>
+              {inv.notes && (
+                <div className="mt-3 pt-2 border-t border-slate-100">
+                  <div className="text-[10px] text-slate-400 uppercase">Notes</div>
+                  <div className="text-xs text-slate-600 mt-0.5">{inv.notes}</div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

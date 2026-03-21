@@ -1,210 +1,122 @@
 "use client"
 
-import { useState, useEffect, useTransition } from "react"
-import { getBankConnections, addBankConnection, importBankCSV, getRecentTransactions } from "./actions"
-import { Building2, Plus, Upload, RefreshCw, ArrowDownRight, ArrowUpRight, Wallet } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { useState } from "react"
+
+type BankConnection = {
+  id: string; institution: string; accountName: string; bsb: string; number: string;
+  balance: number; lastSync: string; status: 'connected' | 'pending' | 'error';
+}
 
 const AU_BANKS = [
-  { name: "Commonwealth Bank", color: "#FFD700", icon: "🟡" },
-  { name: "Westpac", color: "#DA251D", icon: "🔴" },
-  { name: "ANZ", color: "#007DBA", icon: "🔵" },
-  { name: "NAB", color: "#C8102E", icon: "🔴" },
-  { name: "Macquarie", color: "#000000", icon: "⚫" },
-  { name: "ING", color: "#FF6200", icon: "🟠" },
-  { name: "Up Bank", color: "#FF7043", icon: "🧡" },
-  { name: "Bendigo Bank", color: "#8B2346", icon: "🟤" },
-  { name: "Other", color: "#6366f1", icon: "🏦" },
+  { name: 'Commonwealth Bank', icon: '🟡', color: 'amber' },
+  { name: 'ANZ', icon: '🔵', color: 'blue' },
+  { name: 'Westpac', icon: '🔴', color: 'red' },
+  { name: 'NAB', icon: '⚫', color: 'gray' },
+  { name: 'Macquarie', icon: '⬛', color: 'slate' },
+  { name: 'Bendigo Bank', icon: '🟤', color: 'orange' },
+  { name: 'ING', icon: '🟠', color: 'orange' },
+  { name: 'St.George', icon: '🐉', color: 'emerald' },
+  { name: 'Suncorp', icon: '☀️', color: 'yellow' },
+  { name: 'Bank of Queensland', icon: '🏦', color: 'purple' },
+  { name: 'Up Bank', icon: '🍊', color: 'orange' },
+  { name: 'Other', icon: '🏛️', color: 'gray' },
 ]
 
 export default function BankFeedsPage() {
-  const [connections, setConnections] = useState<any[]>([])
-  const [transactions, setTransactions] = useState<any[]>([])
+  const [connections] = useState<BankConnection[]>([])
   const [showAdd, setShowAdd] = useState(false)
-  const [showImport, setShowImport] = useState<string | null>(null)
-  const [isPending, startTransition] = useTransition()
-  const [importResult, setImportResult] = useState<string | null>(null)
-
-  useEffect(() => {
-    loadData()
-  }, [])
-
-  async function loadData() {
-    const conns = await getBankConnections()
-    setConnections(conns)
-    const txns = await getRecentTransactions()
-    setTransactions(txns)
-  }
-
-  async function handleAddBank(formData: FormData) {
-    startTransition(async () => {
-      await addBankConnection(formData)
-      setShowAdd(false)
-      loadData()
-    })
-  }
-
-  async function handleCSVImport(connectionId: string) {
-    const input = document.createElement("input")
-    input.type = "file"
-    input.accept = ".csv"
-    input.onchange = async (e) => {
-      const file = (e.target as HTMLInputElement).files?.[0]
-      if (!file) return
-      const text = await file.text()
-      startTransition(async () => {
-        const result = await importBankCSV(connectionId, text)
-        setImportResult(`Imported ${result.imported} transactions`)
-        loadData()
-        setTimeout(() => setImportResult(null), 3000)
-      })
-    }
-    input.click()
-  }
-
-  const totalBalance = connections.reduce((sum, c) => sum + Number(c.balance || 0), 0)
+  const [selectedBank, setSelectedBank] = useState<string | null>(null)
 
   return (
-    <div className="p-6 max-w-6xl mx-auto space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+    <div className="max-w-7xl mx-auto p-6">
+      <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Bank Feeds</h1>
-          <p className="text-slate-500 mt-1">Connect your accounts, import transactions</p>
+          <h1 className="text-2xl font-bold">Bank Feeds</h1>
+          <p className="text-sm text-muted-foreground">Connect your Australian bank accounts for automatic transaction sync</p>
         </div>
-        <Dialog open={showAdd} onOpenChange={setShowAdd}>
-          <DialogTrigger asChild>
-            <Button className="bg-emerald-600 hover:bg-emerald-700">
-              <Plus className="w-4 h-4 mr-2" /> Add Account
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Add Bank Account</DialogTitle>
-            </DialogHeader>
-            <form action={handleAddBank} className="space-y-4">
-              <div>
-                <label className="text-sm font-medium text-slate-700">Bank</label>
-                <select name="institution" className="w-full mt-1 p-2 border rounded-lg text-slate-900">
-                  {AU_BANKS.map(b => (
-                    <option key={b.name} value={b.name}>{b.icon} {b.name}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-slate-700">Account Name</label>
-                <Input name="accountName" placeholder="e.g. Everyday Account" required />
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="text-sm font-medium text-slate-700">BSB</label>
-                  <Input name="accountBSB" placeholder="062-000" />
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-slate-700">Account Number</label>
-                  <Input name="accountNumber" placeholder="1234 5678" />
-                </div>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-slate-700">Current Balance (AUD)</label>
-                <Input name="balance" type="number" step="0.01" placeholder="0.00" />
-              </div>
-              <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700" disabled={isPending}>
-                {isPending ? "Adding..." : "Add Account"}
-              </Button>
-            </form>
-          </DialogContent>
-        </Dialog>
-      </div>
-
-      {importResult && (
-        <div className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-lg">
-          ✅ {importResult}
-        </div>
-      )}
-
-      {/* Balance Overview */}
-      <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 text-white">
-        <div className="flex items-center gap-2 text-slate-400 text-sm mb-2">
-          <Wallet className="w-4 h-4" /> Total Balance
-        </div>
-        <div className="text-4xl font-extrabold tracking-tight">
-          ${totalBalance.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
-        </div>
-        <div className="text-slate-400 text-sm mt-1">{connections.length} account{connections.length !== 1 ? "s" : ""} connected</div>
+        <button onClick={() => setShowAdd(true)} className="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-500">
+          + Connect Bank
+        </button>
       </div>
 
       {/* Connected Accounts */}
-      <div className="grid gap-4 md:grid-cols-2">
-        {connections.map((conn) => {
-          const bank = AU_BANKS.find(b => b.name === conn.institution) || AU_BANKS[AU_BANKS.length - 1]
-          return (
-            <div key={conn.id} className="border rounded-xl p-5 bg-white hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{bank.icon}</span>
-                  <div>
-                    <div className="font-semibold text-slate-900">{conn.accountName}</div>
-                    <div className="text-sm text-slate-500">{conn.institution} · {conn.accountBSB || "Manual"}</div>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className="font-bold text-lg text-slate-900">
-                    ${Number(conn.balance || 0).toLocaleString("en-AU", { minimumFractionDigits: 2 })}
-                  </div>
-                  <div className="text-xs text-emerald-600">● Connected</div>
+      {connections.length > 0 ? (
+        <div className="space-y-4 mb-8">
+          {connections.map(conn => (
+            <div key={conn.id} className="rounded-xl border border-border bg-card p-5 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-xl">🏦</div>
+                <div>
+                  <div className="font-semibold">{conn.institution}</div>
+                  <div className="text-sm text-muted-foreground">{conn.accountName} · BSB {conn.bsb} · ****{conn.number.slice(-4)}</div>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={() => handleCSVImport(conn.id)}>
-                  <Upload className="w-3 h-3 mr-1" /> Import CSV
-                </Button>
-                <Button variant="outline" size="sm" disabled>
-                  <RefreshCw className="w-3 h-3 mr-1" /> Sync
-                </Button>
+              <div className="text-right">
+                <div className="font-mono font-bold text-lg">${conn.balance.toLocaleString('en-AU', { minimumFractionDigits: 2 })}</div>
+                <div className="text-xs text-muted-foreground">Last synced: {conn.lastSync}</div>
               </div>
             </div>
-          )
-        })}
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-xl border-2 border-dashed border-border p-12 text-center mb-8">
+          <div className="text-5xl mb-4">🏦</div>
+          <h3 className="text-lg font-semibold mb-2">No bank accounts connected</h3>
+          <p className="text-sm text-muted-foreground mb-4 max-w-md mx-auto">
+            Connect your bank to automatically import transactions and keep your books up to date. 
+            Supports 250+ Australian banks via Basiq.
+          </p>
+          <button onClick={() => setShowAdd(true)} className="px-6 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-500">
+            Connect Your First Bank
+          </button>
+        </div>
+      )}
 
-        {connections.length === 0 && (
-          <div className="col-span-2 text-center py-12 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200">
-            <Building2 className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-            <h3 className="font-semibold text-slate-600">No accounts connected</h3>
-            <p className="text-slate-400 text-sm mt-1">Add your bank account and import transactions via CSV</p>
-            <Button className="mt-4 bg-emerald-600 hover:bg-emerald-700" onClick={() => setShowAdd(true)}>
-              <Plus className="w-4 h-4 mr-2" /> Add Your First Account
-            </Button>
-          </div>
-        )}
+      {/* Manual Import */}
+      <div className="rounded-xl border border-border bg-card p-6">
+        <h3 className="font-semibold mb-3">Manual Import</h3>
+        <p className="text-sm text-muted-foreground mb-4">
+          Upload bank statements in CSV, OFX, or QIF format if you prefer not to connect directly.
+        </p>
+        <div className="rounded-lg border-2 border-dashed border-border p-8 text-center hover:border-emerald-500/50 transition-colors cursor-pointer">
+          <div className="text-3xl mb-2">📁</div>
+          <p className="text-sm text-muted-foreground">Drag and drop files or click to upload</p>
+          <p className="text-xs text-muted-foreground mt-1">Supports CSV, OFX, QIF</p>
+        </div>
       </div>
 
-      {/* Recent Transactions */}
-      {transactions.length > 0 && (
-        <div>
-          <h2 className="text-lg font-bold text-slate-900 mb-3">Recent Transactions</h2>
-          <div className="bg-white rounded-xl border divide-y">
-            {transactions.map((txn) => (
-              <div key={txn.id} className="flex items-center justify-between p-4 hover:bg-slate-50">
-                <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${Number(txn.amount) >= 0 ? "bg-emerald-100" : "bg-red-100"}`}>
-                    {Number(txn.amount) >= 0 ? <ArrowDownRight className="w-4 h-4 text-emerald-600" /> : <ArrowUpRight className="w-4 h-4 text-red-500" />}
-                  </div>
-                  <div>
-                    <div className="font-medium text-slate-900 text-sm">{txn.description}</div>
-                    <div className="text-xs text-slate-400">{new Date(txn.date).toLocaleDateString("en-AU")} · {txn.connection?.institution}</div>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className={`font-semibold ${Number(txn.amount) >= 0 ? "text-emerald-600" : "text-slate-900"}`}>
-                    {Number(txn.amount) >= 0 ? "+" : ""}${Number(txn.amount).toLocaleString("en-AU", { minimumFractionDigits: 2 })}
-                  </div>
-                  {txn.gstAmount && <div className="text-xs text-slate-400">GST: ${Number(txn.gstAmount).toFixed(2)}</div>}
+      {/* Bank Selection Modal */}
+      {showAdd && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => { setShowAdd(false); setSelectedBank(null) }}>
+          <div className="bg-card border border-border rounded-2xl p-6 w-full max-w-lg mx-4 max-h-[80vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <h3 className="text-lg font-bold mb-2">Connect Bank Account</h3>
+            <p className="text-sm text-muted-foreground mb-4">Select your bank to begin secure connection via Basiq</p>
+            
+            <div className="grid grid-cols-2 gap-3">
+              {AU_BANKS.map(bank => (
+                <button key={bank.name} onClick={() => setSelectedBank(bank.name)}
+                  className={`text-left p-3 rounded-xl border transition-all ${
+                    selectedBank === bank.name ? 'border-emerald-500 bg-emerald-500/10' : 'border-border hover:border-emerald-500/30'
+                  }`}>
+                  <span className="text-xl mr-2">{bank.icon}</span>
+                  <span className="text-sm font-medium">{bank.name}</span>
+                </button>
+              ))}
+            </div>
+
+            {selectedBank && (
+              <div className="mt-4 pt-4 border-t border-border">
+                <p className="text-xs text-muted-foreground mb-3">
+                  🔒 You'll be redirected to {selectedBank}'s secure login. Ledgable uses read-only access and never stores your banking credentials.
+                </p>
+                <div className="flex gap-3">
+                  <button onClick={() => { setShowAdd(false); setSelectedBank(null) }} className="flex-1 px-4 py-2 rounded-lg border border-border text-sm">Cancel</button>
+                  <button className="flex-1 px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm hover:bg-emerald-500">
+                    Connect {selectedBank}
+                  </button>
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       )}

@@ -52,10 +52,12 @@ export function AppSidebar({
   return (
     <Sidebar variant="inset" collapsible="icon">
       <SidebarHeader>
-        <Link href="/dashboard" className="flex items-center gap-2.5 px-1 py-1">
-          <Image src="/logo/256.png" alt="Ledgable" width={36} height={36} className="h-9 w-9 rounded-lg shrink-0" />
+        <Link href="/dashboard" className="flex items-center gap-3 px-1 py-1">
+          <Image src="/logo/256.png" alt="" width={40} height={40} className="h-10 w-10 shrink-0" />
           {open && (
-            <Image src="/logo/wordmark.png" alt="Ledgable" width={110} height={28} className="h-6 w-auto brightness-0 invert opacity-90" />
+            <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              <span className="text-white">ledg</span><span style={{ color: '#5EEAD4' }}>able</span>
+            </span>
           )}
         </Link>
       </SidebarHeader>

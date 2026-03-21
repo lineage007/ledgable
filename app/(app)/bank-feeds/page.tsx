@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 
 type BankConnection = {
   id: string; institution: string; accountName: string; bsb: string; number: string;
@@ -8,18 +9,18 @@ type BankConnection = {
 }
 
 const AU_BANKS = [
-  { name: 'Commonwealth Bank', icon: '🟡', color: 'amber' },
-  { name: 'ANZ', icon: '🔵', color: 'blue' },
-  { name: 'Westpac', icon: '🔴', color: 'red' },
-  { name: 'NAB', icon: '⚫', color: 'gray' },
-  { name: 'Macquarie', icon: '⬛', color: 'slate' },
-  { name: 'Bendigo Bank', icon: '🟤', color: 'orange' },
-  { name: 'ING', icon: '🟠', color: 'orange' },
-  { name: 'St.George', icon: '🐉', color: 'emerald' },
-  { name: 'Suncorp', icon: '☀️', color: 'yellow' },
-  { name: 'Bank of Queensland', icon: '🏦', color: 'purple' },
-  { name: 'Up Bank', icon: '🍊', color: 'orange' },
-  { name: 'Other', icon: '🏛️', color: 'gray' },
+  { name: 'Commonwealth Bank', logo: '/banks/commbank.png', color: 'bg-yellow-500' },
+  { name: 'ANZ', logo: '/banks/anz.png', color: 'bg-blue-600' },
+  { name: 'Westpac', logo: '/banks/westpac.png', color: 'bg-red-600' },
+  { name: 'NAB', logo: '/banks/nab.png', color: 'bg-gray-800' },
+  { name: 'Macquarie', logo: '/banks/macquarie.png', color: 'bg-slate-700' },
+  { name: 'Bendigo Bank', logo: '/banks/bendigo.png', color: 'bg-red-700' },
+  { name: 'ING', logo: '/banks/ing.png', color: 'bg-orange-500' },
+  { name: 'St.George', logo: '/banks/stgeorge.png', color: 'bg-emerald-600' },
+  { name: 'Suncorp', logo: '/banks/suncorp.png', color: 'bg-yellow-500' },
+  { name: 'Bank of Queensland', logo: '/banks/boq.png', color: 'bg-purple-600' },
+  { name: 'Up Bank', logo: '/banks/up.png', color: 'bg-orange-500' },
+  { name: 'Other', logo: '', color: 'bg-gray-500' },
 ]
 
 export default function BankFeedsPage() {
@@ -95,10 +96,14 @@ export default function BankFeedsPage() {
             <div className="grid grid-cols-2 gap-3">
               {AU_BANKS.map(bank => (
                 <button key={bank.name} onClick={() => setSelectedBank(bank.name)}
-                  className={`text-left p-3 rounded-xl border transition-all ${
+                  className={`flex items-center gap-3 text-left p-3 rounded-xl border transition-all ${
                     selectedBank === bank.name ? 'border-emerald-500 bg-emerald-500/10' : 'border-border hover:border-emerald-500/30'
                   }`}>
-                  <span className="text-xl mr-2">{bank.icon}</span>
+                  {bank.logo ? (
+                    <Image src={bank.logo} alt={bank.name} width={32} height={32} className="w-8 h-8 rounded-lg object-contain" />
+                  ) : (
+                    <div className="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-500">?</div>
+                  )}
                   <span className="text-sm font-medium">{bank.name}</span>
                 </button>
               ))}

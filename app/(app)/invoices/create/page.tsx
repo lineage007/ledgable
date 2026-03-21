@@ -189,28 +189,26 @@ export default function CreateInvoicePage() {
   }, [])
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
+    <div className="max-w-5xl mx-auto p-4 md:p-6">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-3 mb-5">
         <Link href="/invoices" className="p-2 rounded-lg hover:bg-accent">
           <ArrowLeft className="w-5 h-5" />
         </Link>
-        <div className="flex-1">
-          <h1 className="text-2xl font-bold">
-            {inv.type === 'ACCREC' ? 'New Invoice' : 'New Bill'}
-          </h1>
-        </div>
-        {/* Type toggle */}
-        <div className="flex rounded-lg border border-border overflow-hidden">
-          <button onClick={() => setInv(p => ({ ...p, type: 'ACCREC' }))}
-            className={`px-3 py-1.5 text-xs font-medium ${inv.type === 'ACCREC' ? 'bg-emerald-600 text-white' : 'bg-card'}`}>
-            Invoice (Sales)
-          </button>
-          <button onClick={() => setInv(p => ({ ...p, type: 'ACCPAY' }))}
-            className={`px-3 py-1.5 text-xs font-medium ${inv.type === 'ACCPAY' ? 'bg-amber-600 text-white' : 'bg-card'}`}>
-            Bill (Purchase)
-          </button>
-        </div>
+        <h1 className="text-xl md:text-2xl font-bold flex-1">
+          {inv.type === 'ACCREC' ? 'New Invoice' : 'New Bill'}
+        </h1>
+      </div>
+      {/* Type toggle — full width on mobile */}
+      <div className="flex rounded-lg border border-border overflow-hidden mb-5">
+        <button onClick={() => setInv(p => ({ ...p, type: 'ACCREC' }))}
+          className={`flex-1 px-3 py-2.5 text-sm font-medium ${inv.type === 'ACCREC' ? 'bg-emerald-600 text-white' : 'bg-card'}`}>
+          Invoice (Sales)
+        </button>
+        <button onClick={() => setInv(p => ({ ...p, type: 'ACCPAY' }))}
+          className={`flex-1 px-3 py-2.5 text-sm font-medium ${inv.type === 'ACCPAY' ? 'bg-amber-600 text-white' : 'bg-card'}`}>
+          Bill (Purchase)
+        </button>
       </div>
 
       {/* Ledge AI messages */}
@@ -227,9 +225,9 @@ export default function CreateInvoicePage() {
         </div>
       )}
 
-      <div className="grid grid-cols-3 gap-6">
-        {/* Left: Main form (2 cols) */}
-        <div className="col-span-2 space-y-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Main form */}
+        <div className="lg:col-span-2 space-y-5">
           {/* Contact selector */}
           <div ref={contactRef} className="relative">
             <label className="text-xs text-muted-foreground uppercase tracking-wider mb-1 block">
@@ -291,7 +289,7 @@ export default function CreateInvoicePage() {
           </div>
 
           {/* Invoice details row */}
-          <div className="grid grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div>
               <label className="text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Invoice #</label>
               <input value={inv.invoiceNumber} onChange={e => setInv(p => ({ ...p, invoiceNumber: e.target.value }))}
@@ -330,9 +328,10 @@ export default function CreateInvoicePage() {
             </div>
           </div>
 
-          {/* Line Items Table */}
+          {/* Line Items */}
           <div className="rounded-xl border border-border overflow-hidden">
-            <div className="bg-accent/30 px-4 py-2 grid grid-cols-12 gap-2 text-[10px] text-muted-foreground uppercase tracking-wider font-medium">
+            {/* Desktop header - hidden on mobile */}
+            <div className="hidden md:grid bg-accent/30 px-4 py-2 grid-cols-12 gap-2 text-[10px] text-muted-foreground uppercase tracking-wider font-medium">
               <div className="col-span-4">Description</div>
               <div className="col-span-1 text-right">Qty</div>
               <div className="col-span-2 text-right">Unit Price</div>
@@ -346,7 +345,73 @@ export default function CreateInvoicePage() {
             {inv.lineItems.map((line, idx) => {
               const calc = calcLine(line, inv.lineAmountTypes)
               return (
-                <div key={line.id} className="px-4 py-2 grid grid-cols-12 gap-2 items-center border-t border-border group relative">
+                <div key={line.id} className="px-4 py-3 md:py-2 border-t border-border group relative">
+                  {/* Mobile: card layout */}
+                  <div className="md:hidden space-y-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex-1 relative">
+                        <input value={line.description}
+                          onChange={e => { updateLine(line.id, { description: e.target.value }); if (e.target.value.length >= 2) setItemSearch(line.id) }}
+                          onFocus={() => { if (line.description.length >= 2 || !line.description) setItemSearch(line.id) }}
+                          onBlur={() => setTimeout(() => setItemSearch(null), 200)}
+                          className="w-full px-3 py-2 rounded-lg border border-border bg-background text-sm"
+                          placeholder="Item description..." />
+                      </div>
+                      <button onClick={() => removeLine(line.id)}
+                        className="p-2 rounded text-muted-foreground hover:text-red-400">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div>
+                        <label className="text-[10px] text-muted-foreground mb-0.5 block">Qty</label>
+                        <input type="number" value={line.quantity} min={0} step={0.01}
+                          onChange={e => updateLine(line.id, { quantity: parseFloat(e.target.value) || 0 })}
+                          className="w-full px-2 py-2 rounded-lg border border-border bg-background text-sm font-mono text-right" />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-muted-foreground mb-0.5 block">Unit Price</label>
+                        <input type="number" value={line.unitAmount} min={0} step={0.01}
+                          onChange={e => updateLine(line.id, { unitAmount: parseFloat(e.target.value) || 0 })}
+                          className="w-full px-2 py-2 rounded-lg border border-border bg-background text-sm font-mono text-right" />
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-muted-foreground mb-0.5 block">Amount</label>
+                        <div className="px-2 py-2 rounded-lg bg-accent/30 text-sm font-mono text-right font-medium">
+                          ${calc.lineAmount.toFixed(2)}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div>
+                        <label className="text-[10px] text-muted-foreground mb-0.5 block">Account</label>
+                        <select value={line.accountCode}
+                          onChange={e => updateLine(line.id, { accountCode: e.target.value })}
+                          className="w-full px-2 py-2 rounded-lg border border-border bg-background text-xs">
+                          {ACCOUNTS.filter(a => inv.type === 'ACCREC' ? a.type === 'revenue' : a.type === 'expense').map(a => (
+                            <option key={a.code} value={a.code}>{a.code} - {a.name}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-muted-foreground mb-0.5 block">Tax</label>
+                        <select value={line.taxType}
+                          onChange={e => updateLine(line.id, { taxType: e.target.value })}
+                          className="w-full px-2 py-2 rounded-lg border border-border bg-background text-xs">
+                          <option value="GST">GST</option><option value="FRE">FRE</option>
+                          <option value="INP">INP</option><option value="BAS">BAS</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="text-[10px] text-muted-foreground mb-0.5 block">Disc %</label>
+                        <input type="number" value={line.discountRate} min={0} max={100}
+                          onChange={e => updateLine(line.id, { discountRate: parseFloat(e.target.value) || 0 })}
+                          className="w-full px-2 py-2 rounded-lg border border-border bg-background text-sm font-mono text-right" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Desktop: grid layout */}
+                  <div className="hidden md:grid grid-cols-12 gap-2 items-center">
                   {/* Description with item search */}
                   <div className="col-span-4 relative">
                     <input value={line.description}
@@ -408,6 +473,7 @@ export default function CreateInvoicePage() {
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
                   </div>
+                  </div>{/* end desktop grid */}
                 </div>
               )
             })}
@@ -419,7 +485,7 @@ export default function CreateInvoicePage() {
           </div>
 
           {/* Notes & Terms */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="text-xs text-muted-foreground uppercase tracking-wider mb-1 block">Notes</label>
               <textarea value={inv.notes} onChange={e => setInv(p => ({ ...p, notes: e.target.value }))} rows={3}

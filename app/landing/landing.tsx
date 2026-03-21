@@ -119,9 +119,9 @@ export default function LandingPage() {
       {/* ── NAV ── */}
       <header className="fixed w-full z-50 bg-white/95 backdrop-blur-xl border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image src="/logo/256.png" alt="" width={36} height={36} className="h-9 w-9 rounded-lg" />
-            <Image src="/logo/wordmark.png" alt="Ledgable" width={110} height={28} className="h-7 w-auto" />
+          <Link href="/" className="flex items-center gap-3">
+            <Image src="/logo/donut-256.png" alt="" width={40} height={40} className="h-10 w-10" />
+            <Image src="/logo/wordmark.png" alt="Ledgable" width={140} height={36} className="h-9 w-auto" />
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <a href="#features" className="hover:text-teal-600 transition-colors">Features</a>
@@ -581,8 +581,8 @@ export default function LandingPage() {
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2.5 mb-3">
-                <Image src="/logo/256.png" alt="" width={32} height={32} className="h-8 w-8 rounded-lg" />
-                <Image src="/logo/wordmark.png" alt="Ledgable" width={100} height={26} className="h-6 w-auto brightness-0 invert opacity-80" />
+                <Image src="/logo/donut-256.png" alt="" width={32} height={32} className="h-8 w-8" />
+                <Image src="/logo/wordmark.png" alt="Ledgable" width={110} height={28} className="h-7 w-auto brightness-0 invert opacity-80" />
               </div>
               <p className="text-sm text-slate-500 max-w-xs mb-4">AI-powered accounting built for Australian businesses. Simple. Smart. Affordable.</p>
               <div className="flex items-center gap-4 text-[10px] text-slate-600">

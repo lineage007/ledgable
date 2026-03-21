@@ -55,8 +55,8 @@ export function AppSidebar({
         <Link href="/dashboard" className="flex items-center gap-2.5 px-1 py-1">
           <Image src="/logo/256.png" alt="Ledgable" className="h-9 w-9 rounded-lg" width={36} height={36} />
           {open && (
-            <span className="text-lg font-bold tracking-tight text-sidebar-primary-foreground">
-              Ledgable
+            <span className="text-lg font-bold tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              <span className="text-slate-300">ledg</span><span style={{ color: '#0D9488' }}>able</span>
             </span>
           )}
         </Link>

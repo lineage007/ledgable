@@ -121,7 +121,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center h-16">
           <Link href="/" className="flex items-center gap-2.5">
             <Image src="/logo/icon-circle.png" alt="Ledgable" width={32} height={32} className="w-8 h-8" />
-            <span className="text-xl font-bold text-slate-900" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ledgable</span>
+            <span className="text-xl font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}><span style={{ color: '#0F172A' }}>ledg</span><span style={{ color: '#0D9488' }}>able</span></span>
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <a href="#features" className="hover:text-teal-600 transition-colors">Features</a>
@@ -582,7 +582,7 @@ export default function LandingPage() {
             <div>
               <div className="flex items-center gap-2.5 mb-3">
                 <Image src="/logo/icon-circle.png" alt="Ledgable" width={28} height={28} className="w-7 h-7" />
-                <span className="text-lg font-bold text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ledgable</span>
+                <span className="text-lg font-bold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}><span style={{ color: '#94A3B8' }}>ledg</span><span style={{ color: '#0D9488' }}>able</span></span>
               </div>
               <p className="text-sm text-slate-500 max-w-xs mb-4">AI-powered accounting built for Australian businesses. Simple. Smart. Affordable.</p>
               <div className="flex items-center gap-4 text-[10px] text-slate-600">

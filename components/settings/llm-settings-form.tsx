@@ -76,7 +76,7 @@ export default function LLMSettingsForm({
       <form action={saveAction} className="space-y-4">
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">LLM providers</label>
+          <label className="text-sm font-medium">AI Providers</label>
           <DndProviderBlocks
             providerOrder={providerOrder}
             setProviderOrder={setProviderOrder}

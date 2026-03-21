@@ -18,7 +18,7 @@ export default async function CategoriesSettingsPage() {
     <div className="container">
       <h1 className="text-2xl font-bold mb-2">Categories</h1>
       <p className="text-sm text-gray-500 mb-6 max-w-prose">
-        Create your own categories that better reflect the type of income and expenses you have. Define an LLM Prompt so
+        Create your own categories that better reflect the type of income and expenses you have. Define an AI Prompt so
         that AI can determine this category automatically.
       </p>
 
@@ -26,7 +26,7 @@ export default async function CategoriesSettingsPage() {
         items={categoriesWithActions}
         columns={[
           { key: "name", label: "Name", editable: true },
-          { key: "llm_prompt", label: "LLM Prompt", editable: true },
+          { key: "llm_prompt", label: "AI Prompt", editable: true },
           { key: "color", label: "Color", type: "color", defaultValue: randomHexColor(), editable: true },
         ]}
         onDelete={async (code) => {

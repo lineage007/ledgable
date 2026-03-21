@@ -7,16 +7,16 @@ export default async function DangerSettingsPage() {
 
   return (
     <div className="container">
-      <h1 className="text-2xl font-bold mb-2 text-red-500">The Danger Zone</h1>
+      <h1 className="text-2xl font-bold mb-2 text-foreground">Data Management</h1>
       <p className="text-sm text-red-400 mb-8 max-w-prose">
         The settings here will overwrite your existing fields, categories and prompts. Use them only if something is
         broken.
       </p>
       <div className="space-y-10">
         <div className="space-y-2">
-          <h3 className="text-lg font-bold">LLM settings</h3>
+          <h3 className="text-lg font-bold">AI Settings</h3>
           <p className="text-sm text-gray-500 mb-6 max-w-prose">
-            This will reset the system prompt and other LLM settings to their default values
+            This will reset the system prompt and other AI Settings to their default values
           </p>
           <form
             action={async () => {
@@ -25,7 +25,7 @@ export default async function DangerSettingsPage() {
             }}
           >
             <Button variant="destructive" type="submit">
-              Reset main LLM prompt
+              Reset main AI analysis prompt
             </Button>
           </form>
         </div>

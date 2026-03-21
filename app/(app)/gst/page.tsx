@@ -73,6 +73,40 @@ export default function GSTPage() {
         </a>
       </div>
 
+      {/* BAS Readiness Checklist */}
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+        <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+          <FileText className="w-4 h-4 text-teal-600" />
+          BAS Lodgement Checklist
+        </h3>
+        <div className="space-y-3">
+          {[
+            { done: true, label: 'All sales invoices entered', detail: '14 invoices this quarter' },
+            { done: true, label: 'All purchase receipts scanned', detail: '38 receipts processed by AI' },
+            { done: true, label: 'Bank reconciliation complete', detail: 'All transactions matched' },
+            { done: true, label: 'GST codes verified on all transactions', detail: '52 transactions coded' },
+            { done: false, label: 'Review uncategorized transactions', detail: '3 transactions need GST coding' },
+            { done: false, label: 'Accountant review (optional)', detail: 'Share via Accountant Portal' },
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
+                item.done ? 'bg-teal-500 text-white' : 'border-2 border-slate-300'
+              }`}>
+                {item.done && '✓'}
+              </div>
+              <div className="flex-1">
+                <span className={`text-sm ${item.done ? 'text-slate-500 line-through' : 'text-slate-900 font-medium'}`}>{item.label}</span>
+                <span className="text-xs text-slate-400 ml-2">{item.detail}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+          <span className="text-xs text-slate-400">4 of 6 complete — almost BAS-ready</span>
+          <span className="text-xs text-teal-600 font-semibold">67% ready</span>
+        </div>
+      </div>
+
       {/* Transactions */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">

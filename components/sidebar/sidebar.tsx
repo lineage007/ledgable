@@ -106,6 +106,14 @@ export function AppSidebar({
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/contacts">
+                  <SidebarMenuButton asChild>
+                    <Link href="/contacts">
+                      <Users />
+                      <span>Contacts</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
                 <SidebarMenuItemWithHighlight href="/bank-feeds">
                   <SidebarMenuButton asChild>
                     <Link href="/bank-feeds">

@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -119,7 +120,7 @@ export default function LandingPage() {
       <header className="fixed w-full z-50 bg-white/95 backdrop-blur-xl border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center h-16">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-extrabold text-sm" style={{ background: TEAL }}>L</div>
+            <Image src="/logo/icon-circle.png" alt="Ledgable" width={32} height={32} className="w-8 h-8" />
             <span className="text-xl font-bold text-slate-900" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ledgable</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
@@ -580,7 +581,7 @@ export default function LandingPage() {
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-7 h-7 rounded-md flex items-center justify-center text-white font-extrabold text-xs" style={{ background: TEAL }}>L</div>
+                <Image src="/logo/icon-circle.png" alt="Ledgable" width={28} height={28} className="w-7 h-7" />
                 <span className="text-lg font-bold text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ledgable</span>
               </div>
               <p className="text-sm text-slate-500 max-w-xs mb-4">AI-powered accounting built for Australian businesses. Simple. Smart. Affordable.</p>

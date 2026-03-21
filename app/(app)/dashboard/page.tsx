@@ -120,8 +120,8 @@ export default async function Dashboard() {
         </div>
       </div>
 
-      {/* Mobile Quick Actions — horizontal scroll */}
-      <div className="flex gap-3 overflow-x-auto pb-1 -mx-4 px-4 md:hidden scrollbar-none">
+      {/* Mobile Quick Actions — 2x2 grid */}
+      <div className="grid grid-cols-2 gap-2.5 md:hidden">
         {[
           { href: "/unsorted", icon: Upload, label: "Scan Receipt", color: "bg-violet-500" },
           { href: "/invoices/create", icon: FileText, label: "New Invoice", color: "bg-emerald-500" },
@@ -129,11 +129,11 @@ export default async function Dashboard() {
           { href: "/ask", icon: Sparkles, label: "Ask Ledge", color: "bg-primary" },
         ].map(a => (
           <Link key={a.label} href={a.href}
-            className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-card border border-border shrink-0 hover:shadow-md transition-all active:scale-[0.97]">
-            <div className={`w-8 h-8 rounded-lg ${a.color} flex items-center justify-center`}>
+            className="flex items-center gap-2.5 px-3.5 py-3 rounded-xl bg-card border border-border hover:shadow-md transition-all active:scale-[0.97]">
+            <div className={`w-8 h-8 rounded-lg ${a.color} flex items-center justify-center shrink-0`}>
               <a.icon className="w-4 h-4 text-white" />
             </div>
-            <span className="text-[13px] font-medium whitespace-nowrap">{a.label}</span>
+            <span className="text-[13px] font-medium">{a.label}</span>
           </Link>
         ))}
       </div>

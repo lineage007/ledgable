@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/sidebar"
 import { UserProfile } from "@/lib/auth"
 import config from "@/lib/config"
-import { ClockArrowUp, FileText, Gift, House, Import, LayoutDashboard, Settings, Upload, Landmark, Receipt, PiggyBank, TrendingUp, FileSpreadsheet } from "lucide-react"
+import { ClockArrowUp, FileText, Gift, House, Import, LayoutDashboard, Settings, Upload, Landmark, Receipt, PiggyBank, TrendingUp, FileSpreadsheet, Sparkles, Users, FileInput } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -135,6 +135,38 @@ export function AppSidebar({
                     <Link href="/cashflow">
                       <TrendingUp />
                       <span>Cashflow</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/invoices">
+                  <SidebarMenuButton asChild>
+                    <Link href="/invoices">
+                      <FileSpreadsheet />
+                      <span>Invoices</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/ask">
+                  <SidebarMenuButton asChild>
+                    <Link href="/ask">
+                      <Sparkles />
+                      <span>Ask Ledge</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/accountant">
+                  <SidebarMenuButton asChild>
+                    <Link href="/accountant">
+                      <Users />
+                      <span>Accountant</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItemWithHighlight>
+                <SidebarMenuItemWithHighlight href="/migrate">
+                  <SidebarMenuButton asChild>
+                    <Link href="/migrate">
+                      <FileInput />
+                      <span>Import Data</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItemWithHighlight>

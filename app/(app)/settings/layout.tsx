@@ -21,6 +21,23 @@ const settingsCategories = [
     href: "/settings/business",
   },
   {
+    title: "Email Inbox",
+    href: "/settings/email-inbox",
+  },
+  {
+    title: "Backups",
+    href: "/settings/backups",
+  },
+  {
+    title: "Data Management",
+    href: "/settings/danger",
+  },
+  {
+    title: "— Advanced —",
+    href: "#",
+    separator: true,
+  },
+  {
     title: "Categories",
     href: "/settings/categories",
   },
@@ -31,14 +48,6 @@ const settingsCategories = [
   {
     title: "Projects",
     href: "/settings/projects",
-  },
-  {
-    title: "Backups",
-    href: "/settings/backups",
-  },
-  {
-    title: "Data Management",
-    href: "/settings/danger",
   },
 ]
 
